@@ -1,0 +1,94 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+{{ title|default(site_name) }}
+{% endblock %}
+
+
+{% block metas %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
+      rel="stylesheet">
+
+<link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}"
+      rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet">
+<link href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}"
+      rel="stylesheet">
+<link href="{{ url_for('static', filename='overrides/css/overrides.css') }}"
+      rel="stylesheet">
+{% endblock %}
+
+{% block body_attribs %} id="page-top" {% endblock %}
+
+
+{% block content %}
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    {% block sidebar %}
+    {% endblock %}
+
+    {% block content_wrapper %}
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        {% block main_content %}
+
+        {% endblock %}
+
+        {% block footer %}
+        {% include 'footer.html' %}
+        {% endblock %}
+
+    </div>
+    <!-- End of Content Wrapper -->
+    {% endblock %}
+
+</div>
+<!-- End of Page Wrapper -->
+
+{% block scroll_to_top %}
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<!-- End scroll to Top Button-->
+{% endblock %}
+
+{% block logout_modal %}
+<!-- empty logout block -->
+{% endblock %}
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<!-- Bootstrap core JavaScript-->
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{{ url_for('static', filename='js/sb-admin-2.min.js') }}"></script>
+
+
+<script>
+    const defErrorTitle = 'Error',
+        defErrorMessage = 'An error has occurred.';
+</script>
+
+{% endblock %}

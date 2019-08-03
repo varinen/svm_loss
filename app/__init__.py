@@ -7,9 +7,10 @@ a linear classifier
 """
 
 import os
+from datetime import datetime
 import logging
 from logging.handlers import RotatingFileHandler
-from flask import Flask, abort
+from flask import Flask, abort, current_app
 from flask_bootstrap import Bootstrap
 
 from config import config_list
@@ -24,6 +25,16 @@ if env_ in config_list:
     config_val = config_list[env_]
 else:
     raise EnvironmentError('Cannot find environment config')
+
+
+def get_operation_years() -> str:
+    """Return a string representing the operation years of the website."""
+    start_year = int(current_app.config['START_YEAR'])
+    current_year = int(datetime.now().year)
+    if start_year == current_year:
+        return str(start_year)
+    else:
+        return ' - '.join([str(start_year), str(current_year)])
 
 
 def create_app(config_class: object = config_val):
@@ -53,6 +64,14 @@ def create_app(config_class: object = config_val):
 
         app.logger.setLevel(logging.INFO)
         app.logger.info('SVM_Loss startup')
+
+    @app.context_processor
+    def inject_global_vars():
+        """Inject global variables to be used, e.g., in Jinja templates."""
+        return dict(
+            site_name=app.config['SITE_NAME'],
+            operation_years=get_operation_years(),
+            app_config=app.config)
 
     @app.route('/ping')
     def ping():

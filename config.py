@@ -20,6 +20,7 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'development secret'
 
     SITE_NAME = 'SVM Loss'
+    START_YEAR = '2019'
 
 
 class DevelopmentConfig(Config):

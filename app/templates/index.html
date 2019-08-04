@@ -19,8 +19,8 @@
             <div class="mx-auto text-center">
                 <h1 class="mx-auto my-0 text-uppercase text-gray-700">{{
                     site_name }}</h1>
-                <h2 class="text-gray-900 mx-auto mt-2 mb-5">Linear Classifier
-                    Demo</h2>
+                <h2 class="text-gray-900 mx-auto mt-2 mb-5">
+                    Linear Classifier Demo</h2>
 
             </div>
 
@@ -62,7 +62,8 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Classifier parameters' | title}}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Classifier
+                        parameters' | title}}</h6>
                 </div>
                 <div class="card-body">
                     {% include 'index/center.html' %}
@@ -74,7 +75,8 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Data point and Loss values' | title}}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Data point
+                        and Loss values' | title}}</h6>
                 </div>
                 <div class="card-body">
                     {% include 'index/right.html' %}
@@ -84,5 +86,9 @@
     </div>
 
 </div>
+
+<script>
+    const initParamUrl = '{{ urls.init_prams_url }}';
+</script>
 
 {% endblock %}

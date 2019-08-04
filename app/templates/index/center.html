@@ -1,3 +1,5 @@
+{% import 'macros/param.html' as param %}
+
 <article>
     <p>
         Parameters \(W\), \(b\) are shown below. The value is in <b>bold</b> and
@@ -6,4 +8,14 @@
         below. Click the triangles to
         control the parameters.
     </p>
+
+    {% for i in range(0, 3) %}
+    <div class="row">
+        {% for y in range(0, 3) %}
+        <div class="col-xs-4">{{ param.param(i, y) }}</div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+
 </article>

@@ -5,6 +5,10 @@ let demoFunc = function () {
         jQuery.get(initParamUrl, this.processParam, 'json');
     };
 
+    this.getRandomParams = function () {
+        jQuery.get(randomParamUrl, this.processParam, 'json');
+    };
+
     this.processParam = function (data) {
         if (!data.weights || !data.biases) {
             alert('doh!')

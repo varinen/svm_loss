@@ -9,8 +9,10 @@ def test_get_urls(app):
         result = get_urls()
         assert isinstance(result, dict)
         assert len(result) > 0
-        assert result['init_prams_url']
-        assert 'init_params' in result['init_prams_url']
+        assert result['init_params_url']
+        assert 'init_params' in result['init_params_url']
+        assert result['random_params_url']
+        assert 'random_params' in result['random_params_url']
 
 
 def test_init_params(app):
@@ -18,6 +20,15 @@ def test_init_params(app):
     with app.app_context():
         result = init_params()
 
+        assert isinstance(result, dict)
+        assert result['weights']
+        assert result['biases']
+        assert len(result['weights']) == 3
+        assert len(result['weights'][0]) == 2
+        assert len(result['weights'][1]) == 2
+        assert len(result['biases']) == 3
+
+        result = init_params(True)
         assert isinstance(result, dict)
         assert result['weights']
         assert result['biases']

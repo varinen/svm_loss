@@ -18,3 +18,9 @@ def index():
 def init_params() -> str:
     """Return a json string with the initial parameters"""
     return jsonify(init_param_func())
+
+
+@bp.route('/random_params', methods=['GET'])
+def random_params() -> str:
+    """Return a json string with random parameters."""
+    return jsonify(init_param_func(True))

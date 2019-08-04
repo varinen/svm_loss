@@ -27,7 +27,7 @@
         </div>
     </header>
 </div>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow mb-4">
@@ -36,26 +36,7 @@
                         of the demo' | title}}</h6>
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, ad nec adversarium
-                        intellegebat.
-                        Viderer vocibus eam ea. Suscipit vituperatoribus ne cum,
-                        vel
-                        dictas nostrum ei. Ex melius aperiri tacimates ius. Eos
-                        in
-                        ridens iriure corpora, agam scaevola scriptorem ea eum.
-                    </p>
-                    <p>
-                        Ea dicunt consulatu per, pro eu dolores qualisque. Alii
-                        inermis
-                        repudiandae ut ius, facilisis hendrerit ex sed, ne
-                        facete
-                        salutatus ius. Sint iisque quaestio ius et. Eu regione
-                        invidunt
-                        deseruisse vis, brute meliore usu eu, habemus tractatos
-                        intellegat at per. Doming putant tincidunt eam id, lorem
-                        dolorem
-                        at est.
-                    </p>
+                    {% include 'index/intro.html' %}
                 </div>
             </div>
 
@@ -67,18 +48,11 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Left
-                        column' | title}}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Data and
+                        Classifier Visualization' | title}}</h6>
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, ad nec adversarium
-                        intellegebat.
-                        Viderer vocibus eam ea. Suscipit vituperatoribus ne cum,
-                        vel
-                        dictas nostrum ei. Ex melius aperiri tacimates ius. Eos
-                        in
-                        ridens iriure corpora, agam scaevola scriptorem ea eum.
-                    </p>
+                    {% include 'index/left.html' %}
                 </div>
             </div>
 
@@ -88,18 +62,10 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Center
-                        column' | title}}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Classifier parameters' | title}}</h6>
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, ad nec adversarium
-                        intellegebat.
-                        Viderer vocibus eam ea. Suscipit vituperatoribus ne cum,
-                        vel
-                        dictas nostrum ei. Ex melius aperiri tacimates ius. Eos
-                        in
-                        ridens iriure corpora, agam scaevola scriptorem ea eum.
-                    </p>
+                    {% include 'index/center.html' %}
                 </div>
             </div>
         </div>
@@ -108,18 +74,10 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Right
-                        column' | title}}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Data point and Loss values' | title}}</h6>
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, ad nec adversarium
-                        intellegebat.
-                        Viderer vocibus eam ea. Suscipit vituperatoribus ne cum,
-                        vel
-                        dictas nostrum ei. Ex melius aperiri tacimates ius. Eos
-                        in
-                        ridens iriure corpora, agam scaevola scriptorem ea eum.
-                    </p>
+                    {% include 'index/right.html' %}
                 </div>
             </div>
         </div>

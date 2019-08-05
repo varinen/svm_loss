@@ -6,4 +6,32 @@
         \(f(x_i;W,b)=Wx_i+b\) (E.g. s[0] = x[0] * W[0,0] + x[1] * W[0,1] + b[0]). The
         last column is the data loss for a single example, \(L_i\).
     </p>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>X[0]</th>
+                <th>X[1]</th>
+                <th class="border-right">y</th>
+                <th>s[0]</th>
+                <th>s[1]</th>
+                <th class="border-right">s[2]</th>
+                <th>L</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in range(0,9) %}
+            <tr>
+                <td data-target="x-{{ i }}-0"></td>
+                <td data-target="x-{{ i }}-1"></td>
+                <td data-target="y-{{ i }}" class="border-right"></td>
+                <td data-target="s-{{ i }}-0"></td>
+                <td data-target="s-{{ i }}-1"></td>
+                <td data-target="s-{{ i }}-2" class="border-right"></td>
+                <td data-target="L-{{ i }}"></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </article>

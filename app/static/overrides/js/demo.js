@@ -1,5 +1,6 @@
 let demoFunc = function () {
     this.params = {};
+    this.data = {};
 
     this.getInitParams = function () {
         jQuery.get(initParamUrl, this.processParam, 'json');
@@ -9,12 +10,33 @@ let demoFunc = function () {
         jQuery.get(randomParamUrl, this.processParam, 'json');
     };
 
+
+    this.getInitData = function () {
+        jQuery.get(initDataUrl, this.processData, 'json');
+    };
+
+    this.processData = function (data) {
+        demoObj.data = data;
+        demoObj.displayData(data);
+    };
+
     this.processParam = function (data) {
         if (!data.weights || !data.biases) {
-            alert('doh!')
+            return;
         }
         demoObj.params = data;
         demoObj.displayParams(demoObj.params);
+    };
+
+    this.displayData = function (data) {
+        for (let i in data) {
+            if (!data.hasOwnProperty(i)) {
+                continue;
+            }
+            jQuery('[data-target="x-' + i + '-0"]').text(data[i][0])
+            jQuery('[data-target="x-' + i + '-1"]').text(data[i][1])
+            jQuery('[data-target="y-' + i + '"]').text(data[i][2])
+        }
     };
 
     this.displayParams = function (params) {
@@ -49,5 +71,6 @@ let demoFunc = function () {
 let demoObj = new demoFunc();
 
 jQuery(function () {
-    demoObj.getInitParams()
+    demoObj.getInitParams();
+    demoObj.getInitData();
 });

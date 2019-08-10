@@ -3,6 +3,8 @@
 import json
 from flask import url_for
 
+from app.demo.utils import init_data, init_params
+
 
 def test_demo_index(app, client):
     """Test the response from the index page."""
@@ -49,3 +51,38 @@ def test_get_data_params(app, client):
             assert isinstance(data, list)
             assert len(data) == 9
             assert len(data[0]) == 3
+
+
+def test_get_plot(app, client):
+    """Test the working of the get_plot function."""
+    data_ = json.dumps(init_data())
+    params = json.dumps(init_params())
+
+    with app.test_request_context():
+        url = url_for('demo.get_plot')
+
+        # invalid data params
+        resp = client.post(url, data={'data': '', 'params': params})
+        assert resp.content_type == 'application/json'
+        data = json.loads(resp.data)
+        assert 'error' in data
+        assert data['error'] == 'Invalid data'
+
+        # empty data params
+        resp = client.post(url, data={'data': json.dumps(''), 'params': params})
+        assert resp.content_type == 'application/json'
+        data = json.loads(resp.data)
+        assert 'error' in data
+        assert data['error'] == 'Invalid data'
+
+        # invalid params
+        resp = client.post(url, data={'data': data_, 'params': json.dumps({})})
+        assert resp.content_type == 'application/json'
+        data = json.loads(resp.data)
+        assert 'error' in data
+        assert 'Missing key' in data['error']
+
+        resp = client.post(url, data={'data': data_, 'params': params})
+        assert resp.content_type == 'application/json'
+        data = json.loads(resp.data)
+        assert 'plot' in data

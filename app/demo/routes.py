@@ -2,6 +2,7 @@
 
 import numpy as np
 import json
+from json import JSONDecodeError
 from flask import render_template, jsonify, request
 
 from app.demo import bp
@@ -19,14 +20,20 @@ def index():
 @bp.route('/get_params', methods=['GET'])
 def get_params() -> str:
     """Return a json string with init or random parameters."""
-    rand = bool(int(request.args.get('rand')))
+    rand = False
+    if not request.args.get('rand') is None and is_int(
+            request.args.get('rand')):
+        rand = bool(int(request.args.get('rand')))
     return jsonify(init_params(rand))
 
 
 @bp.route('/get_data', methods=['GET'])
 def get_data() -> str:
     """Return a json string with training data to be classified."""
-    rand = bool(int(request.args.get('rand')))
+    rand = False
+    if not request.args.get('rand') is None and is_int(
+            request.args.get('rand')):
+        rand = bool(int(request.args.get('rand')))
     return jsonify(init_data(rand))
 
 
@@ -47,8 +54,10 @@ def get_plot():
 
         plot = generate_plot_image_string(data, params_)
         return jsonify({'plot': plot})
+
+    except JSONDecodeError as ex:
+        return jsonify({'error': 'Invalid data'})
     except TypeError as ex:
         return jsonify({'error': str(ex)})
-
     except KeyError as ex:
-        return jsonify({'error': str(ex)})
+        return jsonify({'error': ', '.join(['Missing key: ', str(ex)])})

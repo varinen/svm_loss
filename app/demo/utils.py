@@ -13,6 +13,17 @@ from flask import url_for
 colors = ['black', 'white', 'red']
 
 
+def is_int(s) -> bool:
+    """Check if the value is an Integer."""
+    if s is None:
+        return False
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+
+
 def get_urls() -> dict:
     """Return urls to be used in the template by the Javascript code."""
     urls = dict()

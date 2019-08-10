@@ -5,6 +5,15 @@ from pytest import approx
 from app.demo.utils import *
 
 
+def test_is_int():
+    """Test if the is_digit function can convert to int."""
+    assert not is_int(None)
+    assert is_int(4)
+    assert is_int('4')
+    assert not is_int('')
+    assert is_int(4.2)
+
+
 def test_get_urls(app):
     """Test the get_urls function."""
     with app.app_context():

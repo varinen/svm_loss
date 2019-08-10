@@ -14,16 +14,11 @@ def index():
     return render_template('index.html', title='Welcome', urls=urls)
 
 
-@bp.route('/init_params', methods=['GET'])
-def init_params() -> str:
-    """Return a json string with the initial parameters"""
-    return jsonify(init_param_func())
-
-
-@bp.route('/random_params', methods=['GET'])
-def random_params() -> str:
-    """Return a json string with random parameters."""
-    return jsonify(init_param_func(True))
+@bp.route('/get_params', methods=['GET'])
+def get_params() -> str:
+    """Return a json string with init or random parameters."""
+    rand = bool(request.args.get('rand'))
+    return jsonify(init_param_func(rand))
 
 
 @bp.route('/get_data', methods=['GET'])

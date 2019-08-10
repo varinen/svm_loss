@@ -11,12 +11,12 @@ def test_demo_index(app, client):
         assert 'Linear Classifier Demo' in str(resp.data)
 
 
-def test_init_params(app, client):
+def test_get_params(app, client):
     """Test the response from the init_params and random_params routes."""
     with app.app_context():
         urls = [
-            url_for('demo.init_params'),
-            url_for('demo.random_params')
+            url_for('demo.get_params'),
+            url_for('demo.get_params', rand=1),
         ]
     with app.test_request_context():
         for url in urls:

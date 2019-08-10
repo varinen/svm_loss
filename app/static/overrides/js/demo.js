@@ -2,17 +2,30 @@ let demoFunc = function () {
     this.params = {};
     this.data = {};
 
-    this.getInitParams = function () {
-        jQuery.get(initParamUrl, this.processParam, 'json');
+    this.getParams = function (rand = 0) {
+        jQuery.get(
+            getParamsUrl,
+            {
+                rand: rand,
+                data: JSON.stringify(demoObj.data),
+                params: JSON.stringify(demoObj.params)
+            },
+            this.processParam,
+            'json'
+        );
     };
 
-    this.getRandomParams = function () {
-        jQuery.get(randomParamUrl, this.processParam, 'json');
-    };
-
-
-    this.getInitData = function () {
-        jQuery.get(initDataUrl, this.processData, 'json');
+    this.getTrainData = function (rand = 0) {
+        jQuery.get(
+            getDataUrl,
+            {
+                rand: rand,
+                data: JSON.stringify(demoObj.data),
+                params: JSON.stringify(demoObj.params)
+            },
+            this.processData,
+            'json'
+        );
     };
 
     this.processData = function (data) {
@@ -71,6 +84,6 @@ let demoFunc = function () {
 let demoObj = new demoFunc();
 
 jQuery(function () {
-    demoObj.getInitParams();
-    demoObj.getInitData();
+    demoObj.getParams();
+    demoObj.getTrainData();
 });

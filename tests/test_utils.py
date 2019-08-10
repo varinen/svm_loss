@@ -11,10 +11,10 @@ def test_get_urls(app):
         result = get_urls()
         assert isinstance(result, dict)
         assert len(result) > 0
-        assert result['init_params_url']
-        assert 'init_params' in result['init_params_url']
-        assert result['random_params_url']
-        assert 'random_params' in result['random_params_url']
+        assert result['get_params_url']
+        assert 'get_params' in result['get_params_url']
+        assert result['get_data_url']
+        assert 'get_data' in result['get_data_url']
 
 
 def test_init_params(app):

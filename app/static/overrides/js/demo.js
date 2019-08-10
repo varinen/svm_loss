@@ -2,13 +2,31 @@ let demoFunc = function () {
     this.params = {};
     this.data = {};
 
+    this.getPlot = function () {
+        jQuery.post(
+            getPlotUrl,
+            {
+                data: JSON.stringify(demoObj.data),
+                params: JSON.stringify(demoObj.params)
+            },
+            this.displayPlot,
+            'json'
+        );
+    };
+
+    this.displayPlot = function (data) {
+        let src = 'data:image/png;base64, ';
+        let target = jQuery('#plot');
+        if (data.plot) {
+            target.attr('src', src + data.plot)
+        }
+    };
+
     this.getParams = function (rand = 0) {
         jQuery.get(
             getParamsUrl,
             {
                 rand: rand,
-                data: JSON.stringify(demoObj.data),
-                params: JSON.stringify(demoObj.params)
             },
             this.processParam,
             'json'
@@ -20,8 +38,6 @@ let demoFunc = function () {
             getDataUrl,
             {
                 rand: rand,
-                data: JSON.stringify(demoObj.data),
-                params: JSON.stringify(demoObj.params)
             },
             this.processData,
             'json'
@@ -31,6 +47,7 @@ let demoFunc = function () {
     this.processData = function (data) {
         demoObj.data = data;
         demoObj.displayData(data);
+        demoObj.getPlot();
     };
 
     this.processParam = function (data) {
@@ -39,6 +56,7 @@ let demoFunc = function () {
         }
         demoObj.params = data;
         demoObj.displayParams(demoObj.params);
+        demoObj.getPlot();
     };
 
     this.displayData = function (data) {

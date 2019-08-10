@@ -18,6 +18,7 @@ def get_urls() -> dict:
     urls = dict()
     urls['get_params_url'] = url_for('demo.get_params')
     urls['get_data_url'] = url_for('demo.get_data')
+    urls['get_plot_url'] = url_for('demo.get_plot')
 
     return urls
 
@@ -175,10 +176,19 @@ def generate_plot_image_string(data: ndarray, params: ndarray) -> str:
 
     z = z.reshape(xx.shape)
     plt.figure(figsize=(10, 10))
+    plt.tight_layout()
+    matplotlib.rc('xtick', labelsize=15)
+    matplotlib.rc('ytick', labelsize=15)
+
     plt.contourf(xx, yy, z, cmap=plt.cm.tab20)
     plt.axis('equal')
     plt.xlim(x_min, x_max)
     plt.ylim(y_min, y_max)
+    ax = plt.gca()
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['bottom'].set_visible(False)
+    ax.spines['left'].set_visible(False)
 
     plot_params(plt, params, x_min, x_max)
 

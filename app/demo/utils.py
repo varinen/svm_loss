@@ -106,7 +106,7 @@ def model(data: ndarray, params: ndarray) -> ndarray:
 
 def plot_params(plt_: matplotlib.pyplot, params: ndarray, x_min: float,
                 x_max: float):
-    """Plot decision boundaries, parameters and training data."""
+    """Plot decision boundaries, parameters and gradients."""
     for i, param_set in enumerate(params):
         x = np.linspace(x_min, x_max, num=2)
         if param_set[1] == 0:
@@ -131,7 +131,7 @@ def get_perp(x_min: float, x_max: float, params: ndarray) -> tuple:
     between x_min and x_max."""
     # the offset of the perpendicular's end x coordinate from its start
     # x coordinate
-    offset = .5
+    offset = .25
     x_mid = (x_min + x_max) / 2
 
     # avoid division by zero
@@ -188,8 +188,8 @@ def generate_plot_image_string(data: ndarray, params: ndarray) -> str:
     z = z.reshape(xx.shape)
     plt.figure(figsize=(10, 10))
     plt.tight_layout()
-    matplotlib.rc('xtick', labelsize=15)
-    matplotlib.rc('ytick', labelsize=15)
+    matplotlib.rc('xtick', labelsize=10)
+    matplotlib.rc('ytick', labelsize=10)
 
     plt.contourf(xx, yy, z, cmap=plt.cm.tab20)
     plt.axis('equal')
@@ -204,7 +204,7 @@ def generate_plot_image_string(data: ndarray, params: ndarray) -> str:
     plot_params(plt, params, x_min, x_max)
 
     # plot the training points
-    plt.scatter(x_[:, 0], x_[:, 1], c=y_, cmap=plt.cm.tab20)
+    plt.scatter(x_[:, 0], x_[:, 1], c=y_, s=100, cmap=plt.cm.tab20)
 
     figfile = BytesIO()
     plt.savefig(figfile, format='png')

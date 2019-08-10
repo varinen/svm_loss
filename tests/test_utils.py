@@ -1,6 +1,7 @@
 """Tests for the utils module."""
 
 import numpy as np
+from pytest import approx
 from app.demo.utils import *
 
 
@@ -89,6 +90,24 @@ def test_get_perp():
     assert y_mid == -18
     assert dx == 0.5
     assert dy == 0.125
+
+    params = np.array([0, -1, 10])
+    x_mid, y_mid, dx, dy = get_perp(x_min, x_max, params)
+
+    assert x_mid == 7
+    assert y_mid == 0
+    assert dx == 0.5
+    assert dy < -100
+
+    params = np.array([-4, 0, 10])
+    x_mid, y_mid, dx, dy = get_perp(x_min, x_max, params)
+
+    assert x_mid == 7
+    assert y_mid > 100
+    assert dx == 0.5
+    assert dy == 0
+
+    assert True
 
 
 def test_prepare_data():

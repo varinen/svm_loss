@@ -6,7 +6,15 @@ from json import JSONDecodeError
 from flask import render_template, jsonify, request
 
 from app.demo import bp
-from app.demo.utils import *
+from app.demo.utils import (
+    get_urls,
+    init_data,
+    init_params,
+    is_int
+)
+from app.demo.plot import (
+    generate_plot_image_string
+)
 
 
 @bp.route('/', methods=['GET'])

@@ -4,25 +4,11 @@ import numpy as np
 
 from app.demo.plot import (
     model,
-    model_scores,
     get_perp,
     prepare_data,
     generate_plot_image_string
 )
 from app.demo.plot import offset as plot_offset
-
-
-def test_model_scores():
-    """Test the generation of class scores."""
-    params = np.array([[1, 1, 1], [2, 2, 2]])
-    data = np.array([[3, 3], [4, 4]])
-
-    scores = model_scores(data, params)
-    assert scores.shape == (2, 2)
-    assert scores[0][0] == 7
-    assert scores[0][1] == 14
-    assert scores[1][0] == 9
-    assert scores[1][1] == 18
 
 
 def test_model():

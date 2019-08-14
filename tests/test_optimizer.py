@@ -44,21 +44,55 @@ def test_grad_step_ova():
     """Test the grad_step function with the OVA loss."""
     data, labels, params = prep_data()
 
-    v_grad_w, v_grad_b, v_cost_loss, v_loss, v_scores = \
+    grad_w, grad_b, cost_loss, loss, scores, total_loss, reg_loss = \
         grad_step(data, labels, params, 'ova')
 
-    assert v_grad_w.shape == (3, 2)
-    assert v_grad_w[0, 0] == approx(-0.2)
-    assert v_grad_w[0, 1] == approx(0.2)
-    assert v_grad_w[1, 0] == approx(3.5)
-    assert v_grad_w[1, 1] == approx(-2)
-    assert v_grad_w[2, 0] == approx(2)
-    assert v_grad_w[2, 1] == approx(2)
+    assert grad_w.shape == (3, 2)
+    """
+    assert grad_w[0, 0] == approx(-0.2)
+    assert grad_w[0, 1] == approx(0.2)
+    assert grad_w[1, 0] == approx(3.5)
+    assert grad_w[1, 1] == approx(-2)
+    assert grad_w[2, 0] == approx(2)
+    assert grad_w[2, 1] == approx(2)
 
-    assert v_grad_b.shape == (3, 1)
-    assert v_grad_b[0, 0] == 5
-    assert v_grad_b[1, 0] == 2
-    assert v_grad_b[2, 0] == 2
+    assert grad_b.shape == (3, 1)
+    assert grad_b[0, 0] == 5
+    assert grad_b[1, 0] == 2
+    assert grad_b[2, 0] == 2
+    """
+    assert round(grad_w[0, 0], 4) == 0.0278
+    assert round(grad_w[0, 1], 4) == 0.1222
+    assert round(grad_w[1, 0], 4) == 0.4889
+    assert round(grad_w[1, 1], 4) == -0.4222
+    assert round(grad_w[2, 0], 4) == 0.3722
+    assert round(grad_w[2, 1], 4) == 0.1722
 
-    assert True
+    assert grad_b.shape == (3, 1)
+    assert round(grad_b[0, 0], 4) == 0.5556
+    assert round(grad_b[1, 0], 4) == 0.2222
+    assert round(grad_b[2, 0], 4) == 0.2222
+
+    assert round(reg_loss, 4) == 3.5000
+    assert round(total_loss, 4) == 7.5222
+
+def test_grad_step_ww():
+    """Test the grad_step function with the Weston Watkins loss."""
+    data, labels, params = prep_data()
+
+    grad_w, grad_b, cost_loss, loss, scores, total_loss, reg_loss = \
+        grad_step(data, labels, params, 'ww')
+
+    assert grad_w.shape == (3, 2)
+    assert grad_w[0, 0] == approx(-3.9)
+    assert grad_w[0, 1] == approx(-0.3)
+    assert grad_w[1, 0] == approx(3.7)
+    assert grad_w[1, 1] == approx(-3.4)
+    assert grad_w[2, 0] == approx(0.2)
+    assert grad_w[2, 1] == approx(3.7)
+
+    assert grad_b.shape == (3, 1)
+    assert grad_b[0, 0] == 1
+    assert grad_b[1, 0] == -1
+    assert grad_b[2, 0] == 0
 

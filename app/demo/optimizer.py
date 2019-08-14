@@ -22,7 +22,8 @@ def get_scores(data: ndarray, params: ndarray) -> ndarray:
 
 
 def grad_step(data: ndarray, labels: ndarray, params: ndarray,
-              loss_type: str) -> Tuple[ndarray, ndarray, float, list, list]:
+              loss_type: str) -> Tuple[ndarray, ndarray, float, list, ndarray,
+                                       float, float]:
     """Calculate new gradients, losses, and scores.
 
     :param data: training data
@@ -31,6 +32,7 @@ def grad_step(data: ndarray, labels: ndarray, params: ndarray,
     :param loss_type: string to choose the loss function formulation
     with values 'ww' (Weston Watkins 1999), 'ova' ('One-vs-All')
     """
+    weights = params[:, :-1]
     grad_w = np.zeros((3, 2))
     grad_b = np.zeros((3, 1))
     cost_loss = 0
@@ -58,7 +60,29 @@ def grad_step(data: ndarray, labels: ndarray, params: ndarray,
         cost_loss += sample_loss
         loss.append(sample_loss)
 
-    return grad_w, grad_b, cost_loss, loss, scores
+    grad_w, grad_b, cost_loss, total_loss, reg_loss = norm_reg(data.shape[0],
+                                                               weights, grad_w,
+                                                               grad_b,
+                                                               cost_loss)
+
+    return grad_w, grad_b, cost_loss, loss, scores, total_loss, reg_loss
+
+
+def norm_reg(n: int, weights: ndarray, grad_w: ndarray, grad_b: ndarray,
+             cost_loss: float, reg: float = 0.1) -> Tuple[
+        ndarray, ndarray, float, float, float]:
+    """Normalizes the elements and applies regularization to the gradients."""
+    grad_b /= n
+    grad_w /= n
+    cost_loss /= n
+
+    reg_loss = reg * np.square(weights)
+    reg_loss = reg_loss.sum()
+    grad_w += 0.5 * reg * weights
+
+    total_loss = cost_loss + reg_loss
+
+    return grad_w, grad_b, cost_loss, total_loss, reg_loss
 
 
 def ww_loss(label: int, classes: ndarray, sample: ndarray,

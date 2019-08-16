@@ -2,6 +2,34 @@ let demoFunc = function () {
     this.params = {};
     this.data = {};
 
+    this.processError = function(data) {
+        if (data.error) {
+            alert(data.error);
+            return true;
+        }
+        return false;
+    };
+
+    this.getStep = function () {
+        jQuery.post(
+            getStepUrl,
+            {
+                data: JSON.stringify(demoObj.data),
+                params: JSON.stringify(demoObj.params)
+            },
+            this.processStep,
+            'json'
+        );
+    };
+
+    this.processStep = function (data) {
+        if (demoObj.processError(data)) {
+            return;
+        }
+        demoObj.displayPlot(data);
+        demoObj.processParams(data, false);
+    };
+
     this.getPlot = function () {
         jQuery.post(
             getPlotUrl,
@@ -28,7 +56,7 @@ let demoFunc = function () {
             {
                 rand: rand,
             },
-            this.processParam,
+            this.processParams,
             'json'
         );
     };
@@ -44,19 +72,24 @@ let demoFunc = function () {
         );
     };
 
-    this.processData = function (data) {
+    this.processData = function (data, withPlot = true) {
         demoObj.data = data;
         demoObj.displayData(data);
-        demoObj.getPlot();
+        if (withPlot) {
+            demoObj.getPlot();
+        }
     };
 
-    this.processParam = function (data) {
+    this.processParams = function (data, withPlot = true) {
         if (!data.weights || !data.biases) {
             return;
         }
         demoObj.params = data;
         demoObj.displayParams(demoObj.params);
-        demoObj.getPlot();
+        if (withPlot) {
+            demoObj.getPlot();
+        }
+
     };
 
     this.displayData = function (data) {

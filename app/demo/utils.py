@@ -23,6 +23,7 @@ def get_urls() -> dict:
     urls['get_params_url'] = url_for('demo.get_params')
     urls['get_data_url'] = url_for('demo.get_data')
     urls['get_plot_url'] = url_for('demo.get_plot')
+    urls['get_step_url'] = url_for('demo.get_step')
 
     return urls
 

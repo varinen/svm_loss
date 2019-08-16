@@ -70,7 +70,7 @@ def grad_step(data: ndarray, labels: ndarray, params: ndarray,
 
 def norm_reg(n: int, weights: ndarray, grad_w: ndarray, grad_b: ndarray,
              cost_loss: float, reg: float = 0.1) -> Tuple[
-        ndarray, ndarray, float, float, float]:
+    ndarray, ndarray, float, float, float]:
     """Normalizes the elements and applies regularization to the gradients."""
     grad_b /= n
     grad_w /= n
@@ -145,3 +145,14 @@ def ova_loss(label, classes, sample, sample_scores, grad_w, grad_b):
             grad_b[j] += -1 * factor
 
     return grad_w, grad_b, sample_loss
+
+
+def adjust_params(weights, biases, grad_w, grad_b, learning_rate):
+    """Adjust the weights and biases.
+
+     Subtract the gradient value multiplied by the learning rate
+    """
+    weights -= grad_w * learning_rate
+    biases -= grad_b * learning_rate
+
+    return weights, biases

@@ -1,6 +1,7 @@
 """Routes for the Demo package."""
 
 import numpy as np
+from numpy import ndarray
 import json
 from json import JSONDecodeError
 from flask import render_template, jsonify, request
@@ -79,32 +80,39 @@ def get_step():
         data = json.loads(request.form.get('data'))
         params = json.loads(request.form.get('params'))
         loss_type = request.form.get('loss_type', 'ww')
+
         if not isinstance(params, dict) or not isinstance(data, list):
             raise TypeError('Invalid data')
         data = np.array(data)
 
         weights = params['weights']
         biases = params['biases']
-
-        result = {}
-
         labels = data[:, 2].astype(int)
         params_ = np.c_[weights, biases]
 
-        grad_w, grad_b, result['cost_loss'], result['loss'], \
-            result['scores'], result['total_loss'], result['reg_loss'] = \
-            grad_step(data, labels, params_, loss_type)
+        result = dict()
+
+        result['grad_w'], result['grad_b'], result['cost_loss'], \
+            result['loss'], result['scores'], result['total_loss'], \
+            result['reg_loss'] = grad_step(data, labels, params_, loss_type)
 
         learning_rate = 0.1
 
         weights = np.array(weights)
         biases = np.array(biases)
-        biases = biases[:, np.newaxis]
-        result['weights'], result['biases'] = adjust_params(weights, biases,
-                                                            grad_w, grad_b,
-                                                            learning_rate)
-        result['grad_w'] = grad_w
-        result['grad_b'] = grad_b
+        if biases.shape == (3,):
+            biases = biases[:, np.newaxis]
+
+        result['weights'], result['biases'] = \
+            adjust_params(weights, biases, result['grad_w'], result['grad_b'],
+                          learning_rate)
+
+        # Convert ndarrays to lists before jsonifying
+        lists = {key: result[key].tolist() for key in result if
+                 isinstance(result[key], ndarray)}
+        for key in result:
+            if key in lists:
+                result[key] = lists[key]
 
         plot = generate_plot_image_string(data, np.c_[
             result['weights'], result['biases']])

@@ -1,8 +1,24 @@
 let demoFunc = function () {
     this.params = {};
     this.data = {};
+    this.block = false;
+    this.continuous = false;
+    this.intervalId = false;
 
-    this.processError = function(data) {
+    this.startContinuousUpdate = function() {
+        this.intervalId = setInterval(
+            function () {
+                demoObj.getStep();
+            }, 500);
+    };
+
+    this.stopContinuousUpdate = function () {
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+        }
+    };
+
+    this.processError = function (data) {
         if (data.error) {
             alert(data.error);
             return true;
@@ -11,6 +27,10 @@ let demoFunc = function () {
     };
 
     this.getStep = function () {
+        if (this.block) {
+            return;
+        }
+        this.block = true;
         jQuery.post(
             getStepUrl,
             {
@@ -23,11 +43,43 @@ let demoFunc = function () {
     };
 
     this.processStep = function (data) {
+        demoObj.block = false;
         if (demoObj.processError(data)) {
             return;
         }
         demoObj.displayPlot(data);
         demoObj.processParams(data, false);
+        demoObj.displayScores(data);
+        demoObj.displayLoss(data);
+    };
+
+    this.displayLoss = function (data) {
+        if (data.loss) {
+            for (let i in data.loss) {
+                if (!data.loss.hasOwnProperty(i)) {
+                    continue;
+                }
+                jQuery('[data-target="L-' + i + '"]')
+                    .text(parseFloat(data.loss[i]).toFixed(2));
+            }
+        }
+    };
+
+    this.displayScores = function (data) {
+        if (data.scores) {
+            for (let i in data.scores) {
+                if (!data.scores.hasOwnProperty(i)) {
+                    continue;
+                }
+                for (let j in data.scores[i]) {
+                    if (!data.scores[i].hasOwnProperty(j)) {
+                        continue;
+                    }
+                    jQuery('[data-target="s-' + i + '-' + j + '"]')
+                        .text(parseFloat(data.scores[i][j]).toFixed(2));
+                }
+            }
+        }
     };
 
     this.getPlot = function () {
@@ -97,9 +149,12 @@ let demoFunc = function () {
             if (!data.hasOwnProperty(i)) {
                 continue;
             }
-            jQuery('[data-target="x-' + i + '-0"]').text(data[i][0])
-            jQuery('[data-target="x-' + i + '-1"]').text(data[i][1])
-            jQuery('[data-target="y-' + i + '"]').text(data[i][2])
+            jQuery('[data-target="x-' + i + '-0"]')
+                .text(parseFloat(data[i][0]).toFixed(2));
+            jQuery('[data-target="x-' + i + '-1"]')
+                .text(parseFloat(data[i][1]).toFixed(2));
+            jQuery('[data-target="y-' + i + '"]')
+                .text(parseFloat(data[i][2]).toFixed(2));
         }
     };
 
@@ -119,7 +174,12 @@ let demoFunc = function () {
                 if (!params.weights[i].hasOwnProperty(j)) {
                     continue;
                 }
-                jQuery('[data-source="w' + i + '-' + j + '"]').val(params.weights[i][j])
+                jQuery('[data-source="w' + i + '-' + j + '"]')
+                    .val(parseFloat(params.weights[i][j]).toFixed(4));
+                if (params.grad_w) {
+                    jQuery('[data-target="grad-w' + i + '-' + j + '"]')
+                    .text(parseFloat(params.grad_w[i][j]).toFixed(4));
+                }
             }
         }
 
@@ -127,7 +187,12 @@ let demoFunc = function () {
             if (!params.biases.hasOwnProperty(i)) {
                 continue;
             }
-            jQuery('[data-source="b-' + i + '"]').val(params.biases[i])
+            jQuery('[data-source="b-' + i + '"]')
+                .val(parseFloat(params.biases[i]).toFixed(4));
+            if (params.grad_b) {
+                    jQuery('[data-target="grad-b-' + i + '"]')
+                    .text(parseFloat(params.grad_b[i]).toFixed(4));
+                }
         }
     }
 };

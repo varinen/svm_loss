@@ -1,10 +1,13 @@
 {% macro param(x, y) %}
 
 <div class="form-group">
-    <label class="small">{% if y < 2 %}W [{{ x }}, {{ y }}]{% else %}b[{{ x }}]{% endif
+    <label class="small">{% if y < 2 %}W [{{ x }}, {{ y }}]{% else %}b[{{ x
+        }}]{% endif
         %} </label>
     <input type="number" step="1"
            class="form-control form-control-sm"
            data-source="{% if y < 2 %}w{{ x }}-{{ y }}{% else %}b-{{x}}{% endif %}">
+    <span class="d-block text-red font-italic small"
+          data-target="grad-{% if y < 2 %}w{{ x }}-{{ y }}{% else %}b-{{x}}{% endif %}">0</span>
 </div>
 {%- endmacro %}

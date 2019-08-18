@@ -147,11 +147,14 @@ def ova_loss(label, classes, sample, sample_scores, grad_w, grad_b):
     return grad_w, grad_b, sample_loss
 
 
-def adjust_params(weights, biases, grad_w, grad_b, learning_rate):
+def adjust_params(weights, biases, grad_w, grad_b, learning_rate) ->\
+        Tuple[ndarray, ndarray]:
     """Adjust the weights and biases.
 
      Subtract the gradient value multiplied by the learning rate
     """
+    weights = weights.astype(float)
+    biases = biases.astype(float)
     weights -= grad_w * learning_rate
     biases -= grad_b * learning_rate
 

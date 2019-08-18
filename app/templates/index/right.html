@@ -1,9 +1,11 @@
 <article>
     <p>
         Each row is loss due to one
-        datapoint. The first three columns are the 2D data \(x_i\) and the label \(y_i\).
+        datapoint. The first three columns are the 2D data \(x_i\) and the label
+        \(y_i\).
         The next three columns are the three class scores from each classifier
-        \(f(x_i;W,b)=Wx_i+b\) (E.g. s[0] = x[0] * W[0,0] + x[1] * W[0,1] + b[0]). The
+        \(f(x_i;W,b)=Wx_i+b\) (E.g. s[0] = x[0] * W[0,0] + x[1] * W[0,1] +
+        b[0]). The
         last column is the data loss for a single example, \(L_i\).
     </p>
     <div class="w-100" style="overflow-y:auto">
@@ -31,11 +33,35 @@
                 <td data-target="L-{{ i }}"></td>
             </tr>
             {% endfor %}
+            <tr>
+                <td colspan="5"></td>
+                <td>Mean:</td>
+                <td data-target="mean_loss"></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <hr>
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>Total data loss</td>
+                <td data-target="mean_loss"></td>
+            </tr>
+            <tr>
+                <td>Regularization loss</td>
+                <td data-target="reg_loss"></td>
+            </tr>
+            <tr>
+                <td>Total loss</td>
+                <td data-target="total_loss"></td>
+            </tr>
             </tbody>
         </table>
     </div>
 
-     <div>
+    <div>
         <a href="javascript:demoObj.getTrainData(1)" class="btn btn-primary">Randomize
             data</a>
     </div>

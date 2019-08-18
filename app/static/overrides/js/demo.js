@@ -2,10 +2,34 @@ let demoFunc = function () {
     this.params = {};
     this.data = {};
     this.block = false;
-    this.continuous = false;
     this.intervalId = false;
+    this.iterations = 0;
+    this.hyperparams = {'reg_c': 0.1, 'learning_rate': 0.1, 'loss_type': 'ww'};
+    this.def_hyperparams = {'reg_c': 0.1, 'learning_rate': 0.1};
 
-    this.startContinuousUpdate = function() {
+    this.updateHyperParams = function () {
+        for (let i in this.hyperparams) {
+            if (!this.hyperparams.hasOwnProperty(i)) {
+                continue;
+            }
+            let value = jQuery('[name="' + i + '"]').val();
+            if (['learning_rate', 'reg_c'].indexOf(i) > -1) {
+                value = parseFloat(value);
+                if (isNaN(value)
+                    || value < 0
+                    || (i === 'learning_rate' && value === 0)
+                ) {
+                    value = this.def_hyperparams[i];
+                    jQuery('[name="' + i + '"]').val(value)
+                }
+
+                this.hyperparams[i] = value;
+            }
+
+        }
+    };
+
+    this.startContinuousUpdate = function () {
         this.intervalId = setInterval(
             function () {
                 demoObj.getStep();
@@ -35,7 +59,8 @@ let demoFunc = function () {
             getStepUrl,
             {
                 data: JSON.stringify(demoObj.data),
-                params: JSON.stringify(demoObj.params)
+                params: JSON.stringify(demoObj.params),
+                hyper: JSON.stringify(demoObj.hyperparams)
             },
             this.processStep,
             'json'
@@ -47,6 +72,19 @@ let demoFunc = function () {
         if (demoObj.processError(data)) {
             return;
         }
+        demoObj.iterations += 1;
+        losses = ['mean_loss', 'total_loss', 'reg_loss'];
+        for (let i in losses) {
+            if (!losses.hasOwnProperty(i)) {
+                continue;
+            }
+            if (data[losses[i]]) {
+                jQuery('[data-target="' + losses[i] + '"]')
+                    .text(parseFloat(data[losses[i]]).toFixed(2))
+            }
+        }
+
+        jQuery('[data-target="iterations"]').text(demoObj.iterations);
         demoObj.displayPlot(data);
         demoObj.processParams(data, false);
         demoObj.displayScores(data);
@@ -103,6 +141,7 @@ let demoFunc = function () {
     };
 
     this.getParams = function (rand = 0) {
+        this.iterations = 0;
         jQuery.get(
             getParamsUrl,
             {
@@ -114,6 +153,7 @@ let demoFunc = function () {
     };
 
     this.getTrainData = function (rand = 0) {
+        this.iterations = 0;
         jQuery.get(
             getDataUrl,
             {
@@ -178,7 +218,7 @@ let demoFunc = function () {
                     .val(parseFloat(params.weights[i][j]).toFixed(4));
                 if (params.grad_w) {
                     jQuery('[data-target="grad-w' + i + '-' + j + '"]')
-                    .text(parseFloat(params.grad_w[i][j]).toFixed(4));
+                        .text(parseFloat(params.grad_w[i][j]).toFixed(4));
                 }
             }
         }
@@ -190,9 +230,9 @@ let demoFunc = function () {
             jQuery('[data-source="b-' + i + '"]')
                 .val(parseFloat(params.biases[i]).toFixed(4));
             if (params.grad_b) {
-                    jQuery('[data-target="grad-b-' + i + '"]')
+                jQuery('[data-target="grad-b-' + i + '"]')
                     .text(parseFloat(params.grad_b[i]).toFixed(4));
-                }
+            }
         }
     }
 };

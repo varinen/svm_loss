@@ -34,7 +34,7 @@ def init_params(rand: bool = False) -> dict:
     the same.
     """
     if not rand:
-        weights = [[1, 2], [2, -4], [2, -1]]
+        weights = [[1, 2], [2, -4], [3, -1]]
         biases = [0, 0.5, -0.5]
     else:
         weights = np.round_((10 * np.random.random_sample((3, 2)) - 5),

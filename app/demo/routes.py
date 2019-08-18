@@ -79,7 +79,7 @@ def get_step():
     try:
         data = json.loads(request.form.get('data'))
         params = json.loads(request.form.get('params'))
-        loss_type = request.form.get('loss_type', 'ww')
+        hyper = json.loads(request.form.get('hyper'))
 
         if not isinstance(params, dict) or not isinstance(data, list):
             raise TypeError('Invalid data')
@@ -94,9 +94,8 @@ def get_step():
 
         result['grad_w'], result['grad_b'], result['cost_loss'], \
             result['loss'], result['scores'], result['total_loss'], \
-            result['reg_loss'] = grad_step(data, labels, params_, loss_type)
-
-        learning_rate = 0.1
+            result['reg_loss'] = grad_step(data, labels, params_,
+                                           hyper['loss_type'], hyper['reg_c'])
 
         weights = np.array(weights)
         biases = np.array(biases)
@@ -105,7 +104,7 @@ def get_step():
 
         result['weights'], result['biases'] = \
             adjust_params(weights, biases, result['grad_w'], result['grad_b'],
-                          learning_rate)
+                          hyper['learning_rate'])
 
         # Convert ndarrays to lists before jsonifying
         lists = {key: result[key].tolist() for key in result if
@@ -117,6 +116,8 @@ def get_step():
         plot = generate_plot_image_string(data, np.c_[
             result['weights'], result['biases']])
         result['plot'] = plot
+
+        result['mean_loss'] = np.mean(result['loss'])
 
         return jsonify(result)
 

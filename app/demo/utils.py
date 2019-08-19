@@ -23,6 +23,7 @@ def get_urls() -> dict:
     urls['get_params_url'] = url_for('demo.get_params')
     urls['get_data_url'] = url_for('demo.get_data')
     urls['get_plot_url'] = url_for('demo.get_plot')
+    urls['get_step_url'] = url_for('demo.get_step')
 
     return urls
 
@@ -33,7 +34,7 @@ def init_params(rand: bool = False) -> dict:
     the same.
     """
     if not rand:
-        weights = [[1, 2], [2, -4], [2, -1]]
+        weights = [[1, 2], [2, -4], [3, -1]]
         biases = [0, 0.5, -0.5]
     else:
         weights = np.round_((10 * np.random.random_sample((3, 2)) - 5),

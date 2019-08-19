@@ -18,6 +18,49 @@
 <article>
     <div class="mb-4">
         <img id="plot" class="img-fluid"
-             />
+        />
     </div>
 </article>
+
+<hr>
+
+<div>
+    <h4>Optimize</h4>
+    <p>Iterations: <span data-target="iterations">0</span></p>
+
+    <div class="row" onchange="demoObj.updateHyperParams()">
+        <div class="col-xl-3 col-md-4 col-sm-4 col-xs-4 mb-4 form-group" style="align-self:flex-end">
+            <label>Loss formulation</label>
+            <select name="loss_type" class="form-control form-control-sm">
+                <option value="ww">Weston Watkins 1999</option>
+                <option value="ova">One-vs-All</option>
+            </select>
+        </div>
+
+        <div class="col-xl-3 col-md-4 col-sm-4 col-xs-4 mb-4 form-group" style="align-self:flex-end">
+            <label>Learning rate</label>
+            <input name="learning_rate" class="form-control form-control-sm"
+                   type="number" step="0.1" min="0" value="0.1">
+        </div>
+
+        <div class="col-xl-3 col-md-4 col-sm-4 col-xs-4 mb-4 form-group" style="align-self:flex-end">
+            <label>Regularization strength</label>
+            <input name="reg_c" class="form-control form-control-sm"
+                   type="number" step="0.1" min="0" value="0.1">
+        </div>
+
+    </div>
+    <a href="javascript:void(0)"
+       onclick="demoObj.getStep()"
+       class="btn btn-primary mr-1 mb-2">Single step</a>
+
+    <a href="javascript:void(0)"
+       onclick="demoObj.startContinuousUpdate()"
+       class="btn btn-primary mr-1 mb-2">Start auto update</a>
+
+    <a href="javascript:void(0)"
+       onclick="demoObj.stopContinuousUpdate()"
+       class="btn btn-primary mr-1 mb-2">Stop auto update</a>
+
+
+</div>

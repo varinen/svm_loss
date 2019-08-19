@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn server for the demo app for the DOMAIN, USERNAME
+
+[Service]
+Restart=on-failure
+
+User=USERNAME
+WorkingDirectory=/var/sites/svm-demo/master/app/
+EnvironmentFile=/var/sites/svm-demo/master/app/.env
+ExecStart=/var/sites/svm-demo/master/app/venv/bin/gunicorn \
+ --bind unix:/tmp/DOMAIN.socket wsgi:app
+
+[Install]
+WantedBy=multi-user.target

@@ -22,11 +22,15 @@ def test_get_urls(app):
     with app.app_context():
         result = get_urls()
         assert isinstance(result, dict)
-        assert len(result) > 0
+        assert len(result) > 3
         assert result['get_params_url']
         assert 'get_params' in result['get_params_url']
         assert result['get_data_url']
         assert 'get_data' in result['get_data_url']
+        assert result['get_step_url']
+        assert 'get_step' in result['get_step_url']
+        assert result['get_plot_url']
+        assert 'get_plot' in result['get_plot_url']
 
 
 def test_init_params(app):

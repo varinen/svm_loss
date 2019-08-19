@@ -7,29 +7,15 @@ from numpy import ndarray
 import matplotlib
 import matplotlib.pyplot as plt
 
+from app.demo.optimizer import get_scores
+
 colors = ['black', 'white', 'red']
 offset = .25
 
 
-def model_scores(data: ndarray, params: ndarray) -> ndarray:
-    """Return scores for different classes computed for the data using
-    linear function parameters.
-
-    :param data: training data
-    :param params: a matrix of parameters for three classes
-    """
-    # Add a bias unit of 1 to the data
-    biased_data = np.ones((data.shape[0], data.shape[1] + 1))
-    biased_data[:, :-1] = data
-
-    # Multiply training data by the class weights
-    z = np.dot(biased_data, np.transpose(params))
-    return z
-
-
 def model(data: ndarray, params: ndarray) -> ndarray:
     """Predict the class using the highest class score."""
-    d = model_scores(data, params)
+    d = get_scores(data, params)
     z = d.argmax(axis=1)
     return z
 

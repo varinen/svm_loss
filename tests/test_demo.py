@@ -86,3 +86,8 @@ def test_get_plot(app, client):
         assert resp.content_type == 'application/json'
         data = json.loads(resp.data)
         assert 'plot' in data
+
+
+def test_get_step(app, client):
+    """Test a single step of the optimization."""
+    pass

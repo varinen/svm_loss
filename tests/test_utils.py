@@ -67,3 +67,4 @@ def test_init_data():
         assert len(result) == 9
         for i in result:
             assert len(i) == 3
+

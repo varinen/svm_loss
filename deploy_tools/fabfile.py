@@ -19,7 +19,6 @@ def deploy(dep_type='master', use_key=None):
     print('Executing deploy for: ', dep_type)
     app_folder = f'{INSTALLATION_PATH}{dep_type}'
     cur_release_dir = app_folder + '/' + releases_dir + '/' + str(release)
-    package_dir = cur_release_dir + '/' + project_name
     run(f'mkdir -p {cur_release_dir}')
 
     with cd(cur_release_dir):
@@ -46,6 +45,7 @@ def _git_clone(branch, use_key):
     else:
         run(f'git clone {REPO_URL} . --quiet')
     run(f'git checkout {branch} --quiet')
+    run('touch .env')
 
 
 def _setup_app():

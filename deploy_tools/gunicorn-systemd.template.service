@@ -1,5 +1,5 @@
 [Unit]
-Description=Gunicorn server for the demo app for the DOMAIN, USERNAME
+Description=Gunicorn server for the svm-demo app for the DOMAIN, USERNAME
 
 [Service]
 Restart=on-failure

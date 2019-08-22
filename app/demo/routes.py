@@ -24,7 +24,7 @@ from app.demo.plot import (
 def index():
     """Serve the main route for the application."""
     urls = get_urls()
-    return render_template('index.html', title='Welcome', urls=urls)
+    return render_template('index.html', urls=urls)
 
 
 @bp.route('/get_params', methods=['GET'])

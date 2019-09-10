@@ -81,7 +81,8 @@ def get_step():
         params = json.loads(request.form.get('params'))
         hyper = json.loads(request.form.get('hyper'))
 
-        if not isinstance(params, dict) or not isinstance(data, list):
+        if not isinstance(params, dict) or not isinstance(data, list)\
+                or not isinstance(hyper, dict):
             raise TypeError('Invalid data')
         data = np.array(data)
 

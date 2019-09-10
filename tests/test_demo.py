@@ -3,7 +3,7 @@
 import json
 from flask import url_for
 
-from app.demo.utils import init_data, init_params
+from app.demo.utils import init_data, init_params, init_hyper
 
 
 def test_demo_index(app, client):
@@ -90,4 +90,56 @@ def test_get_plot(app, client):
 
 def test_get_step(app, client):
     """Test a single step of the optimization."""
+    data_ = json.dumps(init_data())
+    params = json.dumps(init_params())
+    hyper = json.dumps(init_hyper())
+
+    with app.test_request_context():
+        url = url_for('demo.get_step')
+
+        # invalid data params
+        resp = client.post(url,
+                           data={'data': '', 'params': params, 'hyper': hyper})
+        assert resp.content_type == 'application/json'
+        data = json.loads(resp.data)
+        assert 'error' in data
+        assert data['error'] == 'Invalid data'
+
+        # empty data params
+        resp = client.post(url, data={
+            'data': json.dumps(''), 'params': params, 'hyper': hyper})
+        assert resp.content_type == 'application/json'
+        data = json.loads(resp.data)
+        assert 'error' in data
+        assert data['error'] == 'Invalid data'
+
+        # invalid params
+        resp = client.post(url, data={
+            'data': data_, 'params': json.dumps({}), 'hyper': hyper})
+        assert resp.content_type == 'application/json'
+        data = json.loads(resp.data)
+        assert 'error' in data
+        assert 'Missing key' in data['error']
+
+        # empty hyperparams
+        resp = client.post(url, data={
+            'data': json.dumps(''), 'params': params, 'hyper': json.dumps({})})
+        assert resp.content_type == 'application/json'
+        data = json.loads(resp.data)
+        assert 'error' in data
+        assert data['error'] == 'Invalid data'
+
+        resp = client.post(url, data={'data': data_, 'params': params,
+                                      'hyper': hyper})
+        assert resp.content_type == 'application/json'
+        data = json.loads(resp.data)
+
+        expected_keys = ['grad_w', 'grad_b', 'cost_loss', 'loss', 'scores',
+                         'total_loss', 'reg_loss', 'weights', 'biases',
+                         'plot', 'mean_loss']
+
+        for key in expected_keys:
+            assert key in data
+
+
     pass

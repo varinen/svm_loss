@@ -4,7 +4,8 @@ from app.demo.utils import (
     init_params,
     get_urls,
     is_int,
-    init_data
+    init_data,
+    init_hyper
 )
 
 
@@ -68,3 +69,10 @@ def test_init_data():
         for i in result:
             assert len(i) == 3
 
+
+def test_init_hyper():
+    """Test the provision of the initial hyperparameters."""
+    hyper = init_hyper()
+    assert 'reg_c' in hyper
+    assert 'loss_type' in hyper
+    assert 'learning_rate' in hyper

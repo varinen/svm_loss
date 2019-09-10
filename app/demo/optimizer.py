@@ -70,7 +70,7 @@ def grad_step(data: ndarray, labels: ndarray, params: ndarray,
 
 def norm_reg(n: int, weights: ndarray, grad_w: ndarray, grad_b: ndarray,
              cost_loss: float, reg_c: float = 0.1) -> Tuple[
-    ndarray, ndarray, float, float, float]:
+             ndarray, ndarray, float, float, float]:
     """Normalizes the elements and applies regularization to the gradients."""
     grad_b /= n
     grad_w /= n

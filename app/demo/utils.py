@@ -28,6 +28,16 @@ def get_urls() -> dict:
     return urls
 
 
+def init_hyper() -> dict:
+    """Return a dictionary with the initial hyperparameters."""
+    hyper = {
+        'reg_c': 0.1,
+        'learning_rate': 0.1,
+        'loss_type': 'ww'
+    }
+    return hyper
+
+
 def init_params(rand: bool = False) -> dict:
     """Return a dictionary of the classifier parameters.
     :param bool rand: when set to False, the returned parameters are always

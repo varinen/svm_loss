@@ -34,8 +34,8 @@ def grad_step(data: ndarray, labels: ndarray, params: ndarray,
     :param reg_c: regularization strength
     """
     weights = params[:, :-1]
-    grad_w = np.zeros((3, 2))
-    grad_b = np.zeros((3, 1))
+    grad_w = np.zeros(weights.shape)
+    grad_b = np.zeros((weights.shape[0], 1))
     cost_loss = 0
     loss = []
 
@@ -44,8 +44,6 @@ def grad_step(data: ndarray, labels: ndarray, params: ndarray,
 
     for i in range(0, data.shape[0]):
         label = labels[i]
-        sample_class_index, = np.where(classes == label)[0]
-
         sample_scores = scores[i]
 
         # compute losses

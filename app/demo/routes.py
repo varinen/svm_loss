@@ -81,26 +81,26 @@ def get_step():
         params = json.loads(request.form.get('params'))
         hyper = json.loads(request.form.get('hyper'))
 
-        if not isinstance(params, dict) or not isinstance(data, list)\
+        if not isinstance(params, dict) or not isinstance(data, list) \
                 or not isinstance(hyper, dict):
             raise TypeError('Invalid data')
         data = np.array(data)
 
         weights = params['weights']
         biases = params['biases']
-        labels = data[:, 2].astype(int)
+        labels = data[:, -1].astype(int)
         params_ = np.c_[weights, biases]
 
         result = dict()
 
         result['grad_w'], result['grad_b'], result['cost_loss'], \
-            result['loss'], result['scores'], result['total_loss'], \
-            result['reg_loss'] = grad_step(data, labels, params_,
-                                           hyper['loss_type'], hyper['reg_c'])
+        result['loss'], result['scores'], result['total_loss'], \
+        result['reg_loss'] = grad_step(data, labels, params_,
+                                       hyper['loss_type'], hyper['reg_c'])
 
         weights = np.array(weights)
         biases = np.array(biases)
-        if biases.shape == (3,):
+        if len(biases.shape) == 1:
             biases = biases[:, np.newaxis]
 
         result['weights'], result['biases'] = \
@@ -108,11 +108,8 @@ def get_step():
                           hyper['learning_rate'])
 
         # Convert ndarrays to lists before jsonifying
-        lists = {key: result[key].tolist() for key in result if
-                 isinstance(result[key], ndarray)}
-        for key in result:
-            if key in lists:
-                result[key] = lists[key]
+        result = {key: (lambda x: x.tolist() if isinstance(x, ndarray) else x)(
+            result[key]) for key in result}
 
         plot = generate_plot_image_string(data, np.c_[
             result['weights'], result['biases']])

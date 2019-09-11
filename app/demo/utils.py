@@ -49,7 +49,8 @@ def init_params(rand: bool = False) -> dict:
     else:
         weights = np.round_((10 * np.random.random_sample((3, 2)) - 5),
                             2).tolist()
-        biases = np.round_((1 * np.random.random_sample((3,)) - .5), 2).tolist()
+        biases = np.round_((1 * np.random.random_sample((3,)) - .5), 2) \
+            .tolist()
     params = {
         'weights': weights,
         'biases': biases

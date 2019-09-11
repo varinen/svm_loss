@@ -67,7 +67,8 @@ def get_perp(x_min: float, x_max: float, params: ndarray) -> tuple:
 
     c = y_mid - b * x_mid
 
-    # Calculate the offset of the perpendicular's end point from its start point
+    # Calculate the offset of the perpendicular's end point from its
+    # start point
     dx = offset
     y_mid = x_mid * b + c
     dy = (x_mid + offset) * b + c - y_mid

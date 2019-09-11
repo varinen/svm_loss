@@ -10,7 +10,8 @@ def get_scores(data: ndarray, params: ndarray) -> ndarray:
     linear function parameters.
 
     :param data: training data
-    :param params: a matrix of parameters (weights and biases) for three classes
+    :param params: a matrix of parameters (weights and biases) for three
+    classes
     """
     # Add a bias unit of 1 to the data
     biased_data = np.ones((data.shape[0], data.shape[1] + 1))
@@ -53,7 +54,8 @@ def grad_step(data: ndarray, labels: ndarray, params: ndarray,
 
         elif loss_type == 'ova':
             grad_w, grad_b, sample_loss = \
-                ova_loss(label, classes, data[i], sample_scores, grad_w, grad_b)
+                ova_loss(label, classes, data[i],
+                         sample_scores, grad_w, grad_b)
 
         cost_loss += sample_loss
         loss.append(sample_loss)
@@ -61,7 +63,8 @@ def grad_step(data: ndarray, labels: ndarray, params: ndarray,
     grad_w, grad_b, cost_loss, total_loss, reg_loss = norm_reg(data.shape[0],
                                                                weights, grad_w,
                                                                grad_b,
-                                                               cost_loss, reg_c)
+                                                               cost_loss,
+                                                               reg_c)
 
     return grad_w, grad_b, cost_loss, loss, scores, total_loss, reg_loss
 

@@ -66,7 +66,7 @@ def get_plot():
         return jsonify({'plot': plot})
 
     except JSONDecodeError as ex:
-        return jsonify({'error': 'Invalid data'})
+        return jsonify({'error': ', '.join(['Invalid data: ', str(ex)])})
     except TypeError as ex:
         return jsonify({'error': str(ex)})
     except KeyError as ex:
@@ -94,9 +94,9 @@ def get_step():
         result = dict()
 
         result['grad_w'], result['grad_b'], result['cost_loss'], \
-        result['loss'], result['scores'], result['total_loss'], \
-        result['reg_loss'] = grad_step(data, labels, params_,
-                                       hyper['loss_type'], hyper['reg_c'])
+            result['loss'], result['scores'], result['total_loss'], \
+            result['reg_loss'] = grad_step(data, labels, params_,
+                                           hyper['loss_type'], hyper['reg_c'])
 
         weights = np.array(weights)
         biases = np.array(biases)
@@ -120,7 +120,7 @@ def get_step():
         return jsonify(result)
 
     except JSONDecodeError as ex:
-        return jsonify({'error': 'Invalid data'})
+        return jsonify({'error': ', '.join(['Invalid data: ', str(ex)])})
     except TypeError as ex:
         return jsonify({'error': str(ex)})
     except KeyError as ex:

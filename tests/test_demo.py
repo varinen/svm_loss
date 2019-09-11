@@ -66,7 +66,7 @@ def test_get_plot(app, client):
         assert resp.content_type == 'application/json'
         data = json.loads(resp.data)
         assert 'error' in data
-        assert data['error'] == 'Invalid data'
+        assert 'Invalid data' in data['error']
 
         # empty data params
         resp = client.post(url, data={'data': json.dumps(''),
@@ -74,7 +74,7 @@ def test_get_plot(app, client):
         assert resp.content_type == 'application/json'
         data = json.loads(resp.data)
         assert 'error' in data
-        assert data['error'] == 'Invalid data'
+        assert 'Invalid data' in data['error']
 
         # invalid params
         resp = client.post(url, data={'data': data_, 'params': json.dumps({})})
@@ -104,7 +104,7 @@ def test_get_step(app, client):
         assert resp.content_type == 'application/json'
         data = json.loads(resp.data)
         assert 'error' in data
-        assert data['error'] == 'Invalid data'
+        assert 'Invalid data' in data['error']
 
         # empty data params
         resp = client.post(url, data={
@@ -112,7 +112,7 @@ def test_get_step(app, client):
         assert resp.content_type == 'application/json'
         data = json.loads(resp.data)
         assert 'error' in data
-        assert data['error'] == 'Invalid data'
+        assert 'Invalid data' in data['error']
 
         # invalid params
         resp = client.post(url, data={
@@ -128,7 +128,7 @@ def test_get_step(app, client):
         assert resp.content_type == 'application/json'
         data = json.loads(resp.data)
         assert 'error' in data
-        assert data['error'] == 'Invalid data'
+        assert 'Invalid data' in data['error']
 
         resp = client.post(url, data={'data': data_, 'params': params,
                                       'hyper': hyper})

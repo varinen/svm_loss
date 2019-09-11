@@ -6,8 +6,10 @@ from numpy import ndarray
 
 
 def get_scores(data: ndarray, params: ndarray) -> ndarray:
-    """Return scores for different classes computed for the data using
-    linear function parameters.
+    """Return scores for each class.
+
+    Return scores for different classes computed for the data using linear
+    function parameters.
 
     :param data: training data
     :param params: a matrix of parameters (weights and biases) for three
@@ -72,7 +74,7 @@ def grad_step(data: ndarray, labels: ndarray, params: ndarray,
 def norm_reg(n: int, weights: ndarray, grad_w: ndarray, grad_b: ndarray,
              cost_loss: float, reg_c: float = 0.1) -> Tuple[
              ndarray, ndarray, float, float, float]:
-    """Normalizes the elements and applies regularization to the gradients."""
+    """Normalize the elements and applies regularization to the gradients."""
     grad_b /= n
     grad_w /= n
     cost_loss /= n
@@ -152,7 +154,7 @@ def adjust_params(weights, biases, grad_w, grad_b, learning_rate) -> \
         Tuple[ndarray, ndarray]:
     """Adjust the weights and biases.
 
-     Subtract the gradient value multiplied by the learning rate
+    Subtract the gradient value multiplied by the learning rate.
     """
     weights = weights.astype(float)
     biases = biases.astype(float)

@@ -1,4 +1,4 @@
-"""SVM_Loss: Linear Classifier and Loss function demo
+"""SVM_Loss: Linear Classifier and Loss function demo.
 
 A web application to demonstrate back-prop based optimization of
 a linear classifier

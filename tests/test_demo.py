@@ -69,7 +69,8 @@ def test_get_plot(app, client):
         assert data['error'] == 'Invalid data'
 
         # empty data params
-        resp = client.post(url, data={'data': json.dumps(''), 'params': params})
+        resp = client.post(url, data={'data': json.dumps(''),
+                                      'params': params})
         assert resp.content_type == 'application/json'
         data = json.loads(resp.data)
         assert 'error' in data
@@ -140,6 +141,3 @@ def test_get_step(app, client):
 
         for key in expected_keys:
             assert key in data
-
-
-    pass

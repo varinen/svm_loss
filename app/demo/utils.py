@@ -40,6 +40,7 @@ def init_hyper() -> dict:
 
 def init_params(rand: bool = False) -> dict:
     """Return a dictionary of the classifier parameters.
+
     :param bool rand: when set to False, the returned parameters are always
     the same.
     """
@@ -60,8 +61,11 @@ def init_params(rand: bool = False) -> dict:
 
 
 def init_data(rand: bool = False) -> list:
-    """Return the training data as a list with the last element in each
-    sample being that sample's label."""
+    """Prepare the training data.
+
+    Return the training data as a list with the last element in each
+    sample being that sample's label.
+    """
     if not rand:
         result = [
             [0.5, 0.4, 0],

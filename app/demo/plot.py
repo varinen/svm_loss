@@ -42,9 +42,12 @@ def plot_params(plt_: matplotlib.pyplot, params: ndarray, x_min: float,
 
 
 def get_perp(x_min: float, x_max: float, params: ndarray) -> tuple:
-    """Generate  coordinates and lengths of a perpendicular that passes
+    """Generate coordinates and lengths of a perpendicular.
+
+    Generate coordinates and lengths of a perpendicular that passes
     through a line define by params in a point with x coordinate in the middle
-    between x_min and x_max."""
+    between x_min and x_max.
+    """
     # the offset of the perpendicular's end x coordinate from its start
     # x coordinate
     x_mid = (x_min + x_max) / 2
@@ -77,7 +80,7 @@ def get_perp(x_min: float, x_max: float, params: ndarray) -> tuple:
 
 
 def prepare_data(data: ndarray, h: float = 0.005) -> tuple:
-    """Prepares the training data to be plotted.
+    """Prepare the training data to be plotted.
 
     :param data: a numpy array with at 2 columns representing
     x and y coordinates and the third column representing the class label
@@ -97,7 +100,7 @@ def prepare_data(data: ndarray, h: float = 0.005) -> tuple:
 
 
 def generate_plot_image_string(data: ndarray, params: ndarray) -> str:
-    """Generates a base64 image string to be outputted into the UI."""
+    """Generate a base64 image string to be outputted into the UI."""
     xx, yy, x_min, x_max, y_min, y_max, x_, y_ = prepare_data(data)
     z = model(np.c_[xx.ravel(), yy.ravel()], params)
 

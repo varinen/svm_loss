@@ -14,7 +14,6 @@ eg, on Ubuntu:
     sudo add-apt-repository ppa:deadsnakes/ppa
     sudo apt update
     sudo apt install git python3.6 python3.6-venv
-    cd 
     
 ## Fabric deploy
 

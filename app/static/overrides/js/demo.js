@@ -240,6 +240,9 @@ let demoFunc = function () {
 let demoObj = new demoFunc();
 
 jQuery(function () {
+    if (typeof getParamsUrl !== "undefined") {
     demoObj.getParams();
     demoObj.getTrainData();
+    }
+
 });

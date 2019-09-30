@@ -27,7 +27,7 @@ the project root and activate it. Optionally, run `pip install --upgrade pip`.
 
 In the project root, execute:
 
-    `python -m pytest tests`
+    python -m pytest tests
 
 ## Deployment
 
@@ -153,7 +153,7 @@ The variable TYPE indicates what installation type is: `master`
 
 ## License
 
-This project is licensed under the Apache License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Apache License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 

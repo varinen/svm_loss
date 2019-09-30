@@ -1,96 +1,66 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ title|default(site_name) }}
+    {{ title|default(site_name) }}
 {% endblock %}
 
-{% block body_attribs %} id="page-top" class="bg-gradient-primary" {% endblock %}
+{% block body_attribs %} id="page-top"
+    class="bg-white" {% endblock %}
 
-{% block navbar %}
-{% endblock %}
-
-{% block sidebar %}
-{% endblock %}
 {% block main_content %}
 
-<div class="container-fluid p-0">
-    <header class="masthead">
-        <div class="container p-0 d-flex h-100 align-items-center">
-            <div class="mx-auto text-center">
-                <h1 class="mx-auto my-4 text-uppercase text-gray-700">{{
-                    site_name }}</h1>
-                <h2 class="text-gray-900 mx-auto mt-2 mb-5">
-                    Linear Classifier Demo</h2>
-
-            </div>
+    <header class="masthead bg-white">
+        <div class="mx-auto text-center">
+            <h1 class="mx-auto my-4 text-uppercase text-gray-700">{{ site_name }}</h1>
+            <h2 class="text-gray-900 mx-auto mt-2 mb-5">Linear Classifier
+                Demo</h2>
 
         </div>
     </header>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ 'background
-                        of the demo' | title}}</h6>
-                </div>
-                <div class="card-body">
-                    {% include 'index/intro.html' %}
-                </div>
+    <div class="content-wrapper">
+        <div class="intro card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{{ 'background
+                        of the demo' | title }}</h6>
             </div>
-
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-8 col-lg-8 col-md-7 mb-4">
-            <div class="card shadow h-100">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Data and
-                        Classifier Visualization' | title}}</h6>
-                </div>
-                <div class="card-body">
-                    {% include 'index/left.html' %}
-                </div>
+            <div class="card-body">
+                {% include 'index/intro.html' %}
             </div>
         </div>
-        <div class="col-xl-4 col-lg-4 col-md-5 mb-4">
-            <div class="card shadow">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Classifier
-                        parameters' | title}}</h6>
-                </div>
-                <div class="card-body">
-                    {% include 'index/center.html' %}
-                </div>
+        <div class="visualization card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{{ 'Data and
+                        Classifier Visualization' | title }}</h6>
             </div>
-
-
-            <div class="card shadow mt-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ 'Data point
-                        and Loss values' | title}}</h6>
-                </div>
-                <div class="card-body">
-                    {% include 'index/right.html' %}
-                </div>
+            <div class="card-body">
+                {% include 'index/left.html' %}
             </div>
         </div>
-
-        <div class="col-xl-4 col-lg-6 col-md-8 mb-4">
-
+        <div class="params card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{{ 'Classifier
+                        parameters' | title }}</h6>
+            </div>
+            <div class="card-body">
+                {% include 'index/center.html' %}
+            </div>
+        </div>
+        <div class="datapoints card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{{ 'Data point
+                        and Loss values' | title }}</h6>
+            </div>
+            <div class="card-body">
+                {% include 'index/right.html' %}
+            </div>
         </div>
     </div>
 
-
-</div>
-
-<script>
-    const getParamsUrl = '{{ urls.get_params_url }}',
-        getDataUrl = '{{ urls.get_data_url }}',
-        getPlotUrl = '{{ urls.get_plot_url }}',
-        getStepUrl = '{{ urls.get_step_url }}'
-</script>
+    <script>
+        const getParamsUrl = '{{ urls.get_params_url }}',
+            getDataUrl = '{{ urls.get_data_url }}',
+            getPlotUrl = '{{ urls.get_plot_url }}',
+            getStepUrl = '{{ urls.get_step_url }}'
+    </script>
 
 {% endblock %}

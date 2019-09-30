@@ -1,19 +1,30 @@
 h1.white {
-  color: white;
+    color: white;
 }
+
 .error {
-  width: 13.5rem;
+    width: 13.5rem;
 }
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    background: white;
 }
+
 .text-red {
-  color: var(--red);
+    color: var(--red);
 }
+
 .text-green {
-  color: var(--green);
+    color: var(--green);
 }
+
 .text-blue {
-  color: var(--blue);
+    color: var(--blue);
 }
+
+.navbar-brand {
+    font-size: 3rem;
+}
+
 /*# sourceMappingURL=overrides.css.map */

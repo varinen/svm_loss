@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "start": "npm run build && live-server dist"
+    "start": "npm run build && live-server dist",
+    "test": "react-scripts test --env=jsdom"
   },
   "keywords": [],
   "author": "Oleg Ishenko",
@@ -18,5 +19,23 @@
     "parcel-bundler": "^1.10.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/tempPolyfills.js"
+    ]
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
+    "jest-cli": "^20.0.4",
+    "react-scripts": "^3.2.0",
+    "react-test-renderer": "^16.10.2"
   }
 }

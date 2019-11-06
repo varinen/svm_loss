@@ -30,7 +30,7 @@ const Background = () => {
                         Demo</h6>
                 </div>
                 <div className="card-body">
-                    <aticle className="text">
+                    <article className="text">
                         <p>This projects implements the visualization of
                             optimization loss for a linear multiclass
                             classifier using Python and Flask. The idea is
@@ -60,9 +60,9 @@ const Background = () => {
                             vector that holds the class scores, the loss has
                             the form:
                         </p>
-                        <p style={{width: "100%", overflowX: "auto"}}>
+                        <div style={{width: "100%", overflowX: "auto"}}>
                             <MathJax.Node formula={formulas.f9}/>
-                        </p>
+                        </div>
                         <p>
                             Where <MathJax.Node inline formula={formulas.f10}/> is
                             the number of examples, and <MathJax.Node inline formula={formulas.f11}/> is a
@@ -79,7 +79,7 @@ const Background = () => {
                             cross-entropy loss which is used by the Softmax
                             classifier.
                         </p>
-                    </aticle>
+                    </article>
                 </div>
 
             </div>

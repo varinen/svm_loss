@@ -1,17 +1,16 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Params from './Params';
+import ParamControl from './ParamControl';
 import configureMockStore from "redux-mock-store";
 
 const mockStore = configureMockStore();
 const store = mockStore({});
 
-describe('Params', () => {
-    let props = {store: store, params: {weights:{}, biases:{}}};
-    let paramsComponent = shallow(<Params {...props}/>);
+describe('ParamControl', () => {
+    const control = shallow(<ParamControl store={store}/>);
 
     it('renders correctly', () => {
-        expect(paramsComponent).toMatchSnapshot();
+        expect(control).toMatchSnapshot();
     });
 });
 

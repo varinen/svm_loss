@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import MathJax from 'react-mathjax';
 import Button from 'react-bootstrap/Button';
+import {getParams} from '../actions/params';
+import ParamControl from  './ParamControl';
 
 const formulas = {
     f1: `W`,
@@ -8,6 +11,15 @@ const formulas = {
 };
 
 class Params extends Component {
+
+    getParams = () => {
+        this.props.getParams(1)
+    };
+
+    componentDidMount() {
+        this.props.getParams();
+    }
+
     render() {
         return (
             <MathJax.Provider>
@@ -26,12 +38,12 @@ class Params extends Component {
                                 shown below. The value is in <b>bold</b> and
                                 its gradient
                                 (computed with backprop) is in <span
-                                className="text-red font-italic">red, italic</span>
-                                below. Click the triangles to
+                                className="text-red font-italic">red, italic</span> below. Click the triangles to
                                 control the parameters.
                             </p>
+                            <ParamControl />
                             <div>
-                                <Button className="btn btn-primary">
+                                <Button className="btn btn-primary" onClick={this.getParams}>
                                     Randomize parameters
                                 </Button>
                             </div>
@@ -46,4 +58,4 @@ class Params extends Component {
     }
 }
 
-export default Params;
+export default connect(state=> state, {getParams})(Params);

@@ -1,17 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Params renders correctly 1`] = `
+exports[`ParamControl renders correctly 1`] = `
 <ContextProvider
   value={null}
 >
-  <Params
-    getParams={[Function]}
-    params={
-      Object {
-        "biases": Object {},
-        "weights": Object {},
-      }
-    }
+  <ParamControl
+    dispatch={[Function]}
     store={
       Object {
         "clearActions": [Function],

@@ -28,7 +28,7 @@ exports[`Background renders correctly 1`] = `
     <div
       className="card-body"
     >
-      <aticle
+      <article
         className="text"
       >
         <p>
@@ -100,7 +100,7 @@ exports[`Background renders correctly 1`] = `
           />
           , vector that holds the class scores, the loss has the form:
         </p>
-        <p
+        <div
           style={
             Object {
               "overflowX": "auto",
@@ -113,7 +113,7 @@ exports[`Background renders correctly 1`] = `
         f_{y_i} + 1)}_{\\\\text{data loss}} + \\\\underbrace{\\\\sum_k\\\\sum_l
         W_{k,l}^2}_{\\\\text{regularization loss}}"
           />
-        </p>
+        </div>
         <p>
           Where 
           <MathJaxNode
@@ -137,7 +137,7 @@ exports[`Background renders correctly 1`] = `
           />
           On the bottom right of this demo you can also flip to different formulations for the Multiclass SVM including One vs All (OVA) where a separate binary SVM is trained for every class independently (vs. other classes all labeled as negatives), and Structured SVM which maximizes the margin between the correct score and the score of the highest runner-up class. You can also choose to use the cross-entropy loss which is used by the Softmax classifier.
         </p>
-      </aticle>
+      </article>
     </div>
   </div>
 </MathJaxProvider>

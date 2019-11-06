@@ -1,12 +1,11 @@
 import {GET_PARAMS} from "../actions/constants";
 
-const params = (state={params:{}}, action) => {
+const params = (state = {}, action) => {
     switch (action.type) {
         case GET_PARAMS:
-            console.log('params:', action.params);
             return action.params;
         default:
-            console.log('default reducer');
+            console.log('default from reducer', state);
             return state;
     }
 };

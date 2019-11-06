@@ -39,6 +39,7 @@ exports[`Background renders correctly 1`] = `
            
           <a
             href="http://vision.stanford.edu/teaching/cs231n-demos/linear-classify/"
+            rel="noopener noreferrer"
             target="_blank"
           >
             web demo
@@ -47,7 +48,7 @@ exports[`Background renders correctly 1`] = `
         </p>
         <hr />
         <p>
-          The class scores for linear classifiers are computed as
+          The class scores for linear classifiers are computed as 
           <MathJaxNode
             formula="f(x_i;W,b)=Wx_i+b"
             inline={true}
@@ -57,7 +58,7 @@ exports[`Background renders correctly 1`] = `
             formula="W"
             inline={true}
           />
-          and biases 
+           and biases 
           <MathJaxNode
             formula="b"
             inline={true}
@@ -67,27 +68,27 @@ exports[`Background renders correctly 1`] = `
             formula="x_i"
             inline={true}
           />
-          , with labels
+          , with labels 
           <MathJaxNode
             formula="y_i"
             inline={true}
           />
-          ,. In this demo, the datapoints
+          . In this demo, the data points 
           <MathJaxNode
             formula="x_i"
             inline={true}
           />
-          , are 2-dimensional and there are 3 classes, so the weight matrix is of size
+          , are 2-dimensional and there are 3 classes, so the weight matrix is of size 
           <MathJaxNode
             formula="[3 \\\\times 2]"
             inline={true}
           />
-          , and the bias vector is of size
+          , and the bias vector is of size 
           <MathJaxNode
             formula="[3 \\\\times 1]"
             inline={true}
           />
-          . The multiclass loss function can be formulated in many ways. The default in this demo is an SVM that follows [Weston and Watkins 1999]. Denoting 
+          . The multi-class loss function can be formulated in many ways. The default in this demo is an SVM that follows [Weston and Watkins 1999]. Denoting 
           <MathJaxNode
             formula="f"
             inline={true}
@@ -119,7 +120,7 @@ exports[`Background renders correctly 1`] = `
             formula="N"
             inline={true}
           />
-           is the number of examples, and
+           is the number of examples, and 
           <MathJaxNode
             formula="λ"
             inline={true}
@@ -129,7 +130,7 @@ exports[`Background renders correctly 1`] = `
             formula="L2"
             inline={true}
           />
-          regularization penalty
+          regularization penalty 
           <MathJaxNode
             formula="R(W)=\\\\sum_k\\\\sum_l W_{k, l}^2"
             inline={true}

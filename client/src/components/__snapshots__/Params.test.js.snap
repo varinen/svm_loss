@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Params renders correctly 1`] = `
+<MathJaxProvider
+  options={
+    Object {
+      "showMathMenu": false,
+      "showMathMenuMSIE": false,
+      "tex2jax": Object {
+        "inlineMath": Array [],
+      },
+    }
+  }
+  script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
+>
+  <div
+    className="params card shadow"
+  >
+    <div
+      className="card-header py-3"
+    >
+      <h6
+        className="m-0 font-weight-bold text-primary"
+      >
+        Classifier Parameters
+      </h6>
+    </div>
+    <div
+      className="card-body"
+    >
+      <article>
+        <p>
+          Parameters 
+          <MathJaxNode
+            formula="W"
+            inline={true}
+          />
+          , 
+          <MathJaxNode
+            formula="b"
+            inline={true}
+          />
+           are shown below. The value is in 
+          <b>
+            bold
+          </b>
+           and its gradient (computed with backprop) is in 
+          <span
+            className="text-red font-italic"
+          >
+            red, italic
+          </span>
+          below. Click the triangles to control the parameters.
+        </p>
+        <div>
+          <Button
+            active={false}
+            className="btn btn-primary"
+            disabled={false}
+            type="button"
+            variant="primary"
+          >
+            Randomize parameters
+          </Button>
+        </div>
+      </article>
+    </div>
+  </div>
+</MathJaxProvider>
+`;

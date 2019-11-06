@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import ParamControl from './ParamControl';
+import {ParamControl} from './ParamControl';
 import configureMockStore from "redux-mock-store";
 
 const mockStore = configureMockStore();

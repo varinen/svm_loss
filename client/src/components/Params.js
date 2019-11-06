@@ -10,7 +10,7 @@ const formulas = {
     f2: `b`
 };
 
-class Params extends Component {
+export class Params extends Component {
 
     getParams = () => {
         this.props.getParams(1)
@@ -43,7 +43,8 @@ class Params extends Component {
                             </p>
                             <ParamControl />
                             <div>
-                                <Button className="btn btn-primary" onClick={this.getParams}>
+                                <Button className="btn btn-primary randomize-params"
+                                        onClick={this.getParams}>
                                     Randomize parameters
                                 </Button>
                             </div>

@@ -5,7 +5,6 @@ const params = (state = {}, action) => {
         case GET_PARAMS:
             return action.params;
         default:
-            console.log('default from reducer', state);
             return state;
     }
 };

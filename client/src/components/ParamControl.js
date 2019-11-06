@@ -19,7 +19,7 @@ const renderWeight = (weightItem, num) => (
     )
 );
 
-const ParamControl = ({params}) => {
+export const ParamControl = ({params}) => {
     if (params && params.weights && params.biases) {
         return (
             params.weights.map((weight, index) => {

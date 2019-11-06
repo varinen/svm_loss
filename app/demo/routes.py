@@ -4,7 +4,8 @@ import numpy as np
 from numpy import ndarray
 import json
 from json import JSONDecodeError
-from flask import render_template, jsonify, request
+from flask import render_template, jsonify, request, send_from_directory, \
+    make_response
 
 from app.demo import bp
 from app.demo.optimizer import grad_step, adjust_params
@@ -18,6 +19,8 @@ from app.demo.plot import (
     generate_plot_image_string
 )
 
+from config import client_dir
+
 
 @bp.route('/', methods=['GET'])
 @bp.route('/index', methods=['GET'])
@@ -27,6 +30,18 @@ def index():
     return render_template('index.html', urls=urls)
 
 
+@bp.route('/client', methods=['GET'])
+def client():
+    """Serve the client React app."""
+    return send_from_directory(client_dir, 'index.html')
+
+
+@bp.route('/client/<path:path>', methods=['GET'])
+def client_path(path):
+    """Serve the client React app."""
+    return send_from_directory(client_dir, path)
+
+
 @bp.route('/get_params', methods=['GET'])
 def get_params() -> str:
     """Return a json string with init or random parameters."""
@@ -34,7 +49,9 @@ def get_params() -> str:
     if not request.args.get('rand') is None and is_int(
             request.args.get('rand')):
         rand = bool(int(request.args.get('rand')))
-    return jsonify(init_params(rand))
+    resp = make_response(jsonify(init_params(rand)), 200)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 
 @bp.route('/get_data', methods=['GET'])
@@ -94,9 +111,9 @@ def get_step():
         result = dict()
 
         result['grad_w'], result['grad_b'], result['cost_loss'], \
-            result['loss'], result['scores'], result['total_loss'], \
-            result['reg_loss'] = grad_step(data, labels, params_,
-                                           hyper['loss_type'], hyper['reg_c'])
+        result['loss'], result['scores'], result['total_loss'], \
+        result['reg_loss'] = grad_step(data, labels, params_,
+                                       hyper['loss_type'], hyper['reg_c'])
 
         weights = np.array(weights)
         biases = np.array(biases)

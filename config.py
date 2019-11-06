@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 project_dir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(project_dir, '.env'))
+client_dir = os.path.join(project_dir, 'client', 'build')
 
 
 class Config(object):
@@ -21,6 +22,7 @@ class Config(object):
 
     SITE_NAME = 'SVM Loss'
     START_YEAR = '2019'
+    CLIENT_DIR = client_dir
 
 
 class DevelopmentConfig(Config):

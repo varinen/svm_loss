@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Background from './Background';
 import Visualization from './Visualization';
 import Params from './Params';
+import Datapoints from './Datapoints';
 
 class Demo extends Component {
     render() {
@@ -11,6 +12,7 @@ class Demo extends Component {
                 <Background/>
                 <Visualization />
                 <Params />
+                <Datapoints />
             </div>
         )
     }

@@ -7,5 +7,6 @@ exports[`Demo renders correctly 1`] = `
   <Background />
   <Visualization />
   <Connect(Params) />
+  <Connect(Datapoints) />
 </div>
 `;

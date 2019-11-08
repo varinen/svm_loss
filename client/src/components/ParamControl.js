@@ -48,6 +48,9 @@ export const ParamControl = ({params}) => {
     return <div></div>;
 };
 
-export default connect(state => {
-    return {params: state.params}
-})(ParamControl);
+const mapPropsToStore = state => {
+    const {params} = state;
+    return params
+};
+
+export default connect(mapPropsToStore)(ParamControl);

@@ -58,5 +58,8 @@ export class Params extends Component {
         );
     }
 }
-
-export default connect(state=> state, {getParams})(Params);
+const mapPropsToStore = state => {
+    const {params} = state;
+    return params
+};
+export default connect(mapPropsToStore, {getParams})(Params);

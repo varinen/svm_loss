@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Datapoints renders correctly 1`] = `
+<MathJaxProvider
+  options={
+    Object {
+      "showMathMenu": false,
+      "showMathMenuMSIE": false,
+      "tex2jax": Object {
+        "inlineMath": Array [],
+      },
+    }
+  }
+  script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
+>
+  <div
+    className="datapoints card shadow"
+  >
+    <div
+      className="card-header py-3"
+    >
+      <h6
+        className="m-0 font-weight-bold text-primary"
+      >
+        Data Point And Loss Values
+      </h6>
+    </div>
+    <div
+      className="card-body"
+    >
+      <article>
+        <p>
+          Each row is loss due to one datapoint. The first three columns are the 2D data 
+          <MathJaxNode
+            formula="x_i"
+            inline={true}
+          />
+           and the label 
+          <MathJaxNode
+            formula="y_i"
+            inline={true}
+          />
+          . The next three columns are the three class scores from each classifier 
+          <MathJaxNode
+            formula="f(x_i;W,b)=Wx_i+b"
+            inline={true}
+          />
+           (E.g., 
+          <MathJaxNode
+            formula="s[0] = x[0] * W[0,0] + x[1] * W[0,1] + b[0]"
+            inline={true}
+          />
+          ). The last column is the data loss for a single example, 
+          <MathJaxNode
+            formula="L_i"
+            inline={true}
+          />
+        </p>
+        <div />
+      </article>
+    </div>
+  </div>
+</MathJaxProvider>
+`;

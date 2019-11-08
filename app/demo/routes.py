@@ -61,7 +61,10 @@ def get_data() -> str:
     if not request.args.get('rand') is None and is_int(
             request.args.get('rand')):
         rand = bool(int(request.args.get('rand')))
-    return jsonify(init_data(rand))
+
+    resp = make_response(jsonify(init_data(rand)), 200)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 
 @bp.route('/get_plot', methods=['POST'])

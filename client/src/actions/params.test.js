@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 import {urls} from './api';
 
-import {GET_PARAMS} from "./constants";
-import {getParams} from "./params";
+import {GET_PARAMS, MODIFY_PARAM} from "./constants";
+import {getParams, modifyParam} from "./params";
 
 const createMockStore = configureMockStore([thunk]);
 const store = createMockStore({params: {}});
@@ -31,5 +31,18 @@ describe('API Param calls', () => {
         store.dispatch(getParams()).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });
+    });
+});
+
+describe('Param value modified', () => {
+    it('modifies a param value', () => {
+        const expectedAction = {
+            modified: {paramType: 'bias', paramIndex: 1, paramValue: 2},
+            type: MODIFY_PARAM
+        };
+
+        expect(store.dispatch(
+            modifyParam('bias', 1, 2)
+        )).toEqual(expectedAction);
     });
 });

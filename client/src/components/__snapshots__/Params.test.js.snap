@@ -1,34 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Params renders correctly 1`] = `
-<MathJaxProvider
-  options={
-    Object {
-      "showMathMenu": false,
-      "showMathMenuMSIE": false,
-      "tex2jax": Object {
-        "inlineMath": Array [],
-      },
-    }
-  }
-  script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
+<div
+  className="params card shadow"
 >
   <div
-    className="params card shadow"
+    className="card-header py-3"
   >
-    <div
-      className="card-header py-3"
+    <h6
+      className="m-0 font-weight-bold text-primary"
     >
-      <h6
-        className="m-0 font-weight-bold text-primary"
+      Classifier Parameters
+    </h6>
+  </div>
+  <div
+    className="card-body"
+  >
+    <article>
+      <MathJaxProvider
+        options={
+          Object {
+            "showMathMenu": false,
+            "showMathMenuMSIE": false,
+            "tex2jax": Object {
+              "inlineMath": Array [],
+            },
+          }
+        }
+        script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
       >
-        Classifier Parameters
-      </h6>
-    </div>
-    <div
-      className="card-body"
-    >
-      <article>
         <p>
           Parameters 
           <MathJaxNode
@@ -52,21 +52,21 @@ exports[`Params renders correctly 1`] = `
           </span>
            below. Click the triangles to control the parameters.
         </p>
-        <Connect(ParamControl) />
-        <div>
-          <Button
-            active={false}
-            className="btn btn-primary randomize-params"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-            variant="primary"
-          >
-            Randomize parameters
-          </Button>
-        </div>
-      </article>
-    </div>
+      </MathJaxProvider>
+      <Connect(ParamControl) />
+      <div>
+        <Button
+          active={false}
+          className="btn btn-primary randomize-params"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+          variant="primary"
+        >
+          Randomize parameters
+        </Button>
+      </div>
+    </article>
   </div>
-</MathJaxProvider>
+</div>
 `;

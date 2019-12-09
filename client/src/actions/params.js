@@ -1,4 +1,4 @@
-import {GET_PARAMS} from './constants';
+import {GET_PARAMS, MODIFY_PARAM} from './constants';
 import {urls} from './api';
 
 export const getParams = (rand = 0) => {
@@ -13,4 +13,11 @@ export const getParams = (rand = 0) => {
                 return dispatch({type: GET_PARAMS, params: json})
             });
     }
+};
+
+export const modifyParam = (paramType, paramIndex, paramValue) => {
+    return {
+        type: MODIFY_PARAM,
+        modified: {paramType, paramIndex, paramValue}
+    };
 };

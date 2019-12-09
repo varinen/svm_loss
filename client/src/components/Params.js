@@ -22,7 +22,7 @@ export class Params extends Component {
 
     render() {
         return (
-            <MathJax.Provider>
+
                 <div className="params card shadow">
                     <div className="card-header py-3">
                         <h6 className="m-0 font-weight-bold text-primary">
@@ -30,17 +30,19 @@ export class Params extends Component {
                     </div>
                     <div className="card-body">
                         <article>
-                            <p>
-                                Parameters <MathJax.Node inline
-                                                         formula={formulas.f1}/>
-                                , <MathJax.Node inline
-                                                formula={formulas.f2}/> are
-                                shown below. The value is in <b>bold</b> and
-                                its gradient
-                                (computed with backprop) is in <span
-                                className="text-red font-italic">red, italic</span> below. Click the triangles to
-                                control the parameters.
-                            </p>
+                            <MathJax.Provider>
+                                <p>
+                                    Parameters <MathJax.Node inline
+                                                             formula={formulas.f1}/>
+                                    , <MathJax.Node inline
+                                                    formula={formulas.f2}/> are
+                                    shown below. The value is in <b>bold</b> and
+                                    its gradient
+                                    (computed with backprop) is in <span
+                                    className="text-red font-italic">red, italic</span> below. Click the triangles to
+                                    control the parameters.
+                                </p>
+                            </MathJax.Provider>
                             <ParamControl />
                             <div>
                                 <Button className="btn btn-primary randomize-params"
@@ -53,7 +55,7 @@ export class Params extends Component {
                         </article>
                     </div>
                 </div>
-            </MathJax.Provider>
+
 
         );
     }

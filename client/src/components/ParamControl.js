@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {modifyParam} from '../actions/params';
 
 const renderWeight = (weightItem, num) => (
     weightItem.map((weight, index) => (
@@ -10,8 +11,7 @@ const renderWeight = (weightItem, num) => (
                         type="number"
                         step="1"
                         className="form-control form-control-sm"
-                        onChange={() => {
-                        }}
+                        onChange={() => {}}
                         value={weight}/>
                     <span
                         className="d-block text-red font-italic small">0</span>
@@ -25,22 +25,23 @@ const renderWeight = (weightItem, num) => (
 export class ParamControl extends Component {
 
     render() {
-        const params = this.props.params;
+        const params = this.props.hyperparams.params;
+        const modifyParam = this.props.modifyParam;
 
         if (params && params.weights && params.biases) {
-            console.log(params);
             return (
                 params.weights.map((weight, index) => {
                     return (
                         <div key={`param-row-${index}`} className="row">
-                            {renderWeight(weight, index)}
+                            {renderWeight(weight, index, modifyParam)}
                             <div key={`bias-${index}`}
                                  className="col-xs-4 p-1">
                                 <div className="form-group">
                                     <label className="small">b[{index}]</label>
                                     <input type="number"
-                                           step="1"
-                                           onChange={() => {
+                                           step="0.1"
+                                           onChange={(e) => {
+                                               modifyParam('bias', index, e.target.value);
                                            }}
                                            value={params.biases[index]}
                                            className="form-control form-control-sm"/>
@@ -58,9 +59,11 @@ export class ParamControl extends Component {
     }
 }
 
+
 const mapPropsToStore = state => {
-    const {params} = state;
-    return params
+    const hyperparams = state.params;
+    return {hyperparams}
 };
 
-export default connect(mapPropsToStore)(ParamControl);
+
+export default connect(mapPropsToStore, {modifyParam})(ParamControl);

@@ -22,7 +22,7 @@ describe('ParamControl', () => {
 
     describe('displays params correctly', () => {
 
-        control = mount(<ParamControl hyperparams={props.params}/>);
+        control = mount(<ParamControl hyperparams={props}/>);
 
         it('generates correct number of rows', () => {
             expect(control.find('.row').length).toEqual(3);

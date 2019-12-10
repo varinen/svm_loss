@@ -22,15 +22,16 @@ export class Datapoints extends Component {
 
     render() {
         return (
-            <MathJax.Provider>
-                <div className="datapoints card shadow">
-                    <div className="card-header py-3">
-                        <h6 className="m-0 font-weight-bold text-primary">
-                            Data Point And Loss Values
-                        </h6>
-                    </div>
-                    <div className="card-body">
-                        <article>
+
+            <div className="datapoints card shadow">
+                <div className="card-header py-3">
+                    <h6 className="m-0 font-weight-bold text-primary">
+                        Data Point And Loss Values
+                    </h6>
+                </div>
+                <div className="card-body">
+                    <article>
+                        <MathJax.Provider>
                             <p>
                                 Each row is loss due to one datapoint. The
                                 first
@@ -53,19 +54,76 @@ export class Datapoints extends Component {
                                 formula={formulas.f5}/>
 
                             </p>
+                        </MathJax.Provider>
 
+                        <div className="w-100" style={{overflowY: 'auto'}}>
+                            <table className="table small">
+                                <thead>
+                                <tr>
+                                    <th>X[0]</th>
+                                    <th>X[1]</th>
+                                    <th className="border-right">y</th>
+                                    <th>s[0]</th>
+                                    <th>s[1]</th>
+                                    <th className="border-right">s[2]</th>
+                                    <th>L</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {this.props && this.props.datapoints && this.props.datapoints.data &&
+                                this.props.datapoints.data.map((entry, index) => (
+                                    <tr key={`${index}-data-row`} className="data-row">
+                                        <td key={`${index}-x-0-0`}>{entry[0]}</td>
+                                        <td key={`${index}-x-0-1`}>{entry[1]}</td>
+                                        <td key={`${index}-y-0`}
+                                            className="border-right">{entry[2]}
+                                        </td>
+                                        <td key={`${index}-s-0-0`}></td>
+                                        <td key={`${index}-s-0-1`}></td>
+                                        <td key={`${index}-s-0-2`}
+                                            className="border-right"></td>
+                                        <td key={`${index}-L-0`}></td>
+                                    </tr>
+                                ))
+                                }
+                                <tr>
+                                    <td colSpan="5"></td>
+                                    <td>Mean:</td>
+                                    <td data-target="mean_loss"></td>
+                                </tr>
 
-                            <div>
+                                </tbody>
+                            </table>
 
-                            </div>
-                        </article>
-                    </div>
+                            <hr/>
+                            <table className="table">
+                                <tbody>
+                                <tr>
+                                    <td>Total data loss</td>
+                                    <td data-target="mean_loss"></td>
+                                </tr>
+                                <tr>
+                                    <td>Regularization loss</td>
+                                    <td data-target="reg_loss"></td>
+                                </tr>
+                                <tr>
+                                    <td>Total loss</td>
+                                    <td data-target="total_loss"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </article>
                 </div>
-            </MathJax.Provider>
-
+            </div>
         )
     }
-
 }
 
-export default connect(state=> (state.data), {getData})(Datapoints);
+const mapPropsToStore = state => {
+    const datapoints = state.data;
+    return {datapoints};
+};
+
+export default connect(mapPropsToStore, {getData})(Datapoints);

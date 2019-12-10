@@ -98,6 +98,74 @@ exports[`Datapoints renders correctly 1`] = `
             </tr>
           </thead>
           <tbody>
+            <tr
+              className="data-row"
+              key="0-data-row"
+            >
+              <td
+                key="0-x-0-0"
+              >
+                0
+              </td>
+              <td
+                key="0-x-0-1"
+              >
+                1
+              </td>
+              <td
+                className="border-right"
+                key="0-y-0"
+              >
+                2
+              </td>
+              <td
+                key="0-s-0-0"
+              />
+              <td
+                key="0-s-0-1"
+              />
+              <td
+                className="border-right"
+                key="0-s-0-2"
+              />
+              <td
+                key="0-L-0"
+              />
+            </tr>
+            <tr
+              className="data-row"
+              key="1-data-row"
+            >
+              <td
+                key="1-x-0-0"
+              >
+                3
+              </td>
+              <td
+                key="1-x-0-1"
+              >
+                4
+              </td>
+              <td
+                className="border-right"
+                key="1-y-0"
+              >
+                5
+              </td>
+              <td
+                key="1-s-0-0"
+              />
+              <td
+                key="1-s-0-1"
+              />
+              <td
+                className="border-right"
+                key="1-s-0-2"
+              />
+              <td
+                key="1-L-0"
+              />
+            </tr>
             <tr>
               <td
                 colSpan="5"
@@ -142,6 +210,18 @@ exports[`Datapoints renders correctly 1`] = `
             </tr>
           </tbody>
         </table>
+      </div>
+      <div>
+        <Button
+          active={false}
+          className="btn btn-primary randomize-data"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+          variant="primary"
+        >
+          Randomize data
+        </Button>
       </div>
     </article>
   </div>

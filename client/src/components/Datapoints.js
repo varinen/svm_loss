@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MathJax from 'react-mathjax';
 import {connect} from "react-redux";
 import {getData} from "../actions/data";
+import Button from "react-bootstrap/Button";
 
 const formulas = {
     f1: `x_i`,
@@ -72,7 +73,8 @@ export class Datapoints extends Component {
                                 <tbody>
                                 {this.props && this.props.datapoints && this.props.datapoints.data &&
                                 this.props.datapoints.data.map((entry, index) => (
-                                    <tr key={`${index}-data-row`} className="data-row">
+                                    <tr key={`${index}-data-row`}
+                                        className="data-row">
                                         <td key={`${index}-x-0-0`}>{entry[0]}</td>
                                         <td key={`${index}-x-0-1`}>{entry[1]}</td>
                                         <td key={`${index}-y-0`}
@@ -112,6 +114,14 @@ export class Datapoints extends Component {
                                 </tr>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div>
+                            <Button
+                                className="btn btn-primary randomize-data"
+                                onClick={this.getData}>
+                                Randomize data
+                            </Button>
                         </div>
 
                     </article>

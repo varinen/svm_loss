@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import MathJax from 'react-mathjax';
+import {connect} from 'react-redux';
+import {getPlot} from '../actions/visualization'
+
 
 const formulas = {
     f1: `W_{0,0}x_0+W_{0,1}x_1+b_0`,
@@ -7,7 +10,11 @@ const formulas = {
     f3: `(W_{0,0},W_{0,1})`
 };
 
-class Visualization extends Component {
+export class Visualization extends Component {
+    componentDidMount() {
+        this.props.getPlot(this.props.data, this.props.params);
+    }
+
     render() {
         return (
             <MathJax.Provider>
@@ -53,7 +60,8 @@ class Visualization extends Component {
 
                         <article>
                             <div className="mb-4">
-                                <img/>
+                                <img alt="Plot" id="plot" className="img-fluid"
+                                     src={this.props.plot}/>
                             </div>
                         </article>
 
@@ -66,4 +74,11 @@ class Visualization extends Component {
     }
 }
 
-export default Visualization;
+const mapStateToProps = state => {
+    const plot = state.plot;
+    const datapoints = state.data;
+    const hyperparams = state.params;
+    return {plot: plot, data: state.data.data, params: state.params.params}
+};
+
+export default connect(mapStateToProps, {getPlot})(Visualization);

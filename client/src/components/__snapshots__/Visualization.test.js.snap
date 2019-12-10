@@ -55,7 +55,12 @@ exports[`Visualization renders correctly 1`] = `
         <div
           className="mb-4"
         >
-          <img />
+          <img
+            alt="Plot"
+            className="img-fluid"
+            id="plot"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP09l5cDwAD3AG60PCC3wAAAABJRU5ErkJggg=="
+          />
         </div>
       </article>
       <hr />

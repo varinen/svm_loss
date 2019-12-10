@@ -6,6 +6,7 @@ import json
 from json import JSONDecodeError
 from flask import render_template, jsonify, request, send_from_directory, \
     make_response
+from flask_cors import cross_origin
 
 from app.demo import bp
 from app.demo.optimizer import grad_step, adjust_params
@@ -43,6 +44,7 @@ def client_path(path):
 
 
 @bp.route('/get_params', methods=['GET'])
+@cross_origin()
 def get_params() -> str:
     """Return a json string with init or random parameters."""
     rand = False
@@ -50,11 +52,11 @@ def get_params() -> str:
             request.args.get('rand')):
         rand = bool(int(request.args.get('rand')))
     resp = make_response(jsonify(init_params(rand)), 200)
-    resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
 
 @bp.route('/get_data', methods=['GET'])
+@cross_origin()
 def get_data() -> str:
     """Return a json string with training data to be classified."""
     rand = False
@@ -63,16 +65,20 @@ def get_data() -> str:
         rand = bool(int(request.args.get('rand')))
 
     resp = make_response(jsonify(init_data(rand)), 200)
-    resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
 
-@bp.route('/get_plot', methods=['POST'])
+@bp.route('/get_plot', methods=['POST', 'OPTIONS'])
+@cross_origin()
 def get_plot():
     """Return a base64 encoded content of the plot."""
     try:
-        data = json.loads(request.form.get('data'))
-        params = json.loads(request.form.get('params'))
+        if request.is_json:
+            data = request.json.get('data')
+            params = request.json.get('params')
+        else:
+            data = json.loads(request.form.get('data'))
+            params = json.loads(request.form.get('params'))
         if not isinstance(params, dict) or not isinstance(data, list):
             raise TypeError('Invalid data')
         data = np.array(data)
@@ -83,14 +89,16 @@ def get_plot():
         params_ = np.c_[weights, biases]
 
         plot = generate_plot_image_string(data, params_)
-        return jsonify({'plot': plot})
-
+        resp = make_response(jsonify({'plot': plot}), 200)
     except JSONDecodeError as ex:
-        return jsonify({'error': ', '.join(['Invalid data: ', str(ex)])})
+        resp = make_response(
+            jsonify({'error': ', '.join(['Invalid data: ', str(ex)])}), 500)
     except TypeError as ex:
-        return jsonify({'error': str(ex)})
+        resp = make_response(jsonify({'error': str(ex)}), 500)
     except KeyError as ex:
-        return jsonify({'error': ', '.join(['Missing key: ', str(ex)])})
+        resp = make_response(
+            jsonify({'error': ', '.join(['Missing key: ', str(ex)])}), 500)
+    return resp
 
 
 @bp.route('/get_step', methods=['POST'])

@@ -12,6 +12,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from flask import Flask, abort, current_app
 from flask_bootstrap import Bootstrap
+from flask_cors import CORS
 
 from config import config_list
 
@@ -43,6 +44,7 @@ def create_app(config_class: object = config_val):
     app.config.from_object(config_class)
 
     bootstrap.init_app(app)
+    CORS(app)
 
     from app.demo import bp as demo_bp
     app.register_blueprint(demo_bp)

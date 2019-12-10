@@ -25,9 +25,9 @@ describe('paramsModifierReducer Bias', () => {
 });
 
 describe('paramsModifierReducer Weight', () => {
-    const initState = {params: {weights: [0, 1], biases: [0, 1]}};
-    const modifiedState = {params: {weights: [0, 2], biases: [0, 1]}};
-    const actionData = {paramType: 'weights', paramIndex: 1, paramValue: 2};
+    const initState = {params: {weights: [[0, 1], [2, 3]], biases: [0, 1]}};
+    const modifiedState = {params: {weights: [[2, 1], [2, 3]], biases: [0, 1]}};
+    const actionData = {paramType: 'weights', paramIndex: [0,0], paramValue: 2};
 
     it('modifies', () => {
         expect(paramsReducer(initState, {

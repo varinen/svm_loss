@@ -2,28 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {modifyParam} from '../actions/params';
 
-const renderWeight = (weightItem, num) => (
-    weightItem.map((weight, index) => (
-            <div key={`weight-${index}`} className="col-xs-4 p-1">
-                <div className="form-group">
-                    <label className="small">W[{num},{index}]</label>
-                    <input
-                        type="number"
-                        step="1"
-                        className="form-control form-control-sm"
-                        onChange={() => {}}
-                        value={weight}/>
-                    <span
-                        className="d-block text-red font-italic small">0</span>
-                </div>
-            </div>
-        )
-    )
-);
-
 
 export class ParamControl extends Component {
-
     render() {
         const params = this.props.hyperparams.params;
         const modifyParam = this.props.modifyParam;
@@ -33,7 +13,26 @@ export class ParamControl extends Component {
                 params.weights.map((weight, index) => {
                     return (
                         <div key={`param-row-${index}`} className="row">
-                            {renderWeight(weight, index, modifyParam)}
+                            {weight.map((weightItem, indexItem) => (
+                                    <div key={`weight-${indexItem}`}
+                                         className="col-xs-4 p-1">
+                                        <div className="form-group">
+                                            <label
+                                                className="small">W[{index},{indexItem}]</label>
+                                            <input
+                                                type="number"
+                                                step="0.1"
+                                                className="form-control form-control-sm"
+                                                onChange={(e) => {
+                                               modifyParam('weight', [index, indexItem], e.target.value);
+                                           }}
+                                                value={weightItem}/>
+                                            <span
+                                                className="d-block text-red font-italic small">0</span>
+                                        </div>
+                                    </div>
+                                )
+                            )}
                             <div key={`bias-${index}`}
                                  className="col-xs-4 p-1">
                                 <div className="form-group">

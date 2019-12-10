@@ -12,7 +12,7 @@ const params = (state = {}, action) => {
                 stateModified.params.biases[modified.paramIndex]
                     = parseFloat(modified.paramValue);
             } else {
-                stateModified.params.weights[modified.paramIndex]
+                stateModified.params.weights[modified.paramIndex[0]][modified.paramIndex[1]]
                     = parseFloat(modified.paramValue);
             }
             return {...state, ...stateModified};

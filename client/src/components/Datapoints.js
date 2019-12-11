@@ -71,8 +71,8 @@ export class Datapoints extends Component {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.props && this.props.datapoints && this.props.datapoints.data &&
-                                this.props.datapoints.data.map((entry, index) => (
+                                {this.props && this.props.data &&
+                                this.props.data.map((entry, index) => (
                                     <tr key={`${index}-data-row`}
                                         className="data-row">
                                         <td key={`${index}-x-0-0`}>{entry[0]}</td>
@@ -133,7 +133,7 @@ export class Datapoints extends Component {
 
 const mapPropsToStore = state => {
     const datapoints = state.data;
-    return {datapoints};
+    return {data: datapoints};
 };
 
 export default connect(mapPropsToStore, {getData})(Datapoints);

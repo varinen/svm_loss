@@ -4,7 +4,7 @@ const data = (state = [], action) => {
     switch (action.type) {
         case GET_DATA:
             const {data} = action;
-            return {...state, data};
+            return [ ...data];
         default:
             return state;
     }

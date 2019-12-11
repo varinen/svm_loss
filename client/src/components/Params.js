@@ -62,6 +62,6 @@ export class Params extends Component {
 }
 const mapPropsToStore = state => {
     const {params} = state;
-    return params
+    return {params}
 };
 export default connect(mapPropsToStore, {getParams})(Params);

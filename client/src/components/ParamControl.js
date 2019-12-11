@@ -5,7 +5,7 @@ import {modifyParam} from '../actions/params';
 
 export class ParamControl extends Component {
     render() {
-        const params = this.props.hyperparams.params;
+        const params = this.props.params;
         const modifyParam = this.props.modifyParam;
 
         if (params && params.weights && params.biases) {
@@ -60,8 +60,8 @@ export class ParamControl extends Component {
 
 
 const mapPropsToStore = state => {
-    const hyperparams = state.params;
-    return {hyperparams}
+    const {params} = state;
+    return {params}
 };
 
 

@@ -5,10 +5,9 @@ import {Datapoints} from './Datapoints';
 
 describe('Datapoints', () => {
     const mockGetData = jest.fn();
-    const data = {
-        data: [[0, 1, 2], [3, 4, 5]]
-    };
-    const datapoints = shallow(<Datapoints datapoints={data}
+    const data = [[0, 1, 2], [3, 4, 5]];
+    const params = {};
+    const datapoints = shallow(<Datapoints data={data} params={params}
                                            getData={mockGetData}/>);
 
     it('renders correctly', () => {
@@ -17,7 +16,7 @@ describe('Datapoints', () => {
 
 
     describe('displays data params correctly', () => {
-        const control = mount(<Datapoints datapoints={data}
+        const control = mount(<Datapoints data={data}  params={params}
                                           getData={mockGetData}/>);
 
         it('calls the getData function', () => {

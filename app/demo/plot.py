@@ -1,5 +1,6 @@
 """Module for the plot-related functionality."""
 
+from typing import Union
 from io import BytesIO
 import base64
 import numpy as np
@@ -99,37 +100,42 @@ def prepare_data(data: ndarray, h: float = 0.005) -> tuple:
     return xx, yy, x_min, x_max, y_min, y_max, x_, y_
 
 
-def generate_plot_image_string(data: ndarray, params: ndarray) -> str:
+def generate_plot_image_string(data: ndarray, params: ndarray) -> Union[
+    str, None]:
     """Generate a base64 image string to be outputted into the UI."""
-    xx, yy, x_min, x_max, y_min, y_max, x_, y_ = prepare_data(data)
-    z = model(np.c_[xx.ravel(), yy.ravel()], params)
+    try:
+        plt.clf();
+        xx, yy, x_min, x_max, y_min, y_max, x_, y_ = prepare_data(data)
+        z = model(np.c_[xx.ravel(), yy.ravel()], params)
 
-    z = z.reshape(xx.shape)
-    plt.figure(figsize=(10, 10))
-    plt.tight_layout()
-    matplotlib.rc('xtick', labelsize=10)
-    matplotlib.rc('ytick', labelsize=10)
+        z = z.reshape(xx.shape)
+        plt.figure(figsize=(10, 10))
+        plt.tight_layout()
+        matplotlib.rc('xtick', labelsize=10)
+        matplotlib.rc('ytick', labelsize=10)
 
-    plt.contourf(xx, yy, z, cmap=plt.cm.tab20)
-    plt.axis('equal')
-    plt.xlim(x_min, x_max)
-    plt.ylim(y_min, y_max)
-    ax = plt.gca()
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['bottom'].set_visible(False)
-    ax.spines['left'].set_visible(False)
+        plt.contourf(xx, yy, z, cmap=plt.cm.tab20)
+        plt.axis('equal')
+        plt.xlim(x_min, x_max)
+        plt.ylim(y_min, y_max)
+        ax = plt.gca()
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
 
-    plot_params(plt, params, x_min, x_max)
+        plot_params(plt, params, x_min, x_max)
 
-    # plot the training points
-    plt.scatter(x_[:, 0], x_[:, 1], c=y_, s=100, cmap=plt.cm.tab20)
+        # plot the training points
+        plt.scatter(x_[:, 0], x_[:, 1], c=y_, s=100, cmap=plt.cm.tab20)
 
-    figfile = BytesIO()
-    plt.savefig(figfile, format='png')
-    # rewind to the beginning of the file
-    figfile.seek(0)
+        figfile = BytesIO()
+        plt.savefig(figfile, format='png')
+        # rewind to the beginning of the file
+        figfile.seek(0)
 
-    figdata_png = base64.b64encode(figfile.getvalue())
+        figdata_png = base64.b64encode(figfile.getvalue())
 
-    return figdata_png.decode('utf-8')
+        return figdata_png.decode('utf-8')
+    except:
+        return None

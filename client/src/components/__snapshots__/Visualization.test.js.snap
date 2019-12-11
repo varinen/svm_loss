@@ -59,7 +59,7 @@ exports[`Visualization renders correctly 1`] = `
             alt="Plot"
             className="img-fluid"
             id="plot"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP09l5cDwAD3AG60PCC3wAAAABJRU5ErkJggg=="
+            src="data:image/png;base64,VBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP09l5cDwAD3AG60PCC3wAAAABJRU5ErkJggg=="
           />
         </div>
       </article>

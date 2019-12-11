@@ -3,6 +3,7 @@ import MathJax from 'react-mathjax';
 import {connect} from "react-redux";
 import {getData} from "../actions/data";
 import Button from "react-bootstrap/Button";
+import {getPlot} from "../actions/visualization";
 
 const formulas = {
     f1: `x_i`,
@@ -21,9 +22,16 @@ export class Datapoints extends Component {
         this.props.getData();
     }
 
-    render() {
-        return (
+    requestPlot() {
+        const {data, params, getPlot} = this.props;
+        if (data.length > 0 && params.weights && params.weights.length > 0) {
+            getPlot(data, params);
+        }
+    }
 
+    render() {
+        this.requestPlot();
+        return (
             <div className="datapoints card shadow">
                 <div className="card-header py-3">
                     <h6 className="m-0 font-weight-bold text-primary">
@@ -132,8 +140,8 @@ export class Datapoints extends Component {
 }
 
 const mapPropsToStore = state => {
-    const datapoints = state.data;
-    return {data: datapoints};
+    const {data, params} = state;
+    return {data, params};
 };
 
-export default connect(mapPropsToStore, {getData})(Datapoints);
+export default connect(mapPropsToStore, {getData, getPlot})(Datapoints);

@@ -1,14 +1,25 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {modifyParam} from '../actions/params';
+import {getPlot} from "../actions/visualization";
 
 
 export class ParamControl extends Component {
+
+    requestPlot() {
+        const {data, params, getPlot} = this.props;
+        if (data.length > 0 && params.weights && params.weights.length > 0) {
+            getPlot(data, params);
+        }
+
+    }
+
     render() {
         const params = this.props.params;
         const modifyParam = this.props.modifyParam;
 
         if (params && params.weights && params.biases) {
+            this.requestPlot();
             return (
                 params.weights.map((weight, index) => {
                     return (
@@ -24,8 +35,8 @@ export class ParamControl extends Component {
                                                 step="0.1"
                                                 className="form-control form-control-sm"
                                                 onChange={(e) => {
-                                               modifyParam('weight', [index, indexItem], e.target.value);
-                                           }}
+                                                    modifyParam('weight', [index, indexItem], e.target.value);
+                                                }}
                                                 value={weightItem}/>
                                             <span
                                                 className="d-block text-red font-italic small">0</span>
@@ -60,9 +71,9 @@ export class ParamControl extends Component {
 
 
 const mapPropsToStore = state => {
-    const {params} = state;
-    return {params}
+    const {params, data} = state;
+    return {params, data}
 };
 
 
-export default connect(mapPropsToStore, {modifyParam})(ParamControl);
+export default connect(mapPropsToStore, {modifyParam, getPlot})(ParamControl);

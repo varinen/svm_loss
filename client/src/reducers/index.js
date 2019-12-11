@@ -3,4 +3,5 @@ import params from './params';
 import data from './data';
 import visualization from './visualization'
 
-export default combineReducers({params, data, visualization});
+const rootReducer = combineReducers([params, data, visualization]);
+export default rootReducer;

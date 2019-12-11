@@ -10,10 +10,10 @@ const createMockStore = configureMockStore([thunk]);
 const store = createMockStore({plot: ''});
 
 const mockResponse = {
-    plot: 'data:image/png;base64,459845904584=='
+    plot: '459845904584=='
 };
 
-fetchMock.get(
+fetchMock.post(
     urls.get_plot,
     mockResponse
 );

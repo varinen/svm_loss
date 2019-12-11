@@ -3,7 +3,7 @@ import {urls} from './api';
 
 export const getPlot = (data = [], params = {}) => {
     let url = new URL(urls.get_plot);
-
+    
     return dispatch => {
         return fetch(url, {
             method: 'POST',

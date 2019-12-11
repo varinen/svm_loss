@@ -5,7 +5,7 @@ exports[`Demo renders correctly 1`] = `
   className="content-wrapper"
 >
   <Background />
-  <Visualization />
+  <Connect(Visualization) />
   <Connect(Params) />
   <Connect(Datapoints) />
 </div>

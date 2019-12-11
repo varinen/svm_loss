@@ -11,10 +11,6 @@ const formulas = {
 };
 
 export class Visualization extends Component {
-    componentDidMount() {
-        this.props.getPlot(this.props.data, this.props.params);
-    }
-
     render() {
         return (
             <MathJax.Provider>
@@ -61,7 +57,7 @@ export class Visualization extends Component {
                         <article>
                             <div className="mb-4">
                                 <img alt="Plot" id="plot" className="img-fluid"
-                                     src={this.props.plot}/>
+                                     src={`data:image/png;base64,${this.props.visualization.plot}`}/>
                             </div>
                         </article>
 
@@ -75,10 +71,8 @@ export class Visualization extends Component {
 }
 
 const mapStateToProps = state => {
-    const plot = state.plot;
-    const datapoints = state.data;
-    const hyperparams = state.params;
-    return {plot: plot, data: state.data.data, params: state.params.params}
+    const {visualization, data, params} = state;
+    return {visualization, data, params};
 };
 
 export default connect(mapStateToProps, {getPlot})(Visualization);

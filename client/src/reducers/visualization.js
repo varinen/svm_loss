@@ -4,7 +4,11 @@ const visualization = (state = [], action) => {
     switch (action.type) {
         case GET_PLOT:
             const {plot} = action;
-            return {...state, plot};
+            if (!!plot) {
+                return {...state, plot};
+            }
+            return state;
+
         default:
             return state;
     }

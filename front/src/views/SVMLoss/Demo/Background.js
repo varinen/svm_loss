@@ -25,22 +25,11 @@ export default () => {
     const classes = useStyles();
     return (
         <Card className={classes.card}>
-            <CardHeader title="Background fo the demo">
+            <CardHeader title="Background of the Demo">
             </CardHeader>
             <CardContent>
                 <MathJax.Provider>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        This projects implements the visualization of
-                        optimization loss for a linear multiclass
-                        classifier using Python and Flask. The idea is
-                        based on the <b>Multiclass Linear Classification
-                        Optimization Loss Visualization</b> <a
-                        href="http://vision.stanford.edu/teaching/cs231n-demos/linear-classify/"
-                        target="_blank" rel="noopener noreferrer">web
-                        demo</a> by Justin Johnson. The text below is
-                        taken from that demo page as well.
-                    </Typography>
-                    <hr/>
+
                     <Typography variant="body2" color="textSecondary" component="p">
                         The class scores for linear classifiers are
                         computed as <MathJax.Node inline formula={formulas.f1}/>, where

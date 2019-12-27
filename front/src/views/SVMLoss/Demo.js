@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import useStyles from "./styles";
-import {Container, Grid, Typography} from "@material-ui/core";
+import {Grid, Typography} from "@material-ui/core";
 
-import Header from "./Demo/Header";
 import Background from "./Demo/Background";
 import Visio from './Demo/Visio';
 import Params from './Demo/Params';
@@ -12,11 +11,8 @@ import Data from "./Demo/Data";
 export default function Demo() {
     const classes = useStyles();
     return (
-        <Container className={classes.root}>
+        <Fragment>
             <Grid container spacing={3} alignItems="stretch">
-                <Grid item xs={12}>
-                    <Header/>
-                </Grid>
                 <Grid item xs={12}>
                     <Background/>
                 </Grid>
@@ -43,6 +39,6 @@ export default function Demo() {
                     </Typography>
                 </Grid>
             </Grid>
-        </Container>
+        </Fragment>
     );
 }

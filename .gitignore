@@ -2,6 +2,8 @@
 .cache
 node_modules
 client/dist
+frontend/dist
+frontend/.idea
 dist
 # Byte-compiled / optimized / DLL files
 __pycache__/

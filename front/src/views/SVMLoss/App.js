@@ -13,7 +13,7 @@ import GridItem from "components/Grid/GridItem.js";
 
 import Parallax from "components/Parallax/Parallax.js";
 
-import styles from "assets/jss/material-kit-react/views/landingPage.js";
+import styles from "svm_assets/jss/views/demo.js";
 
 import Demo from "./Demo";
 import HeaderLinks from "./Header/HeaderLinks.js";
@@ -35,12 +35,12 @@ export default function App(props) {
                 rightLinks={<HeaderLinks/>}
                 fixed
                 changeColorOnScroll={{
-                    height: 200,
+                    height: 150,
                     color: "white"
                 }}
                 {...rest}
             />
-            <Parallax filter image={require("assets/img/landing-bg.jpg")}>
+            <Parallax filter image={require("svm_assets/img/gray.png")}>
                 <div className={classes.container}>
                     <GridContainer>
                         <GridItem xs={12} sm={12} md={6}>
@@ -61,7 +61,7 @@ export default function App(props) {
                 </div>
             </Parallax>
             <div className={classNames(classes.main, classes.mainRaised)}>
-                <div className={classes.container}>
+                <div className={classNames(classes.container, classes.pt2)}>
                     <Demo/>
                 </div>
             </div>

@@ -16,10 +16,10 @@ export default function Demo() {
                 </Grid>
 
                 <Grid item container spacing={2}>
-                    <Grid item xs={7}>
+                    <Grid item md={7} sm={12}>
                         <Visio/>
                     </Grid>
-                    <Grid item xs={5} sm container>
+                    <Grid item md={5} sm={12} container>
                         <Grid item xs container direction="column" alignItems="stretch">
                             <Grid item xs>
                                 <Params/>

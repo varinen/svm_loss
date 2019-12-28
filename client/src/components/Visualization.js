@@ -57,7 +57,8 @@ export class Visualization extends Component {
                         <article>
                             <div className="mb-4">
                                 <img alt="Plot" id="plot" className="img-fluid"
-                                     src={`data:image/png;base64,${this.props.visualization.plot}`}/>
+                                     src={this.props.visualization && this.props.visualization.plot &&
+                                     `data:image/png;base64,${this.props.visualization.plot}`}/>
                             </div>
                         </article>
 

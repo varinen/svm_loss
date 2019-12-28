@@ -24,7 +24,7 @@ export class Datapoints extends Component {
 
     requestPlot() {
         const {data, params, getPlot} = this.props;
-        if (data.length > 0 && params.weights && params.weights.length > 0) {
+        if (data && data.length > 0 && params.weights && params.weights.length > 0) {
             getPlot(data, params);
         }
     }

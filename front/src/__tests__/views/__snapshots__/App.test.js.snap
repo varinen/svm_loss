@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<div>
+  <Header
+    brand="SVM Loss Demo"
+    changeColorOnScroll={
+      Object {
+        "color": "white",
+        "height": 150,
+      }
+    }
+    color="transparent"
+    fixed={true}
+    rightLinks={<HeaderLinks />}
+    routes={Array []}
+  />
+  <Parallax
+    filter={true}
+    image="gray.png"
+  >
+    <div
+      className="makeStyles-container-5"
+    >
+      <GridContainer
+        className=""
+      >
+        <GridItem
+          className=""
+          md={6}
+          sm={12}
+          xs={12}
+        >
+          <h1
+            className="makeStyles-title-6"
+          >
+            SVM Loss Demo
+          </h1>
+          <WithStyles(ForwardRef(Typography))
+            className="makeStyles-subtitle-7"
+            component="p"
+            variant="body2"
+          >
+            This projects implements the visualization of optimization loss for a linear multiclass classifier using Python and Flask. The idea is based on the 
+            <b>
+              Multiclass Linear Classification Optimization Loss Visualization
+            </b>
+             
+            <a
+              href="http://vision.stanford.edu/teaching/cs231n-demos/linear-classify/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              web demo
+            </a>
+             by Justin Johnson. The text below is taken from that demo page as well.
+          </WithStyles(ForwardRef(Typography))>
+        </GridItem>
+      </GridContainer>
+    </div>
+  </Parallax>
+  <div
+    className="makeStyles-main-8 makeStyles-mainRaised-9"
+  >
+    <div
+      className="makeStyles-container-5 makeStyles-pt2-2"
+    >
+      <Demo />
+    </div>
+  </div>
+  <Footer />
+</div>
+`;

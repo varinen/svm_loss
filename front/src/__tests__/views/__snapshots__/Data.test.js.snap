@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Data renders correctly 1`] = `
+<Card>
+  <CardHeader
+    color="info"
+  >
+    Data Point And Loss Values
+  </CardHeader>
+  <CardBody
+    className="makeStyles-pt2-2"
+  >
+    <_default />
+  </CardBody>
+</Card>
+`;

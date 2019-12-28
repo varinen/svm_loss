@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Params renders correctly 1`] = `
+<Card>
+  <CardHeader
+    color="info"
+  >
+    Classifier Parameters
+  </CardHeader>
+  <CardBody
+    className="makeStyles-pt2-2"
+  >
+    <_default />
+  </CardBody>
+</Card>
+`;

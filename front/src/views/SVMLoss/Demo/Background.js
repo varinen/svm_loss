@@ -1,13 +1,13 @@
 import React from 'react'
-
-import {makeStyles, Typography} from "@material-ui/core";
-
-import styles from "svm_assets/jss/views/demo.js";
-
 import MathJax from 'react-mathjax';
+
+import {makeStyles} from "@material-ui/core";
+
 import Card from "../../../components/Card/Card.js";
 import CardBody from "../../../components/Card/CardBody.js";
 import CardHeader from "../../../components/Card/CardHeader.js";
+
+import styles from "svm_assets/jss/views/demo.js";
 
 const useStyles = makeStyles(styles);
 

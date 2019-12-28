@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import useStyles from "./styles";
 import {Grid, Typography} from "@material-ui/core";
 
 import Background from "./Demo/Background";
@@ -9,7 +8,6 @@ import Data from "./Demo/Data";
 
 
 export default function Demo() {
-    const classes = useStyles();
     return (
         <Fragment>
             <Grid container spacing={3} alignItems="stretch">
@@ -19,15 +17,15 @@ export default function Demo() {
 
                 <Grid item container spacing={2}>
                     <Grid item xs={7}>
-                        <Visio />
+                        <Visio/>
                     </Grid>
                     <Grid item xs={5} sm container>
                         <Grid item xs container direction="column" alignItems="stretch">
                             <Grid item xs>
-                                <Params />
+                                <Params/>
                             </Grid>
                             <Grid item xs>
-                                <Data />
+                                <Data/>
                             </Grid>
                         </Grid>
                     </Grid>

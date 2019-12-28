@@ -7,7 +7,7 @@ import {makeStyles} from "@material-ui/core/styles";
 // @material-ui/icons
 import {Typography} from "@material-ui/core";
 // core components
-import Footer from "components/Footer/Footer.js";
+
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 
@@ -18,7 +18,7 @@ import styles from "svm_assets/jss/views/demo.js";
 import Demo from "./Demo";
 import HeaderLinks from "./Header/HeaderLinks.js";
 import Header from "./Header/Header.js";
-
+import Footer from "./Demo/Footer";
 
 const dashboardRoutes = [];
 const useStyles = makeStyles(styles);

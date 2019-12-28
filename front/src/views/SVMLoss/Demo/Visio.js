@@ -1,20 +1,26 @@
 import React from "react";
-import {Card, CardHeader, CardContent} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 
-import useStyles from "../styles";
+import Card from "../../../components/Card/Card.js";
+import CardBody from "../../../components/Card/CardBody.js";
+import CardHeader from "../../../components/Card/CardHeader.js";
+
 import Article from "./Visio/Article";
+import styles from "svm_assets/jss/views/demo.js";
+
+const useStyles = makeStyles(styles);
 
 const Visio = () => {
-    const classes = useStyles();
-    return (
-        <Card className={classes.card}>
-            <CardHeader title="Data and Classifier Visualization">
-            </CardHeader>
-            <CardContent>
-                <Article/>
-            </CardContent>
-        </Card>
-    )
-};
+        const classes = useStyles();
+        return (
+            <Card>
+                <CardHeader color="info">Data and Classifier Visualization</CardHeader>
+                <CardBody className={classes.pt2}>
+                    <Article/>
+                </CardBody>
+            </Card>
+        )
+    }
+;
 
 export default Visio;

@@ -1,7 +1,15 @@
 import React from 'react'
+
+import {makeStyles, Typography} from "@material-ui/core";
+
+import styles from "svm_assets/jss/views/demo.js";
+
 import MathJax from 'react-mathjax';
-import useStyles from "../styles";
-import {Card, CardHeader, CardActionArea, CardContent, Typography} from "@material-ui/core";
+import Card from "../../../components/Card/Card.js";
+import CardBody from "../../../components/Card/CardBody.js";
+import CardHeader from "../../../components/Card/CardHeader.js";
+
+const useStyles = makeStyles(styles);
 
 const formulas = {
     f1: `f(x_i;W,b)=Wx_i+b`,
@@ -24,13 +32,11 @@ const formulas = {
 export default () => {
     const classes = useStyles();
     return (
-        <Card className={classes.card}>
-            <CardHeader title="Background of the Demo">
-            </CardHeader>
-            <CardContent>
+        <Card>
+            <CardHeader color="primary">Background of the Demo</CardHeader>
+            <CardBody className={classes.pt2}>
                 <MathJax.Provider>
-
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <p>
                         The class scores for linear classifiers are
                         computed as <MathJax.Node inline formula={formulas.f1}/>, where
                         the parameters consist of weights <MathJax.Node inline formula={formulas.f2}/> and
@@ -47,11 +53,12 @@ export default () => {
                         the <MathJax.Node inline formula={formulas.f7}/>,
                         vector that holds the class scores, the loss has
                         the form:
-                    </Typography>
+                    </p>
+
                     <div style={{width: "100%", overflowX: "auto"}}>
                         <MathJax.Node formula={formulas.f9}/>
                     </div>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <p>
                         Where <MathJax.Node inline formula={formulas.f10}/> is
                         the number of examples, and <MathJax.Node inline formula={formulas.f11}/> is a
                         hyperparameter that controls the strength of the <MathJax.Node inline formula={formulas.f12}/>
@@ -66,9 +73,9 @@ export default () => {
                         runner-up class. You can also choose to use the
                         cross-entropy loss which is used by the Softmax
                         classifier.
-                    </Typography>
+                    </p>
                 </MathJax.Provider>
-            </CardContent>
+            </CardBody>
         </Card>
     )
 }

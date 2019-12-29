@@ -20,6 +20,8 @@ import HeaderLinks from "./Header/HeaderLinks.js";
 import Header from "./Header/Header.js";
 import Footer from "./Demo/Footer";
 
+import DevTools from 'containers/DevTools'
+
 const dashboardRoutes = [];
 const useStyles = makeStyles(styles);
 
@@ -66,6 +68,7 @@ export default function App(props) {
                 </div>
             </div>
             <Footer/>
+            { (process.env.NODE_ENV !== 'production') && <DevTools /> }
         </div>
     );
 }

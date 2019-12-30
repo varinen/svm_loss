@@ -26,7 +26,6 @@ export default () => {
                     className={classNames(classes.textRed, classes.fontItalic)}>red, italic</span> below.
                     Click the triangles to control the parameters.
                 </p>
-
             </article>
         </MathJax.Provider>
     )

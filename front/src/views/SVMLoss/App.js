@@ -64,7 +64,7 @@ export default function App(props) {
             </Parallax>
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div className={classNames(classes.container, classes.pt2)}>
-                    <Demo/>
+                    <Demo store={props.store}/>
                 </div>
             </div>
             <Footer/>

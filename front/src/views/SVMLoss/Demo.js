@@ -7,7 +7,8 @@ import Params from './Demo/Params';
 import Data from "./Demo/Data";
 
 
-export default function Demo() {
+export default function Demo(props) {
+    console.log('Demo props', props);
     return (
         <Fragment>
             <Grid container spacing={3} alignItems="stretch">
@@ -22,7 +23,7 @@ export default function Demo() {
                     <Grid item md={5} sm={12} container>
                         <Grid item xs container direction="column" alignItems="stretch">
                             <Grid item xs>
-                                <Params/>
+                                <Params store={props.store}/>
                             </Grid>
                             <Grid item xs>
                                 <Data/>

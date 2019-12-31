@@ -1,3 +1,7 @@
+const psm = {
+    padding: ".5rem"
+};
+
 const pt1 = {
     paddingTop: "1rem"
 };
@@ -47,6 +51,7 @@ const mb4 = {
     marginBottom: "4rem"
 };
 export {
+    psm,
     pt1,
     pt2,
     pt3,

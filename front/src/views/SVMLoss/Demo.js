@@ -26,7 +26,7 @@ export default function Demo(props) {
                                 <Params store={props.store}/>
                             </Grid>
                             <Grid item xs>
-                                <Data/>
+                                <Data  store={props.store}/>
                             </Grid>
                         </Grid>
                     </Grid>

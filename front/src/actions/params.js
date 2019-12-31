@@ -18,9 +18,3 @@ export const fetchParams = (rand = 0) => thunkCreator({
     promise: fetch(`${apiGetParams}?rand=${rand}`)
         .then(response => response.json())
 });
-
-export const fetchInitState = () => (dispatch) =>
-    fetchParams()(dispatch)
-        .catch(err =>
-            console.error('could not fetch init state:', err.message)
-        );

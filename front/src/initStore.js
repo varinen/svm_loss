@@ -2,7 +2,7 @@ import {fetchInitState} from './actions'
 
 export default function initStore(store) {
     const state = store.getState();
-    if (!state.posts || state.posts.length <= 0) {
+    if (!state.params || !state.params.weights || state.params.weights.length <= 0) {
         return store.dispatch(fetchInitState())
     }
 }

@@ -1,8 +1,11 @@
 import {container, title} from "assets/jss/material-kit-react.js";
-import {pt1, pt2, pt3, pt4, mt1, mt2, mt3, mt4, mb1, mb2, mb3, mb4} from "../layout";
-import {textRed, fontItalic} from "../common";
+import {psm, pt1, pt2, pt3, pt4, mt1, mt2, mt3, mt4, mb1, mb2, mb3, mb4} from "../layout";
+import {textRed, fontItalic, borderRight} from "../common";
 
 const demoStyles = {
+    psm: {
+        ...psm
+    },
     pt1: {
         ...pt1
     },
@@ -75,6 +78,9 @@ const demoStyles = {
     },
     fontItalic: {
         ...fontItalic
+    },
+    borderRight: {
+        ...borderRight
     }
 };
 

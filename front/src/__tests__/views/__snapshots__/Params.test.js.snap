@@ -11,6 +11,7 @@ exports[`Params renders correctly 1`] = `
     className="makeStyles-pt2-2"
   >
     <_default />
+    <Connect(ParamsControl) />
   </CardBody>
 </Card>
 `;

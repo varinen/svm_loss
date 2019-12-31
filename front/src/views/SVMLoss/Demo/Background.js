@@ -61,8 +61,10 @@ export default () => {
                     <p>
                         Where <MathJax.Node inline formula={formulas.f10}/> is
                         the number of examples, and <MathJax.Node inline formula={formulas.f11}/> is a
-                        hyperparameter that controls the strength of the <MathJax.Node inline formula={formulas.f12}/>
-                        regularization penalty <MathJax.Node inline formula={formulas.f13}/>
+                        hyperparameter that controls the strength of the <MathJax.Node inline formula={formulas.f12}/> regularization
+                        penalty <MathJax.Node inline formula={formulas.f13}/>.
+                    </p>
+                    <p>
                         On the bottom right of this demo you can also
                         flip to different formulations for the Multiclass
                         SVM including One vs All (OVA) where a separate

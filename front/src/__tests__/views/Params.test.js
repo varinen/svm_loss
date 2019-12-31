@@ -8,5 +8,5 @@ describe('Params', () => {
     it('renders correctly', () => {
         expect(component).toMatchSnapshot();
     });
-});
 
+});

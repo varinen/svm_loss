@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Params control renders correct grid renders correctly 1`] = `
+<Fragment>
+  <GridContainer
+    className=""
+    container={true}
+    key="params-0"
+    spacing={2}
+  >
+    <GridItem
+      className=""
+      key="w[0, 0]"
+      xs={4}
+    >
+      <WithStyles(ForwardRef(TextField))
+        label="w[0, 0]"
+        onChange={[Function]}
+        step="0.1"
+        type="number"
+        value={1}
+      />
+    </GridItem>
+    <GridItem
+      className=""
+      key="w[0, 1]"
+      xs={4}
+    >
+      <WithStyles(ForwardRef(TextField))
+        label="w[0, 1]"
+        onChange={[Function]}
+        step="0.1"
+        type="number"
+        value={2}
+      />
+    </GridItem>
+    <GridItem
+      className=""
+      key="b[0]"
+      xs={4}
+    >
+      <WithStyles(ForwardRef(TextField))
+        label="b[0]"
+        onChange={[Function]}
+        step="0.1"
+        type="number"
+        value={1}
+      />
+    </GridItem>
+  </GridContainer>
+  <GridContainer
+    className=""
+    container={true}
+    key="params-1"
+    spacing={2}
+  >
+    <GridItem
+      className=""
+      key="w[1, 0]"
+      xs={4}
+    >
+      <WithStyles(ForwardRef(TextField))
+        label="w[1, 0]"
+        onChange={[Function]}
+        step="0.1"
+        type="number"
+        value={3}
+      />
+    </GridItem>
+    <GridItem
+      className=""
+      key="w[1, 1]"
+      xs={4}
+    >
+      <WithStyles(ForwardRef(TextField))
+        label="w[1, 1]"
+        onChange={[Function]}
+        step="0.1"
+        type="number"
+        value={4}
+      />
+    </GridItem>
+    <GridItem
+      className=""
+      key="b[1]"
+      xs={4}
+    >
+      <WithStyles(ForwardRef(TextField))
+        label="b[1]"
+        onChange={[Function]}
+        step="0.1"
+        type="number"
+        value={2}
+      />
+    </GridItem>
+  </GridContainer>
+</Fragment>
+`;

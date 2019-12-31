@@ -94,5 +94,15 @@ exports[`Params control renders correct grid renders correctly 1`] = `
       />
     </GridItem>
   </GridContainer>
+  <WithStyles(ForwardRef(Divider))
+    className="ParamsControl-mt1-5 ParamsControl-mb1-9"
+  />
+  <ForwardRef
+    color="primary"
+    id="rand-params"
+    onClick={[Function]}
+  >
+    Randomize
+  </ForwardRef>
 </Fragment>
 `;

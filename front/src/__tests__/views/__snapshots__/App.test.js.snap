@@ -20,7 +20,7 @@ exports[`App renders correctly 1`] = `
     image="gray.png"
   >
     <div
-      className="makeStyles-container-5"
+      className="makeStyles-container-13"
     >
       <GridContainer
         className=""
@@ -32,12 +32,12 @@ exports[`App renders correctly 1`] = `
           xs={12}
         >
           <h1
-            className="makeStyles-title-6"
+            className="makeStyles-title-14"
           >
             SVM Loss Demo
           </h1>
           <WithStyles(ForwardRef(Typography))
-            className="makeStyles-subtitle-7"
+            className="makeStyles-subtitle-15"
             component="p"
             variant="body2"
           >
@@ -60,10 +60,10 @@ exports[`App renders correctly 1`] = `
     </div>
   </Parallax>
   <div
-    className="makeStyles-main-8 makeStyles-mainRaised-9"
+    className="makeStyles-main-16 makeStyles-mainRaised-17"
   >
     <div
-      className="makeStyles-container-5 makeStyles-pt2-2"
+      className="makeStyles-container-13 makeStyles-pt2-2"
     >
       <Demo />
     </div>

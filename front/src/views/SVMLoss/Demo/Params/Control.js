@@ -55,7 +55,7 @@ class ParamsControl extends React.Component {
                     )
                 })}
                 <Divider className={classNames(classes.mt1, classes.mb1)}/>
-                <Button color="primary" onClick={this.randomizeParams}>Randomize</Button>
+                <Button id="rand-params" color="primary" onClick={this.randomizeParams}>Randomize</Button>
             </Fragment>
         )
     }

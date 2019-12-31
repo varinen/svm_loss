@@ -1,15 +1,29 @@
 import React, {Fragment} from 'react';
+import classNames from "classnames";
+import TextField from '@material-ui/core/TextField';
+import Divider from '@material-ui/core/Divider';
+import {withStyles} from '@material-ui/styles';
+
+import styles from "svm_assets/jss/views/demo.js";
+
+import Button from "components/CustomButtons/Button.js";
 import GridContainer from 'components/Grid/GridContainer'
 import GridItem from "components/Grid/GridItem";
-import TextField from '@material-ui/core/TextField';
 
 class ParamsControl extends React.Component {
 
     updateParams = (rowIndex, colIndex, type) => (evt) => {
-        this.props.updateParams(rowIndex, colIndex, type, evt.target.value);
+        let val = Number.isInteger(parseInt(evt.target.value, 10)) ? parseFloat(evt.target.value): 0;
+        console.log(val);
+        this.props.updateParams(rowIndex, colIndex, type, val);
     };
+
+    randomizeParams = () => {
+        this.props.fetchParams(1)
+    };
+
     render() {
-        const {weights, biases} = this.props.params;
+        const {classes, params: {weights, biases}} = this.props;
         const paramRows = weights.map(
             (weightRow, rowIndex) => [...weightRow, biases[rowIndex]]
         );
@@ -40,9 +54,11 @@ class ParamsControl extends React.Component {
                         </GridContainer>
                     )
                 })}
+                <Divider className={classNames(classes.mt1, classes.mb1)}/>
+                <Button color="primary" onClick={this.randomizeParams}>Randomize</Button>
             </Fragment>
         )
     }
 }
 
-export default ParamsControl;
+export default withStyles(styles)(ParamsControl);

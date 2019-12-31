@@ -1,5 +1,5 @@
 import {container, title} from "assets/jss/material-kit-react.js";
-import {pt1, pt2, pt3, pt4} from "../layout";
+import {pt1, pt2, pt3, pt4, mt1, mt2, mt3, mt4, mb1, mb2, mb3, mb4} from "../layout";
 import {textRed, fontItalic} from "../common";
 
 const demoStyles = {
@@ -14,6 +14,30 @@ const demoStyles = {
     },
     pt4: {
         ...pt4
+    },
+    mt1: {
+        ...mt1
+    },
+    mt2: {
+        ...mt2
+    },
+    mt3: {
+        ...mt3
+    },
+    mt4: {
+        ...mt4
+    },
+    mb1: {
+        ...mb1
+    },
+    mb2: {
+        ...mb2
+    },
+    mb3: {
+        ...mb3
+    },
+    mb4: {
+        ...mb4
     },
     container: {
         zIndex: "12",

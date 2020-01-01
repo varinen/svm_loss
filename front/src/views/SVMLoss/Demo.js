@@ -18,7 +18,7 @@ export default function Demo(props) {
 
                 <Grid item container spacing={2}>
                     <Grid item md={7} sm={12}>
-                        <Visio/>
+                        <Visio store={props.store}/>
                     </Grid>
                     <Grid item md={5} sm={12} container>
                         <Grid item xs container direction="column" alignItems="stretch">

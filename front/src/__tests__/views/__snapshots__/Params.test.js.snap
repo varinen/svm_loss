@@ -8,7 +8,7 @@ exports[`Params renders correctly 1`] = `
     Classifier Parameters
   </CardHeader>
   <CardBody
-    className="makeStyles-pt2-2"
+    className="makeStyles-pt2-3"
   >
     <_default />
     <Connect(WithStyles(ParamsControl)) />

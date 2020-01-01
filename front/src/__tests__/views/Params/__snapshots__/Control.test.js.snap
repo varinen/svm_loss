@@ -95,7 +95,7 @@ exports[`Params control renders correct grid renders correctly 1`] = `
     </GridItem>
   </GridContainer>
   <WithStyles(ForwardRef(Divider))
-    className="ParamsControl-mt1-5 ParamsControl-mb1-9"
+    className="ParamsControl-mt1-6 ParamsControl-mb1-10"
   />
   <ForwardRef
     color="primary"

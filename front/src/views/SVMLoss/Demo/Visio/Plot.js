@@ -1,27 +1,22 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {withStyles} from "@material-ui/styles";
+import styles from "svm_assets/jss/views/demo.js";
 
 class Plot extends React.Component {
     render () {
+        const {classes} = this.props;
         return (
             <article>
-                <div>
                     {this.props.plot ? (
                     <img alt="Plot" id="plot"
-                         style={{
-                             border: "0",
-                             borderStyle: "none",
-                             maxWidth: "100%",
-                             height: "auto",
-                             verticalAlign: "middle"
-                         }}
+                         className={classes.plot}
                          src={this.props.plot &&
                          `data:image/png;base64,${this.props.plot}`}/>
-                        ): <CircularProgress />}
-                </div>
+                        ): <CircularProgress id="loading-plot" />}
             </article>
         )
     }
 }
 
-export default Plot;
+export default withStyles(styles)(Plot);

@@ -11,7 +11,7 @@ exports[`Visio renders correctly 1`] = `
     className="makeStyles-pt2-3"
   >
     <_default />
-    <Connect(Plot) />
+    <Connect(WithStyles(Plot)) />
   </CardBody>
 </Card>
 `;

@@ -81,6 +81,13 @@ const demoStyles = {
     },
     borderRight: {
         ...borderRight
+    },
+    plot: {
+        border: "0",
+        borderStyle: "none",
+        maxWidth: "100%",
+        height: "auto",
+        verticalAlign: "middle"
     }
 };
 

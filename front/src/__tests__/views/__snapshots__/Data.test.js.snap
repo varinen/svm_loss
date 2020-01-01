@@ -8,9 +8,10 @@ exports[`Data renders correctly 1`] = `
     Data Point And Loss Values
   </CardHeader>
   <CardBody
-    className="makeStyles-pt2-2"
+    className="makeStyles-pt2-3"
   >
     <_default />
+    <Connect(WithStyles(DataControl)) />
   </CardBody>
 </Card>
 `;

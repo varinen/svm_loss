@@ -39,10 +39,12 @@ class DataControl extends React.Component {
                     </TableHead>
                     <TableBody>
                         {dataPoints.map((row, index) => (
-                            <TableRow key={`data-row${index}`}>
+                            <TableRow key={`data-row${index}`} data-table-data-row="1">
                                 {row.map((val, colIndex) => (
                                     <TableCell
+                                        key={`data-cell-${index}-${colIndex}`}
                                         align="right"
+                                        data-table-data-cell="1"
                                         className={colIndex === 2 || colIndex === 5 ? classNames(classes.borderRight, classes.psm) : classNames(classes.psm)}>{val}</TableCell>
                                 ))}
                             </TableRow>

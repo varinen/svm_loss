@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hyper renders correctly renders correctly 1`] = `
+<Card
+  className="Hyper-mt3-8"
+>
+  <CardHeader
+    color="info"
+  >
+    Optimization & Hyper Parameters
+  </CardHeader>
+  <CardBody
+    className="Hyper-pt2-3"
+  >
+    <GridContainer
+      className=""
+      container={true}
+      spacing={2}
+    >
+      <GridItem
+        className=""
+        key="loss_type"
+        xs={4}
+      >
+        <WithStyles(ForwardRef(FormControl))
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(InputLabel))>
+            Loss formulation
+          </WithStyles(ForwardRef(InputLabel))>
+          <WithStyles(ForwardRef(Select))
+            name="loss_type"
+            onChange={[Function]}
+            value="ww"
+          >
+            <WithStyles(ForwardRef(MenuItem))
+              value="ww"
+            >
+              Weston Watkins 1999
+            </WithStyles(ForwardRef(MenuItem))>
+            <WithStyles(ForwardRef(MenuItem))
+              value="ova"
+            >
+              One-vs-All
+            </WithStyles(ForwardRef(MenuItem))>
+          </WithStyles(ForwardRef(Select))>
+        </WithStyles(ForwardRef(FormControl))>
+      </GridItem>
+      <GridItem
+        className=""
+        key="learning_rate"
+        xs={4}
+      >
+        <WithStyles(ForwardRef(TextField))
+          label="Learning rate"
+          name="learning_rate"
+          onChange={[Function]}
+          step="0.1"
+          type="number"
+          value={0.1}
+        />
+      </GridItem>
+      <GridItem
+        className=""
+        key="reg_c"
+        xs={4}
+      >
+        <WithStyles(ForwardRef(TextField))
+          label="Regularization strength"
+          name="reg_c"
+          onChange={[Function]}
+          step="0.1"
+          type="number"
+          value={0.1}
+        />
+      </GridItem>
+    </GridContainer>
+  </CardBody>
+</Card>
+`;

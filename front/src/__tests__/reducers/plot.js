@@ -14,23 +14,25 @@ beforeEach(() => {
 });
 
 test('initial state has to have the plot data object as an empty string', () => {
-    expect(store.getState()).toEqual('');
+    const plotState = {image: '', updateNeeded: false};
+    expect(store.getState()).toEqual(plotState);
 });
 
 test('fetchPlot action should populate the plot string', () => {
     const rand = 0;
-    const plot = {plot: 'plotdata'};
-    const params = {weights:[], biases:[]}
+    const plotResponse = {plot: 'plotdata'};
+    const plotState = {image: 'plotdata', updateNeeded: false};
+    const params = {weights:[], biases:[]};
     const data = [];
 
     nock(`${apiUrl}`)
         .post(`${pathFetchPlot}`, {params: params, data: data})
-        .reply(200, plot);
+        .reply(200, plotResponse);
 
     expect.assertions(1);
     const action = fetchPlot(params, data);
     return store.dispatch(action)
         .then(() => {
-            expect(store.getState()).toEqual(plot.plot);
+            expect(store.getState()).toEqual(plotState);
         });
 });

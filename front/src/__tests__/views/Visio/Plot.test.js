@@ -6,7 +6,7 @@ describe('Plot renders correctly', () => {
     let component, props, shallow;
     beforeEach(() => {
         props = {
-            plot: ''
+            plot: {image:'', updateNeeded: false}
         };
         shallow = createShallow({dive: true});
         component = shallow(<Plot {...props}/>);
@@ -23,7 +23,7 @@ describe('Plot renders a loading component when the plot is empty', () => {
     let component, props, shallow;
     beforeEach(() => {
         props = {
-            plot: ''
+            plot: {image:'', updateNeeded: false}
         };
         shallow = createShallow({dive: true});
         component = shallow(<Plot {...props}/>);
@@ -44,7 +44,7 @@ describe('Plot renders a plot image when the plot is not empty', () => {
     let component, props, shallow;
     beforeEach(() => {
         props = {
-            plot: 'some plot'
+            plot: {image:'some plot', updateNeeded: false}
         };
         shallow = createShallow({dive: true});
         component = shallow(<Plot {...props}/>);

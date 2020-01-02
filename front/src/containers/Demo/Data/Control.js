@@ -9,7 +9,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props, state) =>
-    bindActionCreators({fetchData, activateUpdateNeeded}, dispatch);
+    bindActionCreators({fetchData}, dispatch);
 
 const ConnectedDataControl = connect(mapStateToProps, mapDispatchToProps)(DataControl);
 

@@ -7,7 +7,7 @@ describe('Data control renders correct grid', () => {
     const mockFetchData = jest.fn();
     const props = {
         data: [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
-        fetchData: mockFetchData
+        fetchData: mockFetchData,
     };
     beforeEach(() => {
         shallow = createShallow({dive: true});
@@ -24,9 +24,9 @@ describe('Data control renders correct grid', () => {
 
 
     it('Click on randomize button causes the fetchData be called', () => {
-        const b0 = 10;
+        const additional = [{"type": "ACTIVATE_PLOT_UPDATE"}];
         component.find('#rand-data')
             .simulate('click');
-        expect(mockFetchData).toHaveBeenCalledWith(1);
+        expect(mockFetchData).toHaveBeenCalledWith(1, additional);
     });
 });

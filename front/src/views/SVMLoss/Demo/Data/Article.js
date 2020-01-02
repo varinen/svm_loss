@@ -13,11 +13,16 @@ export default () => (
     <MathJax.Provider>
         <article>
             <p>
-                Each row is loss due to one data point. The first three columns are the 2D data
-                <MathJax.Node inline formula={formulas.f1}/> and the label <MathJax.Node inline formula={formulas.f2}/>.
-                The next three columns are the three class scores from each classifier
-                <MathJax.Node inline formula={formulas.f3}/> (E.g., <MathJax.Node inline formula={formulas.f4}/>).
-                The last column is the data loss for a single example, <MathJax.Node inline formula={formulas.f5}/>
+                Each row is loss due to one data point. The first three columns are the 2D
+                data <MathJax.Node inline formula={formulas.f1}/> and the
+                label <MathJax.Node inline formula={formulas.f2}/>.
+            </p>
+            <p>
+                The next three columns are the three class scores from each
+                classifier <MathJax.Node inline formula={formulas.f3}/><br/> (e.g., <MathJax.Node inline formula={formulas.f4}/>).
+            </p>
+            <p>
+                The last column is the data loss for a single example, <MathJax.Node inline formula={formulas.f5}/>.
             </p>
         </article>
     </MathJax.Provider>

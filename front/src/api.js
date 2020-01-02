@@ -7,3 +7,6 @@ export const apiGetData = `${apiUrl}${pathGetData}`;
 
 export const pathFetchPlot = '/get_plot';
 export const apiFetchPlot = `${apiUrl}${pathFetchPlot}`;
+
+export const pathFetchStep = '/get_step';
+export const apiFetchStep = `${apiUrl}${pathFetchPlot}`;

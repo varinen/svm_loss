@@ -24,6 +24,7 @@ exports[`Demo renders correctly 1`] = `
         sm={12}
       >
         <Visio />
+        <Connect(WithStyles(Hyper)) />
       </WithStyles(ForwardRef(Grid))>
       <WithStyles(ForwardRef(Grid))
         container={true}

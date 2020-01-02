@@ -6,6 +6,7 @@ export * from './params';
 export * from './data';
 export * from './plot';
 export * from './hyper';
+export * from './step';
 
 export const fetchInitState = (store) => (dispatch) =>
     fetchParams()(dispatch)

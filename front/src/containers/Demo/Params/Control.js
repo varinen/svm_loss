@@ -4,8 +4,8 @@ import {bindActionCreators} from 'redux'
 import {fetchParams, updateParams, activateUpdateNeeded} from "actions";
 
 const mapStateToProps = (state, props) => {
-    const {params} = state;
-    return {params};
+    const {params, step} = state;
+    return {params, step};
 };
 
 const mapDispatchToProps = (dispatch, props, state) =>

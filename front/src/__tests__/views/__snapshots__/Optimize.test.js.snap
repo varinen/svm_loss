@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Optimize renders correctly 1`] = `
+<Optimize
+  classes={
+    Object {
+      "borderRight": "Optimize-borderRight-21",
+      "container": "Optimize-container-14",
+      "fontItalic": "Optimize-fontItalic-20",
+      "main": "Optimize-main-17",
+      "mainRaised": "Optimize-mainRaised-18",
+      "mb1": "Optimize-mb1-10",
+      "mb2": "Optimize-mb2-11",
+      "mb3": "Optimize-mb3-12",
+      "mb4": "Optimize-mb4-13",
+      "mt1": "Optimize-mt1-6",
+      "mt2": "Optimize-mt2-7",
+      "mt3": "Optimize-mt3-8",
+      "mt4": "Optimize-mt4-9",
+      "plot": "Optimize-plot-22",
+      "psm": "Optimize-psm-1",
+      "pt1": "Optimize-pt1-2",
+      "pt2": "Optimize-pt2-3",
+      "pt3": "Optimize-pt3-4",
+      "pt4": "Optimize-pt4-5",
+      "subtitle": "Optimize-subtitle-16",
+      "textRed": "Optimize-textRed-19",
+      "title": "Optimize-title-15",
+    }
+  }
+/>
+`;

@@ -18,7 +18,6 @@ afterEach(() => {
 });
 
 describe('Plot fetch action test', () => {
-    const rand = 0;
     const plot = {plot: 'plotdata'};
 
     test('dispatch get_plot success', () => {

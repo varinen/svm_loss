@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Step renders correctly renders correctly 1`] = `
+<Fragment>
+  <h4>
+    Optimize
+  </h4>
+  <p>
+    Iterations: 
+    0
+  </p>
+  <ForwardRef
+    color="primary"
+    id="singe-step"
+    onClick={[Function]}
+  >
+    Single Step
+  </ForwardRef>
+</Fragment>
+`;

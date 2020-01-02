@@ -4,7 +4,12 @@ import {bindActionCreators} from 'redux'
 import {fetchParams, updateParams, activateUpdateNeeded} from "actions";
 
 const mapStateToProps = (state, props) => {
-    const {params, step} = state;
+    let  {params, step} = state;
+    if (!step.grad_b ) {
+        step.grad_b = [];
+        step.grad_w = [];
+    }
+    console.log('step before map:', step);
     return {params, step};
 };
 

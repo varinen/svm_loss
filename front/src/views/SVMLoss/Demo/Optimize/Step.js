@@ -13,7 +13,6 @@ class Step extends React.Component {
     };
     render() {
         const {classes} = this.props;
-        console.log('Optimize props',this.props);
         return (
             <Fragment>
                 <h4>Optimize</h4>

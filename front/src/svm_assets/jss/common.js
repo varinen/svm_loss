@@ -1,6 +1,9 @@
 const textRed = {
     color: "#b71c1c"
 };
+const textSmall = {
+    fontSize: "0.75rem"
+};
 
 const fontItalic = {
     fontStyle: "italic"
@@ -12,6 +15,7 @@ const borderRight = {
 
 export {
     textRed,
+    textSmall,
     fontItalic,
     borderRight
 }

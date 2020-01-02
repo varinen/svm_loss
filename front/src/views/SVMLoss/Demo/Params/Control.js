@@ -14,7 +14,7 @@ import {ACTIVATE_PLOT_UPDATE} from "../../../../actionTypes";
 class ParamsControl extends React.Component {
 
     updateParams = (rowIndex, colIndex, type) => (evt) => {
-        let val = Number.isInteger(parseInt(evt.target.value, 10)) ? parseFloat(evt.target.value): 0;
+        let val = Number.isInteger(parseInt(evt.target.value, 10)) ? parseFloat(evt.target.value) : 0;
         const prom = new Promise(resolve => {
             this.props.updateParams(rowIndex, colIndex, type, val);
             resolve()
@@ -27,7 +27,7 @@ class ParamsControl extends React.Component {
     };
 
     render() {
-        const {classes, params: {weights, biases}} = this.props;
+        const {classes, params: {weights, biases}, step: {grad_b, grad_w}} = this.props;
         const paramRows = weights.map(
             (weightRow, rowIndex) => [...weightRow, biases[rowIndex]]
         );
@@ -51,7 +51,11 @@ class ParamsControl extends React.Component {
                                                    type="number"
                                                    step="0.1"
                                                    onChange={this.updateParams(rowIndex, colIndex, type)}
-                                                   value={entry}/>
+                                                   value={parseFloat(entry).toFixed(4)}/>
+                                        {grad_b.length > 0 && grad_w.length > 0 && (
+                                            <span className={classNames(classes.textRed, classes.fontItalic, classes.textSmall)}>
+                                                {type === weights ? parseFloat(grad_w[rowIndex][colIndex]).toFixed(2) : parseFloat(grad_b[rowIndex][0]).toFixed(2)}
+                                            </span>)}
                                     </GridItem>
                                 )
                             })}

@@ -4,9 +4,9 @@ exports[`Optimize renders correctly 1`] = `
 <Optimize
   classes={
     Object {
-      "borderRight": "Optimize-borderRight-21",
+      "borderRight": "Optimize-borderRight-22",
       "container": "Optimize-container-14",
-      "fontItalic": "Optimize-fontItalic-20",
+      "fontItalic": "Optimize-fontItalic-21",
       "main": "Optimize-main-17",
       "mainRaised": "Optimize-mainRaised-18",
       "mb1": "Optimize-mb1-10",
@@ -17,7 +17,7 @@ exports[`Optimize renders correctly 1`] = `
       "mt2": "Optimize-mt2-7",
       "mt3": "Optimize-mt3-8",
       "mt4": "Optimize-mt4-9",
-      "plot": "Optimize-plot-22",
+      "plot": "Optimize-plot-23",
       "psm": "Optimize-psm-1",
       "pt1": "Optimize-pt1-2",
       "pt2": "Optimize-pt2-3",
@@ -25,6 +25,7 @@ exports[`Optimize renders correctly 1`] = `
       "pt4": "Optimize-pt4-5",
       "subtitle": "Optimize-subtitle-16",
       "textRed": "Optimize-textRed-19",
+      "textSmall": "Optimize-textSmall-20",
       "title": "Optimize-title-15",
     }
   }

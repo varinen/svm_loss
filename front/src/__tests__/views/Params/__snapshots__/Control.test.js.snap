@@ -18,7 +18,7 @@ exports[`Params control renders correct grid renders correctly 1`] = `
         onChange={[Function]}
         step="0.1"
         type="number"
-        value={1}
+        value="1.0000"
       />
     </GridItem>
     <GridItem
@@ -31,7 +31,7 @@ exports[`Params control renders correct grid renders correctly 1`] = `
         onChange={[Function]}
         step="0.1"
         type="number"
-        value={2}
+        value="2.0000"
       />
     </GridItem>
     <GridItem
@@ -44,7 +44,7 @@ exports[`Params control renders correct grid renders correctly 1`] = `
         onChange={[Function]}
         step="0.1"
         type="number"
-        value={1}
+        value="1.0000"
       />
     </GridItem>
   </GridContainer>
@@ -64,7 +64,7 @@ exports[`Params control renders correct grid renders correctly 1`] = `
         onChange={[Function]}
         step="0.1"
         type="number"
-        value={3}
+        value="3.0000"
       />
     </GridItem>
     <GridItem
@@ -77,7 +77,7 @@ exports[`Params control renders correct grid renders correctly 1`] = `
         onChange={[Function]}
         step="0.1"
         type="number"
-        value={4}
+        value="4.0000"
       />
     </GridItem>
     <GridItem
@@ -90,7 +90,7 @@ exports[`Params control renders correct grid renders correctly 1`] = `
         onChange={[Function]}
         step="0.1"
         type="number"
-        value={2}
+        value="2.0000"
       />
     </GridItem>
   </GridContainer>

@@ -11,6 +11,7 @@ describe('Params control renders correct grid', () => {
     beforeEach(() => {
         props = {
             params: {weights: [[1, 2], [3, 4]], biases: [1, 2]},
+            step: {grad_b: [], grad_w: []},
             updateParams: mockUpdateParams,
             fetchParams: mockFetchParams,
             activateUpdateNeeded: mockActivateUpdateNeeded
@@ -45,7 +46,7 @@ describe('Params control renders correct grid', () => {
     });
 
     it('Click on randomize button causes the fetchParams be called', () => {
-        const additional =  [{"type": "ACTIVATE_PLOT_UPDATE"}];
+        const additional = [{"type": "ACTIVATE_PLOT_UPDATE"}];
         component.find('#rand-params')
             .simulate('click');
         expect(mockFetchParams).toHaveBeenCalledWith(1, additional);

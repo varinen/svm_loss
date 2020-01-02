@@ -21,7 +21,7 @@ exports[`Data control renders correct grid renders correctly 1`] = `
         </WithStyles(ForwardRef(TableCell))>
         <WithStyles(ForwardRef(TableCell))
           align="right"
-          className="DataControl-borderRight-21 DataControl-psm-1"
+          className="DataControl-borderRight-22 DataControl-psm-1"
         >
           y
         </WithStyles(ForwardRef(TableCell))>
@@ -39,7 +39,7 @@ exports[`Data control renders correct grid renders correctly 1`] = `
         </WithStyles(ForwardRef(TableCell))>
         <WithStyles(ForwardRef(TableCell))
           align="right"
-          className="DataControl-borderRight-21 DataControl-psm-1"
+          className="DataControl-borderRight-22 DataControl-psm-1"
         >
           s[3]
         </WithStyles(ForwardRef(TableCell))>
@@ -74,7 +74,7 @@ exports[`Data control renders correct grid renders correctly 1`] = `
         </WithStyles(ForwardRef(TableCell))>
         <WithStyles(ForwardRef(TableCell))
           align="right"
-          className="DataControl-borderRight-21 DataControl-psm-1"
+          className="DataControl-borderRight-22 DataControl-psm-1"
           data-table-data-cell="1"
           key="data-cell-0-2"
         >
@@ -94,7 +94,7 @@ exports[`Data control renders correct grid renders correctly 1`] = `
         />
         <WithStyles(ForwardRef(TableCell))
           align="right"
-          className="DataControl-borderRight-21 DataControl-psm-1"
+          className="DataControl-borderRight-22 DataControl-psm-1"
           data-table-data-cell="1"
           key="data-cell-0-5"
         />
@@ -127,7 +127,7 @@ exports[`Data control renders correct grid renders correctly 1`] = `
         </WithStyles(ForwardRef(TableCell))>
         <WithStyles(ForwardRef(TableCell))
           align="right"
-          className="DataControl-borderRight-21 DataControl-psm-1"
+          className="DataControl-borderRight-22 DataControl-psm-1"
           data-table-data-cell="1"
           key="data-cell-1-2"
         >
@@ -147,7 +147,7 @@ exports[`Data control renders correct grid renders correctly 1`] = `
         />
         <WithStyles(ForwardRef(TableCell))
           align="right"
-          className="DataControl-borderRight-21 DataControl-psm-1"
+          className="DataControl-borderRight-22 DataControl-psm-1"
           data-table-data-cell="1"
           key="data-cell-1-5"
         />
@@ -180,7 +180,7 @@ exports[`Data control renders correct grid renders correctly 1`] = `
         </WithStyles(ForwardRef(TableCell))>
         <WithStyles(ForwardRef(TableCell))
           align="right"
-          className="DataControl-borderRight-21 DataControl-psm-1"
+          className="DataControl-borderRight-22 DataControl-psm-1"
           data-table-data-cell="1"
           key="data-cell-2-2"
         >
@@ -200,7 +200,7 @@ exports[`Data control renders correct grid renders correctly 1`] = `
         />
         <WithStyles(ForwardRef(TableCell))
           align="right"
-          className="DataControl-borderRight-21 DataControl-psm-1"
+          className="DataControl-borderRight-22 DataControl-psm-1"
           data-table-data-cell="1"
           key="data-cell-2-5"
         />

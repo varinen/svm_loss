@@ -5,7 +5,7 @@ import Background from "./Demo/Background";
 import Visio from './Demo/Visio';
 import Params from './Demo/Params';
 import Data from "./Demo/Data";
-import ConnectedHyper from "containers/Demo/Hyper";
+import Optimize from "./Demo/Optimize";
 
 
 export default function Demo(props) {
@@ -20,7 +20,7 @@ export default function Demo(props) {
                 <Grid item container spacing={2}>
                     <Grid item md={7} sm={12}>
                         <Visio store={props.store}/>
-                        <ConnectedHyper store={props.store}/>
+                        <Optimize store={props.store}/>
                     </Grid>
                     <Grid item md={5} sm={12} container>
                         <Grid item xs container direction="column" alignItems="stretch">

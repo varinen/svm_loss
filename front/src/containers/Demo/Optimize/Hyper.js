@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import Hyper from 'views/SVMLoss/Demo/Hyper';
+import Hyper from 'views/SVMLoss/Demo/Optimize/Hyper';
 import {bindActionCreators} from 'redux'
 import {updateHyper} from "actions";
 

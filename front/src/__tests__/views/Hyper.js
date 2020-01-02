@@ -1,6 +1,6 @@
 import React from 'react';
 import {createShallow} from '@material-ui/core/test-utils';
-import Hyper from '../../views/SVMLoss/Demo/Hyper';
+import Hyper from '../../views/SVMLoss/Demo/Optimize/Hyper';
 
 describe('Hyper renders correctly', () => {
     let component, props, shallow;

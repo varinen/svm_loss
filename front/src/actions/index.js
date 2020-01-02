@@ -5,6 +5,7 @@ import {fetchPlot} from "./plot";
 export * from './params';
 export * from './data';
 export * from './plot';
+export * from './hyper';
 
 export const fetchInitState = (store) => (dispatch) =>
     fetchParams()(dispatch)

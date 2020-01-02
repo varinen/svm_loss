@@ -16,7 +16,6 @@ export default function initStore(store) {
             store.dispatch(fetchPlot(state.params, state.data));
         }
     }, 500);
-
     if (!state.params || !state.params.weights || state.params.weights.length <= 0) {
         return store.dispatch(fetchInitState(store));
     }

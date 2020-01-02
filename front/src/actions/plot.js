@@ -2,7 +2,8 @@ import fetch from 'isomorphic-fetch'
 import {
     FETCH_PLOT_REQUEST,
     FETCH_PLOT_SUCCESS,
-    FETCH_PLOT_FAILURE
+    FETCH_PLOT_FAILURE,
+    ACTIVATE_PLOT_UPDATE
 } from "../actionTypes";
 import {apiFetchPlot} from "../api";
 import {thunkCreator} from "./utils";
@@ -22,3 +23,5 @@ export const fetchPlot = (params = {weights:[], biases:[]}, data=[]) => thunkCre
         })
         .then(response => response.json())
 });
+
+export const activateUpdateNeeded = () => ({type: ACTIVATE_PLOT_UPDATE});

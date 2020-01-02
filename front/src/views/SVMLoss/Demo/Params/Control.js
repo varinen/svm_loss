@@ -9,17 +9,21 @@ import styles from "svm_assets/jss/views/demo.js";
 import Button from "components/CustomButtons/Button.js";
 import GridContainer from 'components/Grid/GridContainer'
 import GridItem from "components/Grid/GridItem";
+import {ACTIVATE_PLOT_UPDATE} from "../../../../actionTypes";
 
 class ParamsControl extends React.Component {
 
     updateParams = (rowIndex, colIndex, type) => (evt) => {
         let val = Number.isInteger(parseInt(evt.target.value, 10)) ? parseFloat(evt.target.value): 0;
-        console.log(val);
-        this.props.updateParams(rowIndex, colIndex, type, val);
+        const prom = new Promise(resolve => {
+            this.props.updateParams(rowIndex, colIndex, type, val);
+            resolve()
+        });
+        prom.then(() => this.props.activateUpdateNeeded());
     };
 
     randomizeParams = () => {
-        this.props.fetchParams(1)
+        this.props.fetchParams(1, [{type: ACTIVATE_PLOT_UPDATE}]);
     };
 
     render() {

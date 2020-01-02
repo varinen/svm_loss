@@ -8,11 +8,11 @@ class Plot extends React.Component {
         const {classes} = this.props;
         return (
             <article>
-                    {this.props.plot ? (
+                    {this.props.plot.image ? (
                     <img alt="Plot" id="plot"
                          className={classes.plot}
-                         src={this.props.plot &&
-                         `data:image/png;base64,${this.props.plot}`}/>
+                         src={this.props.plot.image &&
+                         `data:image/png;base64,${this.props.plot.image}`}/>
                         ): <CircularProgress id="loading-plot" />}
             </article>
         )

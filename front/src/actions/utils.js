@@ -1,5 +1,6 @@
 export const thunkCreator = (action) => {
-    const {types, promise, ...rest} = action;
+    const {types, promise, ...other} = action;
+    const {additional, ...rest} = other;
     const [REQUESTED, RESOLVED, REJECTED] = types;
 
     return (dispatch) => {
@@ -9,6 +10,9 @@ export const thunkCreator = (action) => {
             .then(result => {
                 if (result.error) throw new Error(result.error);
                 dispatch({...rest, type: RESOLVED, result});
+                if (additional && additional.length) {
+                    additional.map(addAction => dispatch(addAction));
+                }
                 return result
             })
             .catch(error => {

@@ -12,11 +12,12 @@ import Button from "components/CustomButtons/Button.js";
 
 import styles from "svm_assets/jss/views/demo.js";
 import Divider from "@material-ui/core/Divider";
+import {ACTIVATE_PLOT_UPDATE} from "../../../../actionTypes";
 
 class DataControl extends React.Component {
 
     randomizeData = () => {
-        this.props.fetchData(1)
+        this.props.fetchData(1, [{type: ACTIVATE_PLOT_UPDATE}]);
     };
 
     render() {

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import DataControl from 'views/SVMLoss/Demo/Data/Control';
 import {bindActionCreators} from 'redux'
-import {fetchData} from "actions";
+import {fetchData, activateUpdateNeeded} from "actions";
 
 const mapStateToProps = (state, props) => {
     const {data} = state;
@@ -9,7 +9,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props, state) =>
-    bindActionCreators({fetchData}, dispatch);
+    bindActionCreators({fetchData, activateUpdateNeeded}, dispatch);
 
 const ConnectedDataControl = connect(mapStateToProps, mapDispatchToProps)(DataControl);
 

@@ -13,8 +13,9 @@ export const updateParams = (rowIndex, colIndex, type, value) => {
     return {type: UPDATE_PARAMS, updating};
 };
 
-export const fetchParams = (rand = 0) => thunkCreator({
+export const fetchParams = (rand = 0, additional = []) => thunkCreator({
     types: [FETCH_PARAMS_REQUEST, FETCH_PARAMS_SUCCESS, FETCH_PARAMS_FAILURE],
     promise: fetch(`${apiGetParams}?rand=${rand}`)
-        .then(response => response.json())
+        .then(response => response.json()),
+    additional: additional
 });

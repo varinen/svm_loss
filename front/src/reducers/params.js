@@ -1,4 +1,4 @@
-import {FETCH_PARAMS_SUCCESS, UPDATE_PARAMS} from '../actionTypes'
+import {FETCH_PARAMS_SUCCESS, UPDATE_PARAMS, UPDATE_STEP_PARAMS} from '../actionTypes'
 
 export default function paramsReducer(state = {weights: [], biases: []}, action) {
     const {type} = action;
@@ -16,6 +16,10 @@ export default function paramsReducer(state = {weights: [], biases: []}, action)
                 stateNew.weights[rowIndex][colIndex] = value;
             }
             return stateNew
+        }
+        case UPDATE_STEP_PARAMS: {
+            const {parentResult: {weights, biases}} = action;
+            return {...state, weights, biases};
         }
         default: {
             return state;

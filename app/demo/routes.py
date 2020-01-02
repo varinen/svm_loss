@@ -105,9 +105,14 @@ def get_plot():
 def get_step():
     """Perform a single optimization step."""
     try:
-        data = json.loads(request.form.get('data'))
-        params = json.loads(request.form.get('params'))
-        hyper = json.loads(request.form.get('hyper'))
+        if request.is_json:
+            data = request.json.get('data')
+            params = request.json.get('params')
+            hyper = request.json.get('hyper')
+        else:
+            data = json.loads(request.form.get('data'))
+            params = json.loads(request.form.get('params'))
+            hyper = json.loads(request.form.get('hyper'))
 
         if not isinstance(params, dict) or not isinstance(data, list) \
                 or not isinstance(hyper, dict):

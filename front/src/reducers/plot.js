@@ -1,4 +1,8 @@
-import {FETCH_PLOT_SUCCESS, ACTIVATE_PLOT_UPDATE, DEACTIVATE_PLOT_UPDATE} from '../actionTypes'
+import {FETCH_PLOT_SUCCESS,
+    ACTIVATE_PLOT_UPDATE,
+    DEACTIVATE_PLOT_UPDATE,
+    UPDATE_STEP_PLOT
+} from '../actionTypes'
 
 export default function plotReducer(state = {image:'', updateNeeded: false}, action) {
     const {type} = action;
@@ -12,6 +16,10 @@ export default function plotReducer(state = {image:'', updateNeeded: false}, act
         }
         case DEACTIVATE_PLOT_UPDATE: {
             return {...state, updateNeeded: false};
+        }
+        case UPDATE_STEP_PLOT: {
+            const {parentResult: {plot}} = action;
+            return {image: plot, updateNeeded: false};
         }
         default: {
             return state;

@@ -11,7 +11,7 @@ export const thunkCreator = (action) => {
                 if (result.error) throw new Error(result.error);
                 dispatch({...rest, type: RESOLVED, result});
                 if (additional && additional.length) {
-                    additional.map(addAction => dispatch(addAction));
+                    additional.map(addAction => dispatch({...addAction, parentResult: result}));
                 }
                 return result
             })

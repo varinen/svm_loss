@@ -2,7 +2,9 @@ import fetch from 'isomorphic-fetch'
 import {
     FETCH_STEP_REQUEST,
     FETCH_STEP_SUCCESS,
-    FETCH_STEP_FAILURE
+    FETCH_STEP_FAILURE,
+    UPDATE_STEP_PARAMS,
+    UPDATE_STEP_PLOT
 } from "../actionTypes";
 import {apiFetchStep} from "../api";
 import {thunkCreator} from "./utils";
@@ -20,5 +22,6 @@ export const fetchStep = (params = {weights:[], biases:[]}, data=[], hyper={}) =
                 params, data, hyper
             })
         })
-        .then(response => response.json())
+        .then(response => response.json()),
+    additional:[{type: UPDATE_STEP_PARAMS}, {type: UPDATE_STEP_PLOT}]
 });

@@ -9,7 +9,6 @@ const mapStateToProps = (state, props) => {
         step.grad_b = [];
         step.grad_w = [];
     }
-    console.log('step before map:', step);
     return {params, step};
 };
 

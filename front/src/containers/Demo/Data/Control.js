@@ -4,8 +4,8 @@ import {bindActionCreators} from 'redux'
 import {fetchData, activateUpdateNeeded} from "actions";
 
 const mapStateToProps = (state, props) => {
-    const {data} = state;
-    return {data};
+    const {data, step} = state;
+    return {data, step};
 };
 
 const mapDispatchToProps = (dispatch, props, state) =>

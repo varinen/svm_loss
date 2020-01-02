@@ -9,7 +9,6 @@ import Optimize from "./Demo/Optimize";
 
 
 export default function Demo(props) {
-    console.log('Demo props', props);
     return (
         <Fragment>
             <Grid container spacing={3} alignItems="stretch">

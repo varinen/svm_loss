@@ -158,6 +158,7 @@ def adjust_params(weights, biases, grad_w, grad_b, learning_rate) -> \
     """
     weights = weights.astype(float)
     biases = biases.astype(float)
+    learning_rate = float(learning_rate)
     weights -= grad_w * learning_rate
     biases -= grad_b * learning_rate
 

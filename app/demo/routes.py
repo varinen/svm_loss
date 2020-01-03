@@ -129,7 +129,7 @@ def get_step():
         result['grad_w'], result['grad_b'], result['cost_loss'], \
         result['loss'], result['scores'], result['total_loss'], \
         result['reg_loss'] = grad_step(data, labels, params_,
-                                       hyper['loss_type'], hyper['reg_c'])
+                                       hyper['loss_type'], float(hyper['reg_c']))
 
         weights = np.array(weights)
         biases = np.array(biases)

@@ -4,7 +4,9 @@ import {
     FETCH_STEP_SUCCESS,
     FETCH_STEP_FAILURE,
     UPDATE_STEP_PARAMS,
-    UPDATE_STEP_PLOT
+    UPDATE_STEP_PLOT,
+    TOGGLE_OPTIMIZE,
+    SET_AVAILABLE_ITERATIONS
 } from "../actionTypes";
 import {apiFetchStep} from "../api";
 import {thunkCreator} from "./utils";
@@ -25,3 +27,8 @@ export const fetchStep = (params = {weights:[], biases:[]}, data=[], hyper={}) =
         .then(response => response.json()),
     additional:[{type: UPDATE_STEP_PARAMS}, {type: UPDATE_STEP_PLOT}]
 });
+
+export const toggleOptimize = (optimizeActive = false) => ({type:TOGGLE_OPTIMIZE, optimizeActive});
+
+export const setAvailableIterations = (availableIterations = 1) =>
+    ({type:SET_AVAILABLE_ITERATIONS, availableIterations});

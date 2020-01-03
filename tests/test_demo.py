@@ -9,7 +9,7 @@ from app.demo.utils import init_data, init_params, init_hyper
 def test_demo_index(app, client):
     """Test the response from the index page."""
     with app.test_request_context():
-        resp = client.get(url_for('demo.index'))
+        resp = client.get(url_for('demo.flask'))
         assert 'Linear Classifier Demo' in str(resp.data)
 
 

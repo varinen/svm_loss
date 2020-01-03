@@ -1,5 +1,6 @@
 """Tests the app factory implementation."""
 
+from datetime import datetime
 from logging.handlers import RotatingFileHandler
 
 from app import create_app, get_operation_years
@@ -47,7 +48,8 @@ def test_conf_operation_years(app):
     """Test the correct generation of the operation years."""
     with app.app_context():
         app.config['START_YEAR'] = 2019
-        assert '2019' == get_operation_years()
+        year_now = str(datetime.now().year)
+        assert f'2019 - {year_now}' == get_operation_years()
 
         app.config['START_YEAR'] = 2017
-        assert '2017 - 2019' == get_operation_years()
+        assert f'2017 - {year_now}' == get_operation_years()

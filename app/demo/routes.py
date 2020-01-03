@@ -1,4 +1,5 @@
 """Routes for the Demo package."""
+from builtins import isinstance
 
 import numpy as np
 from numpy import ndarray
@@ -21,6 +22,12 @@ from app.demo.plot import (
 )
 
 from config import client_dir
+
+@bp.route('/flask', methods=['GET'])
+def flask():
+    """Serve the main route for the application."""
+    urls = get_urls()
+    return render_template('index.html', urls=urls)
 
 
 @bp.route('/', methods=['GET'])

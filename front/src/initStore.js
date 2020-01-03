@@ -1,6 +1,6 @@
 import {fetchInitState, setAvailableIterations} from './actions';
 import {fetchPlot, fetchStep, toggleOptimize} from "./actions";
-import {DEACTIVATE_PLOT_UPDATE, TOGGLE_OPTIMIZE} from "./actionTypes";
+import {DEACTIVATE_PLOT_UPDATE} from "./actionTypes";
 
 export default function initStore(store) {
     let state = store.getState();

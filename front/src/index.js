@@ -13,7 +13,7 @@ import SVMLoss from "views/SVMLoss/App";
 const store = configureStore({});
 initStore(store);
 
-console.log('initial state:', JSON.stringify(store.getState(), null, 2));
+//console.log('initial state:', JSON.stringify(store.getState(), null, 2));
 
 ReactDOM.render(
     <Provider store={store}>

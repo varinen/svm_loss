@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import DataControl from 'views/SVMLoss/Demo/Data/Control';
 import {bindActionCreators} from 'redux'
-import {fetchData, activateUpdateNeeded} from "actions";
+import {fetchData} from "actions";
 
 const mapStateToProps = (state, props) => {
     const {data, step} = state;

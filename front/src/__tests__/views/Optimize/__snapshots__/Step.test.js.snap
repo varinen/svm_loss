@@ -9,12 +9,41 @@ exports[`Step control renders correctly 1`] = `
     Iterations: 
     0
   </p>
-  <ForwardRef
-    color="primary"
-    id="singe-step"
-    onClick={[Function]}
+  <GridContainer
+    className=""
+    container={true}
+    spacing={2}
   >
-    Single Step
-  </ForwardRef>
+    <GridItem
+      className=""
+      key="loss_type"
+      xs={6}
+    >
+      <ForwardRef
+        color="primary"
+        id="singe-step"
+        onClick={[Function]}
+      >
+        Single Step
+      </ForwardRef>
+       
+    </GridItem>
+    <GridItem
+      className=""
+      key="loss_type"
+      xs={6}
+    >
+      <WithStyles(ForwardRef(FormControlLabel))
+        control={
+          <ForwardRef(WithStyles)
+            checked={false}
+            color="primary"
+            onChange={[Function]}
+          />
+        }
+        label="Run for 25 auto iterations"
+      />
+    </GridItem>
+  </GridContainer>
 </Fragment>
 `;

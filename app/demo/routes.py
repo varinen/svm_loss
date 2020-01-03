@@ -5,7 +5,7 @@ from numpy import ndarray
 import json
 from json import JSONDecodeError
 from flask import render_template, jsonify, request, send_from_directory, \
-    make_response
+    make_response, redirect
 from flask_cors import cross_origin
 
 from app.demo import bp
@@ -27,11 +27,16 @@ from config import client_dir
 @bp.route('/index', methods=['GET'])
 def index():
     """Serve the main route for the application."""
-    urls = get_urls()
-    return render_template('index.html', urls=urls)
+    #urls = get_urls()
+    #return render_template('index.html', urls=urls)
+    return redirect('/client/', 301)
 
 
 @bp.route('/client', methods=['GET'])
+def clientNoSlash():
+    return redirect('/client/', 301)
+
+@bp.route('/client/', methods=['GET'])
 def client():
     """Serve the client React app."""
     return send_from_directory(client_dir, 'index.html')

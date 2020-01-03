@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 project_dir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(project_dir, '.env'))
-client_dir = os.path.join(project_dir, 'client', 'build')
+client_dir = os.path.join(project_dir, 'front', 'build')
 
 
 class Config(object):

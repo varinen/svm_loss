@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import nock from 'nock';
 import {apiUrl, pathFetchStep} from "../../api";
 import * as actionTypes from "../../actionTypes";
-import {fetchStep} from "../../actions";
+import {fetchStep, toggleOptimize, setAvailableIterations} from "../../actions";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -62,3 +62,29 @@ describe('Step fetch action test', () => {
             )
     });
 });
+
+
+describe('Optimize active toggle test', () => {
+    describe('Generates correct actions', () => {
+        test('Activates optimize', () => {
+            const expectedAction = {type: actionTypes.TOGGLE_OPTIMIZE, optimizeActive: true};
+            expect(toggleOptimize(true)).toEqual(expectedAction);
+        });
+        test('Deactivates optimize', () => {
+            const expectedAction = {type: actionTypes.TOGGLE_OPTIMIZE, optimizeActive: false};
+            expect(toggleOptimize(false)).toEqual(expectedAction);
+        })
+    })
+});
+
+describe('Set available iterations', () => {
+    test('Set 10', () => {
+        expect(setAvailableIterations(10))
+            .toEqual({type: actionTypes.SET_AVAILABLE_ITERATIONS, availableIterations: 10});
+    });
+
+    test('Set 0', () => {
+        expect(setAvailableIterations(0))
+            .toEqual({type: actionTypes.SET_AVAILABLE_ITERATIONS, availableIterations: 0});
+    });
+})

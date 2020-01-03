@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Step renders correctly renders correctly 1`] = `
+exports[`Step control renders correctly 1`] = `
 <Fragment>
   <h4>
     Optimize

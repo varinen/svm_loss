@@ -1,6 +1,6 @@
 import {FETCH_STEP_SUCCESS, TOGGLE_OPTIMIZE, SET_AVAILABLE_ITERATIONS} from '../actionTypes'
 
-export default function stepReducer(state = {iteration: 0, optimizeActive: false, availableIterations: 1}, action) {
+export default function stepReducer(state = {iteration: 0, optimizeActive: false, availableIterations: 0}, action) {
     const {type} = action;
     switch (type) {
         case FETCH_STEP_SUCCESS: {

@@ -11,7 +11,7 @@ import {
 import {apiFetchStep} from "../api";
 import {thunkCreator} from "./utils";
 
-export const fetchStep = (params = {weights:[], biases:[]}, data=[], hyper={}) => thunkCreator({
+export const fetchStep = (params = {weights:[], biases:[]}, data=[], hyper={}, availableIterations = 0) => thunkCreator({
     types: [FETCH_STEP_REQUEST, FETCH_STEP_SUCCESS, FETCH_STEP_FAILURE],
     promise: fetch(`${apiFetchStep}`,
         {
@@ -25,7 +25,11 @@ export const fetchStep = (params = {weights:[], biases:[]}, data=[], hyper={}) =
             })
         })
         .then(response => response.json()),
-    additional:[{type: UPDATE_STEP_PARAMS}, {type: UPDATE_STEP_PLOT}]
+    additional:[
+        {type: UPDATE_STEP_PARAMS},
+        {type: UPDATE_STEP_PLOT},
+        {type: TOGGLE_OPTIMIZE, optimizeActive: availableIterations > 0},
+        ]
 });
 
 export const toggleOptimize = (optimizeActive = false) => ({type:TOGGLE_OPTIMIZE, optimizeActive});

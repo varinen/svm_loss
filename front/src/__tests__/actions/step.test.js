@@ -37,7 +37,9 @@ describe('Step fetch action test', () => {
         scores: [],
         total_loss: 1,
         weights: [],
-        iteration: 1
+        iteration: 1,
+        availableIterations: 0,
+        optimizeActive: false
     };
 
     test('dispatch get_step success', () => {
@@ -53,6 +55,7 @@ describe('Step fetch action test', () => {
             {type: actionTypes.FETCH_STEP_SUCCESS, result: stepResult},
             {type: actionTypes.UPDATE_STEP_PARAMS, parentResult: stepResult},
             {type: actionTypes.UPDATE_STEP_PLOT, parentResult: stepResult},
+            {type: actionTypes.TOGGLE_OPTIMIZE, optimizeActive: false, parentResult: stepResult},
         ];
 
         expect.assertions(1);

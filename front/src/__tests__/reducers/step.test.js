@@ -14,7 +14,7 @@ beforeEach(() => {
 });
 
 test('initial state has to have the step data object to have only the iteration key eq 0', () => {
-    const initState = {iteration: 0, optimizeActive: false, availableIterations: 1};
+    const initState = {iteration: 0, optimizeActive: false, availableIterations: 0};
     expect(store.getState()).toEqual(initState);
 });
 
@@ -63,7 +63,6 @@ describe('Step reducer toggles optimizeActive', () => {
         expect(store.getState().optimizeActive).toBe(false);
     });
 });
-
 
 describe('Step reduces modifies the availableIterations', () => {
     test('Set available iterations to 0', () => {

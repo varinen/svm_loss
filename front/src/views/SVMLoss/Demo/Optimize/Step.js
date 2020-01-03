@@ -8,8 +8,10 @@ import styles from "svm_assets/jss/views/demo.js";
 class Step extends React.Component {
 
     singleStep = () => {
-        const {params, data, hyper, fetchStep} = this.props;
-        fetchStep(params, data, hyper);
+        if (this.props.step.availableIterations <= 0) {
+            this.props.toggleOptimize(true);
+            this.props.setAvailableIterations(1);
+        }
     };
     render() {
         const {classes} = this.props;

@@ -1,6 +1,6 @@
-import {fetchInitState} from './actions';
-import {fetchPlot} from "./actions";
-import {DEACTIVATE_PLOT_UPDATE} from "./actionTypes";
+import {fetchInitState, setAvailableIterations} from './actions';
+import {fetchPlot, fetchStep, toggleOptimize} from "./actions";
+import {DEACTIVATE_PLOT_UPDATE, TOGGLE_OPTIMIZE} from "./actionTypes";
 
 export default function initStore(store) {
     let state = store.getState();
@@ -16,6 +16,17 @@ export default function initStore(store) {
             store.dispatch(fetchPlot(state.params, state.data));
         }
     }, 500);
+
+    setInterval(() => {
+        let state = store.getState();
+        if (state.step.optimizeActive) {
+            let availIter = Math.max(0, state.step.availableIterations - 1);
+            store.dispatch(setAvailableIterations, availIter);
+            store.dispatch(toggleOptimize(false));
+            store.dispatch(fetchStep(state.params, state.data, state.hyper, availIter));
+        }
+    }, 500);
+
     if (!state.params || !state.params.weights || state.params.weights.length <= 0) {
         return store.dispatch(fetchInitState(store));
     }

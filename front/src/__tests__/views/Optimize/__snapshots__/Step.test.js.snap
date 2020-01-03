@@ -5,10 +5,6 @@ exports[`Step control renders correctly 1`] = `
   <h4>
     Optimize
   </h4>
-  <p>
-    Iterations: 
-    0
-  </p>
   <GridContainer
     className=""
     container={true}
@@ -16,9 +12,13 @@ exports[`Step control renders correctly 1`] = `
   >
     <GridItem
       className=""
-      key="loss_type"
+      key="single_step"
       xs={6}
     >
+      <p>
+        Iterations: 
+        0
+      </p>
       <ForwardRef
         color="primary"
         id="singe-step"
@@ -30,9 +30,12 @@ exports[`Step control renders correctly 1`] = `
     </GridItem>
     <GridItem
       className=""
-      key="loss_type"
+      key="auto_update"
       xs={6}
     >
+      <p>
+         
+      </p>
       <WithStyles(ForwardRef(FormControlLabel))
         control={
           <ForwardRef(WithStyles)

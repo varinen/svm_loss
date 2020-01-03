@@ -33,7 +33,7 @@ def deploy(dep_type='master', use_key=None):
         _run_front_tests()
         _front_prod()
 
-    _create_symlink(cur_release_dir, app_folder)
+    _create_symlink(cur_release_dir, app_folder, cur_front_dir)
 
     with cd(app_folder + '/' + releases_dir):
         _remove_older_releases()
@@ -71,7 +71,7 @@ def _run_tests():
     run(f'./venv/bin/python -m pytest tests')
 
 
-def _create_symlink(cur_release_dir, app_folder):
+def _create_symlink(cur_release_dir, app_folder, cur_front_dir):
     """ Creates a symlink to the current release location
     """
     with cd(app_folder):
@@ -79,6 +79,11 @@ def _create_symlink(cur_release_dir, app_folder):
         if exists(link):
             run(f'rm -rf {link}')
         run(f'ln -s {cur_release_dir} {link}')
+    with cd(cur_front_dir):
+        link = app_folder + '/app/front/.env'
+        if exists(link):
+            run(f'rm -rf {link}')
+        run(f'ln -s {INSTALLATION_PATH}/local_config/.env {link}')
 
 
 def _remove_older_releases():

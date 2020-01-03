@@ -19,6 +19,7 @@ def deploy(dep_type='master', use_key=None):
     print('Executing deploy for: ', dep_type)
     app_folder = f'{INSTALLATION_PATH}{dep_type}'
     cur_release_dir = app_folder + '/' + releases_dir + '/' + str(release)
+    cur_front_dir = cur_release_dir + '/front'
     run(f'mkdir -p {cur_release_dir}')
 
     with cd(cur_release_dir):
@@ -26,6 +27,11 @@ def deploy(dep_type='master', use_key=None):
         print('Setting up the app')
         _setup_app()
         _run_tests()
+
+    with cd(cur_front_dir):
+        _set_up_front()
+        _run_front_tests()
+        _front_prod()
 
     _create_symlink(cur_release_dir, app_folder)
 
@@ -94,3 +100,23 @@ def _remove_older_releases():
         print("Removing older releases: ", ' '.join(to_delete))
     for delete_me in to_delete:
         run(f'rm -rf {delete_me}')
+
+
+def _set_up_front():
+    """ Runs the unittests
+    :return:
+    """
+    run(f'npm i')
+
+def _run_front_tests():
+    """ Runs the unittests
+    :return:
+    """
+    run(f'npm run test')
+
+def _front_prod():
+    """ Runs the unittests
+    :return:
+    """
+    run(f'npm run build')
+

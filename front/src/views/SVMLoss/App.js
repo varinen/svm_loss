@@ -42,7 +42,7 @@ export default function App(props) {
                 }}
                 {...rest}
             />
-            <Parallax filter image={require("svm_assets/img/gray.png")}>
+            <Parallax filter image={require("svm_assets/img/gray.jpg")}>
                 <div className={classes.container}>
                     <GridContainer>
                         <GridItem xs={12} sm={12} md={6}>

@@ -17,7 +17,7 @@ exports[`App renders correctly 1`] = `
   />
   <Parallax
     filter={true}
-    image="gray.png"
+    image="gray.jpg"
   >
     <div
       className="makeStyles-container-14"

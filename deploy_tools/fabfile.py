@@ -35,8 +35,6 @@ def deploy(dep_type='master', use_key=None):
         _run_front_tests()
         _front_prod()
 
-    _create_symlink(cur_release_dir, app_folder, cur_front_dir)
-
     with cd(app_folder + '/' + releases_dir):
         _remove_older_releases()
 

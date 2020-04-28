@@ -1,4 +1,4 @@
-export const apiUrl = process.env.NODE_ENV === 'production' ? process.env.API_URL: 'http://localhost:5000';
+export const apiUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_URL: 'http://localhost:5000';
 export const pathGetParams = '/get_params';
 export const apiGetParams = `${apiUrl}${pathGetParams}`;
 

@@ -28,6 +28,7 @@ def deploy(dep_type='master', use_key=None):
         _setup_app()
         _run_tests()
 
+    _create_symlink(cur_release_dir, app_folder, cur_front_dir)
 
     with cd(cur_front_dir):
         _set_up_front()

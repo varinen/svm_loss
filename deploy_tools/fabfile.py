@@ -74,6 +74,7 @@ def _run_tests():
 def _create_symlink(cur_release_dir, app_folder, cur_front_dir):
     """ Creates a symlink to the current release location
     """
+    print("about to create a symlink to the .env file")
     with cd(app_folder):
         link = app_folder + '/app'
         if exists(link):
@@ -83,6 +84,7 @@ def _create_symlink(cur_release_dir, app_folder, cur_front_dir):
         link = app_folder + '/app/front/.env'
         if exists(link):
             run(f'rm -rf {link}')
+        print(f"creating a symlink to the .env file at {link}")
         run(f'ln -s {INSTALLATION_PATH}/local_config/.env {link}')
 
 

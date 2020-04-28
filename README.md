@@ -53,6 +53,8 @@ The folder structure will look like this:
     var/
 	    sites/
 		    svm-demo/
+		        local_config/
+		            .env
 			    master/
 				    app ->  /var/sites/svm-demo/master/releases/1566286138.888088/
 				    releases/
@@ -66,6 +68,21 @@ make sure the repository has a branch with the respective name and you use the
 appropriate value for the `dep_type` argument in the deployment command (see below).
 In a case of a non-production deployment, the target directory will be automatically created
 under a different name (`stage` or `test`).
+
+Note the `.env` file in the `local_config` folder. This file is not a part of this repository and must be edited 
+locally on the server. In containt three variables. The first two should have these values:
+
+    Production deploy uses environment variables that are symlinked from the folder on the target server at `/var/sites/svm-demo/local_config`.
+
+Place a `.env` file there and provide a value for the `API_URL` variable. Example content:
+
+    CI=true
+    NODE_ENV=production
+ 
+ The third variable, `API_URL` must contain a URL (without the trainiling slash) to the service running the backend of the project.
+ For example:
+ 
+    API_URL=https://svm-demo.singularaspect.com
 
 #### Setting Up Nginx
 

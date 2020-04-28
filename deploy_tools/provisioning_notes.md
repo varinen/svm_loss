@@ -28,3 +28,14 @@ The application will be installed under `/var/sites/svm-demo`
 
 Make sure that the target folder `/var/python` is writeable to the user you indicate in the `fab deploy` command.
 
+## Local Config
+
+Production deploy uses environment variables that are symlinked from the folder on the target server at `/var/sites/svm-demo/local_config`.
+
+Place a `.env` file there and provide a value for the `API_URL` variable. Example content:
+
+    CI=true
+    NODE_ENV=production
+    API_URL=https://svm-demo.singularaspect.com
+
+

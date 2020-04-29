@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  backend:
+    build: .
+    command: python -m flask run -h 0.0.0.0
+    volumes:
+      - ./:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.dev
+  web:
+    build: ./front
+    command: npm start --prefix /usr/src/app/
+    ports:
+      - 3001:3000
+    volumes:
+      - ./front:/usr/src/app/
+    environment:
+      - CI=true
+      - NODE_ENV=development

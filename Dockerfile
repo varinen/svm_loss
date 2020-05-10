@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.7.7-buster
+FROM python:3.6.10-buster
 
 # set environment varibles
 ENV PYTHONDONTWRITEBYTECODE 1

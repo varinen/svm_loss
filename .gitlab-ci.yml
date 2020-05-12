@@ -1,0 +1,62 @@
+image: docker:stable
+
+stages:
+  - build
+  - test
+
+variables:
+  IMAGE: ${CI_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
+
+build:main:
+  stage: build
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker pull $IMAGE:main || true
+    - docker build
+      --cache-from $IMAGE:main
+      --tag $IMAGE:main
+      --file ./Dockerfile.flask.prod
+      "."
+    - docker push $IMAGE:main
+
+build:client:
+  stage: build
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    REACT_APP_USERS_SERVICE_URL: http://localhost:5001
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker pull $IMAGE:client || true
+    - docker build
+      --cache-from $IMAGE:client
+      --tag $IMAGE:client
+      --file ./front/Dockerfile.ci
+      "./front"
+    - docker push $IMAGE:client
+
+
+test:main:
+  stage: test
+  image: $IMAGE:main
+  variables:
+    FLASK_ENV: development
+  script:
+    - cd /app
+    - pip install -r requirements.txt
+    - python -m pytest "tests" -p no:warnings
+
+
+test:client:
+  stage: test
+  image: $IMAGE:client
+  variables:
+    CI: 1
+  script:
+    - cd /app
+    - npm run test

@@ -68,7 +68,7 @@ RUN python3 -m ensurepip && \
 # install dependencies
 RUN pip install wheel
 COPY --from=builder /app/wheels /wheels
-COPY --from=builder /requirements.txt .
+COPY --from=builder /app/requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache /wheels/*
 

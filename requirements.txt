@@ -1,3 +1,4 @@
+matplotlib==3.0.3
 asn1crypto==0.24.0
 atomicwrites==1.3.0
 attrs==19.1.0
@@ -23,10 +24,9 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 kiwisolver==1.1.0
 MarkupSafe==1.1.1
-matplotlib==3.0.3
 mccabe==0.6.1
 more-itertools==7.2.0
-numpy==1.17.0
+numpy==1.18.4
 packaging==19.1
 paramiko==2.6.0
 pluggy==0.12.0

@@ -74,6 +74,7 @@ RUN pip install --no-cache /wheels/*
 
 COPY ./app/ ./app
 COPY ./*.py ./
+COPY ./tests/ ./tests
 
 # add and run as non-root user
 RUN adduser -D myuser

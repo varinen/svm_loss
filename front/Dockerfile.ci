@@ -4,7 +4,7 @@ FROM node:13.13.0-stretch
 WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH
-ENV NODE_ENV production
+ENV NODE_ENV development
 
 # install and cache app dependencies
 COPY package.json /app/package.json
